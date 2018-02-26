@@ -1,22 +1,16 @@
 
-public class Agriculture extends Building {
-	private int foodYeild;
+
+public abstract class Agriculture extends Building {
+	private double bonus;
 	
 	
 	public Agriculture() {
 		super();
-		foodYeild = 0;
+		bonus = 1;
 	}
-	
-	public Agriculture(String name, double cost, int foodYield) {
-		super(name, cost);
-		this.foodYeild = foodYield;
-	}
+
 	
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-
-	}
+	abstract public int update();
 
 }
