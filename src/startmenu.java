@@ -58,7 +58,7 @@ public class startmenu extends JFrame {
 		//BufferedImage titleScreen = null; // Images
 		try {
 			titleScreen = ImageIO.read(
-					new File("C:\\Users\\Michael Chang\\eclipse-workspace\\GridBuilding\\Images\\TitleScreen2.png"));
+					new File("Images\\TitleScreen2.png"));
 			System.out.println("Get Image: " + titleScreen);
 			System.out.println("Load image into frame");
 
