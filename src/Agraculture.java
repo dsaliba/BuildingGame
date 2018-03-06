@@ -1,10 +1,7 @@
 
 public class Agraculture extends Building {
 	
-	/**
-	 * Food per turn
-	 */
-	private int food;
+	
 	
 	public Agraculture() {
 		super();
