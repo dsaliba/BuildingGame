@@ -1,4 +1,4 @@
 
-public abstract class Building {
+public class Building {
 
 }
