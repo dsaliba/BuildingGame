@@ -1,6 +1,6 @@
 
 
-public class tester {
+public class Tester {
 
 	
 
