@@ -1,0 +1,2 @@
+INDEX VERSION 1.130+C:\Users\Michael Chang\Documents\GitHub\BuildingGame\.metadata\.plugins\org.eclipse.jdt.core
+3697009410.index
