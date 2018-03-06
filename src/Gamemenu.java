@@ -7,7 +7,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 
-public class gamemenu extends JFrame {
+public class Gamemenu extends JFrame {
 
 	private Frame parent;
 	private JButton nextDay;
@@ -17,7 +17,7 @@ public class gamemenu extends JFrame {
 	private JTextArea status;
 	private JSlider taxSlider;
 	
-	public gamemenu(Frame parent) {
+	public Gamemenu(Frame parent) {
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
 		setBounds(600, 400, 2000, 1000);

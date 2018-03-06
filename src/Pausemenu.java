@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-public class pausemenu extends JFrame{
+public class Pausemenu extends JFrame{
 
 	private Frame parent;
 	private JButton pauseResume;
@@ -14,7 +14,7 @@ public class pausemenu extends JFrame{
 	private JButton pauseExitGame;
 	
 	
-	public pausemenu(Frame parent) {
+	public Pausemenu(Frame parent) {
 		this.parent = parent;
 		System.out.println("isrunning");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

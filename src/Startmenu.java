@@ -9,7 +9,7 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class startmenu extends JFrame {
+public class Startmenu extends JFrame {
 
 	private Frame parent;
 	private JButton exitButton;
@@ -17,7 +17,7 @@ public class startmenu extends JFrame {
 	private JLabel background;
 	private BufferedImage titleScreen = null;
 
-	public startmenu(Frame parent) {
+	public Startmenu(Frame parent) {
 		this.parent = parent;
 		System.out.println("isrunning");
 		setSize(2000,1000);

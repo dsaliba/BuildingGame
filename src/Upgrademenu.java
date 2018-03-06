@@ -7,7 +7,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 
-public class upgrademenu extends JFrame{
+public class Upgrademenu extends JFrame{
 	
 	private Frame parent;
 	

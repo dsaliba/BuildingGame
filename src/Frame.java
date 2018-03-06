@@ -31,9 +31,9 @@ public class Frame implements ActionListener {
 
 	public void createFrame() {
 		// --------------Frame Setup-----------------
-		game = new gamemenu(this); // JFrame
-		start = new startmenu(this); // start screen
-		pause = new pausemenu(this); // pause screen
+		game = new Gamemenu(this); // JFrame
+		start = new Startmenu(this); // start screen
+		pause = new Pausemenu(this); // pause screen
 
 	}
 
