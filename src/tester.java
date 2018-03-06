@@ -5,7 +5,7 @@ public class tester {
 	
 
 	public static void main(String[] args) {
-		frame f = new frame();
+		Frame f = new Frame();
 		f.createFrame();
 
 	}

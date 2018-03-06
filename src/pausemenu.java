@@ -8,13 +8,13 @@ import javax.swing.JTextArea;
 
 public class pausemenu extends JFrame{
 
-	private frame parent;
+	private Frame parent;
 	private JButton pauseResume;
 	private JButton pauseExitMainMenu;
 	private JButton pauseExitGame;
 	
 	
-	public pausemenu(frame parent) {
+	public pausemenu(Frame parent) {
 		this.parent = parent;
 		System.out.println("isrunning");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);

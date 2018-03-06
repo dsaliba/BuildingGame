@@ -11,13 +11,13 @@ import javax.swing.*;
 
 public class startmenu extends JFrame {
 
-	private frame parent;
+	private Frame parent;
 	private JButton exitButton;
 	private JButton startButton;
 	private JLabel background;
 	private BufferedImage titleScreen = null;
 
-	public startmenu(frame parent) {
+	public startmenu(Frame parent) {
 		this.parent = parent;
 		System.out.println("isrunning");
 		setSize(2000,1000);

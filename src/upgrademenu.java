@@ -9,9 +9,9 @@ import java.awt.Font;
 
 public class upgrademenu extends JFrame{
 	
-	private frame parent;
+	private Frame parent;
 	
-	public void upgrademenu(frame parent) {
+	public void upgrademenu(Frame parent) {
 		this.parent = parent;
 		
 	}

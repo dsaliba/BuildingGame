@@ -1,3 +1,4 @@
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,7 +9,7 @@ import java.awt.GridBagLayout;
 
 public class gamemenu extends JFrame {
 
-	private frame parent;
+	private Frame parent;
 	private JButton nextDay;
 	private JButton pauseButton;
 	private JPanel panel1;
@@ -16,7 +17,7 @@ public class gamemenu extends JFrame {
 	private JTextArea status;
 	private JSlider taxSlider;
 	
-	public gamemenu(frame parent) {
+	public gamemenu(Frame parent) {
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
 		setBounds(600, 400, 2000, 1000);
