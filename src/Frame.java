@@ -69,6 +69,7 @@ public class Frame implements ActionListener {
 			
 		case "nextDay":
 			System.out.println("day is " + dayCount);
+			
 			//callsmethods
 			dayCount++; //temp int for testing gui
 			
