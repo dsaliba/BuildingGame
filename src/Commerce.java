@@ -1,7 +1,7 @@
 
-public class Agriculture extends Building {
-	
-	public Agriculture() {
+public class Commerce extends Building{
+
+	public Commerce() {
 		super();
 		level = 1;
 	}
@@ -9,13 +9,13 @@ public class Agriculture extends Building {
 	
 	@Override
 	public String newDay() {
-		String out = "f";
+		String out = "c";
 		switch(level) {
 		case 1:
-			out += 5;
+			out += 1;
 			break;
 		case 2:
-			out += 10;
+			out += 5;
 			break;
 		}
 		return out;
@@ -27,16 +27,14 @@ public class Agriculture extends Building {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 300.0) {
+				if (money >= 250.0) {
 					level++;
-					return 300.0;
+					return 250.0;
 				}
 				break;
 			}
 		}
 		return -1.0;
 	}
-
-	
 	
 }
