@@ -73,10 +73,11 @@ public class Frame implements ActionListener {
 			break;
 			
 		case "nextDay":
-			System.out.println("day is " + dayCount);
-			//callsmethods
-			dayCount++; //temp int for testing gui
-			gamemenu.updateDayButton("Next Day (" + dayCount + ")");
+			//GUI: 
+			dayCount++; //increases day (temp)
+			gamemenu.updateDayButton("Next Day (" + dayCount + ")"); //Sets text of button to match day
+			
+			//Other method calling:
 			
  			break;
 		

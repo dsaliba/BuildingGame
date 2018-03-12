@@ -29,8 +29,9 @@ public class Gamemenu extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		createPanels();
 		createButtons();
-		createText();
 		createSlider();
+		createText();
+		
 		add(panel1);
 		add(panel2);
 		
@@ -91,7 +92,7 @@ public class Gamemenu extends JFrame {
 
 	public void createSlider() {
 		taxSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 1);
-		taxSlider.setBounds(200, 50, 200, 100);
+		taxSlider.setBounds(535, 1, 150, 100);
 		panel1.add(taxSlider);
 	}
 
@@ -126,12 +127,12 @@ public class Gamemenu extends JFrame {
 
 		// panel1.add(status);
 
-		JTextArea header = new JTextArea("City Clicker | Day: " + day);
-		header.setBounds(100, 0, 500, 50);
+		JTextArea header = new JTextArea("Tax Amount: ");
+		header.setBounds(250, 10, 500, 50);
 		header.setFont(new Font("Monospaced", Font.PLAIN, 40));
 		header.setVisible(true);
-		header.setEditable(true);
-		// panel1.add(header);
+		header.setEditable(false);
+		panel1.add(header);
 
 		
 	}
