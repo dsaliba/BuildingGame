@@ -1,0 +1,7 @@
+The returns for buildings are a sring starting with the lowercase first letter f what they affect
+commerce = c
+agriculture = f
+Defense = d
+shelter = p
+recreation = h
+I added the toString methods to all the buildings. You can use that to get what building it is.
