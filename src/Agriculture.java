@@ -1,9 +1,9 @@
 
-public class Agraculture extends Building {
+public class Agriculture extends Building {
 	
 	
 	
-	public Agraculture() {
+	public Agriculture() {
 		super();
 		level = 1;
 	}

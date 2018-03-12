@@ -22,6 +22,8 @@ public class Frame implements ActionListener {
 	BufferedImage background = null;
 	BufferedImage red = null;
 
+	 static int dayCount = 0; //temp int
+
 	JFrame game;
 	JFrame start; // start screen
 	JFrame pause;
@@ -66,9 +68,11 @@ public class Frame implements ActionListener {
 			break;
 			
 		case "nextDay":
-			System.out.println("buttonWorking");
+			System.out.println("day is " + dayCount);
 			//callsmethods
-			break;
+			dayCount++; //temp int for testing gui
+			
+ 			break;
 		
 
 		//parent.actionPerformed(new ActionEvent(xxxxxx));

@@ -16,7 +16,9 @@ public class Gamemenu extends JFrame {
 	private JPanel panel2;
 	private JTextArea status;
 	private JSlider taxSlider;
+	private JTextArea nextDayHeader;
 	
+
 	public Gamemenu(Frame parent) {
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
@@ -25,18 +27,17 @@ public class Gamemenu extends JFrame {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		createPanels();
-		add(panel1);
-		add(panel2);
 		createButtons();
 		createText();
-		panel1.add(pauseButton);
-		panel1.add(nextDay);
 		createSlider();
-		panel1.add(taxSlider);
+		add(panel1);
+		add(panel2);
+		nextDay.add(nextDayHeader);
+
 	}
-	
+
 	public void createButtons() {
-	
+
 		pauseButton = new JButton("Pause");// pause button
 		pauseButton.setBounds(0, 1, 200, 100);
 		pauseButton.setFont(new Font("Monospaced", Font.BOLD, 40));
@@ -44,17 +45,18 @@ public class Gamemenu extends JFrame {
 		pauseButton.addActionListener(parent);
 		pauseButton.setActionCommand("pause");
 		pauseButton.setVisible(true);
-		
 
 		nextDay = new JButton("Next Day"); // next day button (Not implemented yet)
 		nextDay.setBounds(800, 1, 200, 100);
-		nextDay.setFont(new Font("Monospaced", Font.BOLD, 30));
+		nextDay.setFont(new Font("Monospaced", Font.BOLD, 10));
 		nextDay.addActionListener(parent);
 		nextDay.setActionCommand("nextDay");
 		nextDay.setBackground(Color.WHITE);
 		nextDay.setVisible(true);
 		
-		
+		panel1.add(pauseButton);
+		panel1.add(nextDay);
+
 		for (int row = 0; row < 5; row++) {
 			for (int col = 0; col < 5; col++) {
 				JButton[][] grid = new JButton[5][5];
@@ -70,32 +72,31 @@ public class Gamemenu extends JFrame {
 
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-					
+
 					}
 				});
 			}
 		}
 
 	}
-	
+
 	public void createPanels() {
 		panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(5, 5));
 		panel1 = new JPanel(); // Section 1
 		panel1.setLayout(null);
-	
 
 	}
-	
+
 	public void createSlider() {
 		taxSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 1);
 		taxSlider.setBounds(200, 50, 200, 100);
-		
+		panel1.add(taxSlider);
 	}
 
-	
 	public void createText() {
-		//temp values
+		// temp values
+		int day = Frame.dayCount;
 		int gold = 100;
 		int happiness = 50;
 		String tax = "Medium";
@@ -106,26 +107,36 @@ public class Gamemenu extends JFrame {
 		int taxIncome = 0;
 		int income = 5;
 		// --------------------------------------------
-		String text = "Gold: " + gold + " \nPeople: " + people + "\nHappiness: " + happiness + "%" + "\nTax: " + tax + "\nFood: " + food
-				+ "\nBuildings: " + buildings + "\nDefense: " + defense + "\nTax Amount: " + taxIncome + "\nIncome: "
-				+ income;
+
+		String text = "Gold: " + gold + " \nPeople: " + people + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
+				+ "\nFood: " + food + "\nBuildings: " + buildings + "\nDefense: " + defense + "\nTax Amount: "
+				+ taxIncome + "\nIncome: " + income;
 
 		// text area
 		status = new JTextArea(text);
 		status.setLineWrap(true);
 		status.setWrapStyleWord(true);
-		status.setBounds(0, 200, 1000, 700);
+		// status.setBounds(0, 200, 1000, 700);
 		status.setFont(new Font("Monospaced", Font.PLAIN, 40));
 		status.setLineWrap(true);
 		status.setEditable(false);
 		status.setWrapStyleWord(true);
-		
-		panel1.add(status);
-		
-		JTextArea header = new JTextArea("City Clicker");
-		header.setBounds(100, 200, 300, 200);
+		status.setVisible(false);
+
+		// panel1.add(status);
+
+		JTextArea header = new JTextArea("City Clicker | Day: " + day);
+		header.setBounds(100, 0, 500, 50);
 		header.setFont(new Font("Monospaced", Font.PLAIN, 40));
+		header.setVisible(true);
 		header.setEditable(true);
-		panel1.add(header);
+		// panel1.add(header);
+		
+		nextDayHeader = new JTextArea("Next Day" + "\n Current: " + day);
+		nextDayHeader.setBounds(100, 50, 500, 50);
+		nextDayHeader.setFont(new Font("Monospaced", Font.PLAIN, 20));
+		nextDayHeader.setVisible(true);
+		nextDayHeader.setEditable(true);
+		
 	}
 }
