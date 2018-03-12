@@ -17,5 +17,5 @@ public abstract class Building {
 	 * This method is for updating the building type
 	 * @return Whether or not the building could be successfully upgraded
 	 */
-	public abstract boolean upgrade(double money);
+	public abstract double upgrade(double money);
 }

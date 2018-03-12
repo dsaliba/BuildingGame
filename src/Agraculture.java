@@ -11,20 +11,19 @@ public class Agraculture extends Building {
 	
 	@Override
 	public String newDay() {
-		// TODO Auto-generated method stub
 		return ("f" + (level * 5));
 	}
 
 
 	@Override
-	public boolean upgrade(double money) {
-		if (level < 2) {
-			if (money > 300) {
+	public double upgrade(double money) {
+		if (level < 3) {
+			if (money >= 300) {
 				level++;
-				return true;
+				return 300.0;
 			}
 		}
-		return false;
+		return -1.0;
 	}
 
 	
