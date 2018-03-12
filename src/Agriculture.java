@@ -20,7 +20,8 @@ public class Agriculture extends Building {
 		}
 		return out;
 	}
-
+	
+	
 
 	@Override
 	public double upgrade(double money) {
