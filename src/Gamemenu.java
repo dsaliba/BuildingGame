@@ -135,4 +135,8 @@ public class Gamemenu extends JFrame {
 
 		
 	}
+	
+	public void updateDayButton(String text) {
+		nextDay.setText(text);
+	}
 }

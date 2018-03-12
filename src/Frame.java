@@ -30,10 +30,15 @@ public class Frame implements ActionListener {
 	JPanel p2; // Section 2
 	JPanel p;
 	
+	Gamemenu gamemenu;
+	
+	public Frame() {
+		gamemenu = new Gamemenu(this);
+	}
 
 	public void createFrame() {
 		// --------------Frame Setup-----------------
-		game = new Gamemenu(this); // JFrame
+		game = gamemenu; // JFrame
 		start = new Startmenu(this); // start screen
 		pause = new Pausemenu(this); // pause screen
 
@@ -70,8 +75,8 @@ public class Frame implements ActionListener {
 		case "nextDay":
 			System.out.println("day is " + dayCount);
 			//callsmethods
-			game.pack();
 			dayCount++; //temp int for testing gui
+			gamemenu.updateDayButton("Next Day (" + dayCount + ")");
 			
  			break;
 		
