@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 
 public class Gamemenu extends JFrame {
 
+	int day = Frame.dayCount;
 	private Frame parent;
 	private JButton nextDay;
 	private JButton pauseButton;
@@ -32,8 +33,7 @@ public class Gamemenu extends JFrame {
 		createSlider();
 		add(panel1);
 		add(panel2);
-		nextDay.add(nextDayHeader);
-
+		
 	}
 
 	public void createButtons() {
@@ -46,9 +46,10 @@ public class Gamemenu extends JFrame {
 		pauseButton.setActionCommand("pause");
 		pauseButton.setVisible(true);
 
-		nextDay = new JButton("Next Day"); // next day button (Not implemented yet)
+		String nextDayText = "Next Day (" + day + ")";
+		nextDay = new JButton(nextDayText); // next day button (Not implemented yet)
 		nextDay.setBounds(800, 1, 200, 100);
-		nextDay.setFont(new Font("Monospaced", Font.BOLD, 10));
+		nextDay.setFont(new Font("Monospaced", Font.BOLD, 20));
 		nextDay.addActionListener(parent);
 		nextDay.setActionCommand("nextDay");
 		nextDay.setBackground(Color.WHITE);
@@ -96,7 +97,7 @@ public class Gamemenu extends JFrame {
 
 	public void createText() {
 		// temp values
-		int day = Frame.dayCount;
+		
 		int gold = 100;
 		int happiness = 50;
 		String tax = "Medium";
@@ -131,12 +132,7 @@ public class Gamemenu extends JFrame {
 		header.setVisible(true);
 		header.setEditable(true);
 		// panel1.add(header);
-		
-		nextDayHeader = new JTextArea("Next Day" + "\n Current: " + day);
-		nextDayHeader.setBounds(100, 50, 500, 50);
-		nextDayHeader.setFont(new Font("Monospaced", Font.PLAIN, 20));
-		nextDayHeader.setVisible(true);
-		nextDayHeader.setEditable(true);
+
 		
 	}
 }
