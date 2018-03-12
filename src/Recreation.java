@@ -36,4 +36,9 @@ public class Recreation extends Building{
 		}
 		return -1.0;
 	}
+	
+	@Override
+	public String toString() {
+		return "r" + level;
+	}
 }

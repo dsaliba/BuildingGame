@@ -37,4 +37,9 @@ public class Defense extends Building{
 		return -1.0;
 	}
 	
+	@Override
+	public String toString() {
+		return "d" + level;
+	}
+	
 }

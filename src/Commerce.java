@@ -37,4 +37,8 @@ public class Commerce extends Building{
 		return -1.0;
 	}
 	
+	@Override
+	public String toString() {
+		return "c" + level;
+	}
 }
