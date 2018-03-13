@@ -9,6 +9,7 @@ import java.awt.GridBagLayout;
 
 public class Gamemenu extends JFrame {
 
+	int day = Frame.dayCount;
 	private Frame parent;
 	private JButton nextDay;
 	private JButton pauseButton;
@@ -28,12 +29,12 @@ public class Gamemenu extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		createPanels();
 		createButtons();
-		createText();
 		createSlider();
+		createText();
+		
 		add(panel1);
 		add(panel2);
-		nextDay.add(nextDayHeader);
-
+		
 	}
 
 	public void createButtons() {
@@ -46,9 +47,10 @@ public class Gamemenu extends JFrame {
 		pauseButton.setActionCommand("pause");
 		pauseButton.setVisible(true);
 
-		nextDay = new JButton("Next Day"); // next day button (Not implemented yet)
+		String nextDayText = "Next Day (" + day + ")";
+		nextDay = new JButton(nextDayText); // next day button (Not implemented yet)
 		nextDay.setBounds(800, 1, 200, 100);
-		nextDay.setFont(new Font("Monospaced", Font.BOLD, 10));
+		nextDay.setFont(new Font("Monospaced", Font.BOLD, 20));
 		nextDay.addActionListener(parent);
 		nextDay.setActionCommand("nextDay");
 		nextDay.setBackground(Color.WHITE);
@@ -90,13 +92,13 @@ public class Gamemenu extends JFrame {
 
 	public void createSlider() {
 		taxSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 1);
-		taxSlider.setBounds(200, 50, 200, 100);
+		taxSlider.setBounds(535, 1, 150, 100);
 		panel1.add(taxSlider);
 	}
 
 	public void createText() {
 		// temp values
-		int day = Frame.dayCount;
+		
 		int gold = 100;
 		int happiness = 50;
 		String tax = "Medium";
@@ -125,18 +127,17 @@ public class Gamemenu extends JFrame {
 
 		// panel1.add(status);
 
-		JTextArea header = new JTextArea("City Clicker | Day: " + day);
-		header.setBounds(100, 0, 500, 50);
+		JTextArea header = new JTextArea("Tax Amount: ");
+		header.setBounds(250, 10, 500, 50);
 		header.setFont(new Font("Monospaced", Font.PLAIN, 40));
 		header.setVisible(true);
-		header.setEditable(true);
-		// panel1.add(header);
+		header.setEditable(false);
+		panel1.add(header);
+
 		
-		nextDayHeader = new JTextArea("Next Day" + "\n Current: " + day);
-		nextDayHeader.setBounds(100, 50, 500, 50);
-		nextDayHeader.setFont(new Font("Monospaced", Font.PLAIN, 20));
-		nextDayHeader.setVisible(true);
-		nextDayHeader.setEditable(true);
-		
+	}
+	
+	public void updateDayButton(String text) {
+		nextDay.setText(text);
 	}
 }
