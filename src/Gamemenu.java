@@ -75,7 +75,6 @@ public class Gamemenu extends JFrame {
 					// methodbuild(row, col);
 					
 					public void actionPerformed(ActionEvent e) {
-						System.out.println("test");
 						
 						// TODO Auto-generated method stub
 						String id = e.getActionCommand();
