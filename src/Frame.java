@@ -7,10 +7,6 @@ import java.net.URL;
 import javax.imageio.ImageIO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.net.URL;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import com.sun.xml.internal.ws.api.pipe.NextAction;
