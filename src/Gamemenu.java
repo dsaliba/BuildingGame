@@ -3,6 +3,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
+
+import BuildingTypes.Agriculture;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -81,7 +84,6 @@ public class Gamemenu extends JFrame {
 						int pipe = id.indexOf("|");
 						int r = Integer.parseInt(id.substring(0, pipe));
 						int c = Integer.parseInt(id.substring(pipe+1, id.length()));
-						Stats.buildings[r][c] = new Agriculture();
 					}
 				});
 			}

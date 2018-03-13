@@ -1,7 +1,8 @@
+package BuildingTypes;
 
-public class Agriculture extends Building {
-	
-	public Agriculture() {
+public class Defense extends Building{
+
+	public Defense() {
 		super();
 		level = 1;
 	}
@@ -9,38 +10,37 @@ public class Agriculture extends Building {
 	
 	@Override
 	public String newDay() {
-		String out = "f";
+		String out = "d";
 		switch(level) {
 		case 1:
-			out += 5;
+			out += 1;
 			break;
 		case 2:
-			out += 10;
+			out += 5;
 			break;
 		}
 		return out;
 	}
-	
-	
+
 
 	@Override
 	public double upgrade(double money) {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 300.0) {
+				if (money >= 500.0) {
 					level++;
-					return 300.0;
+					return 500.0;
 				}
 				break;
 			}
 		}
 		return -1.0;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "f" + level;
+		return "d" + level;
 	}
 	
 }

@@ -1,3 +1,4 @@
+package BuildingTypes;
 
 public abstract class Building {
 	

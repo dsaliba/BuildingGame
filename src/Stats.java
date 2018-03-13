@@ -1,5 +1,8 @@
 import java.util.ArrayList;
 
+import BuildingTypes.Building;
+import BuildingTypes.EmpteyPlot;
+
 
 
 public class Stats {
@@ -18,7 +21,7 @@ public class Stats {
 		buildings = new Building[gameConstants.ROW][gameConstants.COL];
 		for (int r = 0; r < buildings.length; r++) {
 			for (int c = 0; c < buildings[r].length; c++) {
-				buildings[r][c] = new EmpteyPlot();
+				buildings[r][c] = new BuildingTypes.EmpteyPlot();
 			}
 		}
 		coins = 200;

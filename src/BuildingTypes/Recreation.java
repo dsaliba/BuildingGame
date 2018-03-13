@@ -1,3 +1,4 @@
+package BuildingTypes;
 
 public class Recreation extends Building{
 

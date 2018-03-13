@@ -1,7 +1,8 @@
+package BuildingTypes;
 
-public class Defense extends Building{
+public class Commerce extends Building{
 
-	public Defense() {
+	public Commerce() {
 		super();
 		level = 1;
 	}
@@ -9,7 +10,7 @@ public class Defense extends Building{
 	
 	@Override
 	public String newDay() {
-		String out = "d";
+		String out = "c";
 		switch(level) {
 		case 1:
 			out += 1;
@@ -27,9 +28,9 @@ public class Defense extends Building{
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 500.0) {
+				if (money >= 250.0) {
 					level++;
-					return 500.0;
+					return 250.0;
 				}
 				break;
 			}
@@ -39,7 +40,6 @@ public class Defense extends Building{
 	
 	@Override
 	public String toString() {
-		return "d" + level;
+		return "c" + level;
 	}
-	
 }

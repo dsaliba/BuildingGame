@@ -1,7 +1,8 @@
+package BuildingTypes;
 
-public class Commerce extends Building{
+public class Shelter extends Building{
 
-	public Commerce() {
+	public Shelter() {
 		super();
 		level = 1;
 	}
@@ -9,13 +10,16 @@ public class Commerce extends Building{
 	
 	@Override
 	public String newDay() {
-		String out = "c";
+		String out = "p";
 		switch(level) {
 		case 1:
-			out += 1;
+			out += 2;
 			break;
 		case 2:
 			out += 5;
+			break;
+		case 3:
+			out += 10;
 			break;
 		}
 		return out;
@@ -24,12 +28,18 @@ public class Commerce extends Building{
 
 	@Override
 	public double upgrade(double money) {
-		if (level < 3) {
+		if (level < 4) {
 			switch (level){
 			case 1:
-				if (money >= 250.0) {
+				if (money >= 100.0) {
 					level++;
-					return 250.0;
+					return 100.0;
+				}
+				break;
+			case 2: 
+				if (money >= 500.0) {
+					level++;
+					return 500.0;
 				}
 				break;
 			}
@@ -39,6 +49,7 @@ public class Commerce extends Building{
 	
 	@Override
 	public String toString() {
-		return "c" + level;
+		return "p" + level;
 	}
+	
 }
