@@ -29,7 +29,7 @@ public class Stats {
 		food = 0;
 		happiness = 0;
 		defense = 0;
-		coinsIncome = 0;
+		coinsIncome = 5;
 		foodIncome = 0;
 		population = 0;
 		maxPopuulation = 0;
