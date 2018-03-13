@@ -3,14 +3,14 @@ import java.util.ArrayList;
 
 
 public class Stats {
-	private double coins;
-	private int food;
-	private int happiness;
-	private int defense;
-	private double coinsIncome;
-	private int foodIncome;
-	private int population;
-	private int maxPopuulation;
+	public static double coins;
+	public static int food;
+	public static int happiness;
+	public static int defense;
+	public static double coinsIncome;
+	public static int foodIncome;
+	public static int population;
+	public static int maxPopuulation;
 	
 	private Building[][] buildings;
 	
@@ -67,36 +67,5 @@ public class Stats {
 		coins += coinsIncome;
 		food += foodIncome;
 	}
-	
-	public double getCoins() {
-		return coins;
-	}
-	
-	public double getCoinsIncome() {
-		return coinsIncome;
-	}
-	
-	public int ggetFood() {
-		return food;
-	}
-	
-	public int getFoodincome() {
-		return foodIncome;
-	}
-	
-	public int getDefense() {
-		return defense;
-	}
-	
-	public int getHappiness() {
-		return happiness;
-	}
-	
-	public int getPopulation() {
-		return population;
-	}
-	
-	public int getMaxPopulation() {
-		return maxPopuulation;
-	}
+
 }
