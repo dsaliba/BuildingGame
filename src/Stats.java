@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 
+
 public class Stats {
 	private double coins;
 	private int food;
@@ -11,10 +12,15 @@ public class Stats {
 	private int population;
 	private int maxPopuulation;
 	
-	Building[][] buildings;
+	private Building[][] buildings;
 	
 	public Stats() {
 		buildings = new Building[gameConstants.ROW][gameConstants.COL];
+		for (int r = 0; r < buildings.length; r++) {
+			for (int c = 0; c < buildings[r].length; c++) {
+				buildings[r][c] = new EmpteyPlot();
+			}
+		}
 		coins = 200;
 		food = 0;
 		happiness = 0;
