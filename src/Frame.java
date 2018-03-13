@@ -72,8 +72,9 @@ public class Frame implements ActionListener {
 
 			stats.updateRescources();
  			break;
-		
-
+		case "Upgrade":
+			
+			break;
 		
 		}
 
