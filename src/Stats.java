@@ -12,7 +12,7 @@ public class Stats {
 	public static int population;
 	public static int maxPopuulation;
 	
-	private Building[][] buildings;
+	public static Building[][] buildings;
 	
 	public Stats() {
 		buildings = new Building[gameConstants.ROW][gameConstants.COL];
