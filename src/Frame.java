@@ -18,27 +18,27 @@ import java.awt.Font;
 
 public class Frame implements ActionListener {
 
-	BufferedImage background = null;
-	BufferedImage red = null;
+	private BufferedImage background = null;
+	private BufferedImage red = null;
 	private Stats stats;
-	 static int dayCount = 0; //temp int
+	public static int dayCount; //temp int
 
-	Gamemenu game;
-	JFrame start; // start screen
-	JFrame pause;
-	JPanel p2; // Section 2
-	JPanel p;
+	private Gamemenu game;
+	private JFrame start; // start screen
+	private JFrame pause;
+	private JPanel p2; // Section 2
+	private JPanel p;
 	
-	Gamemenu gamemenu;
 	
 	public Frame() {
-		gamemenu = new Gamemenu(this, stats);
+		game = new Gamemenu(this, stats);
 	}
 
 
 
 	public Frame(Stats stats) {
 		this.stats = stats;
+		dayCount = 0;
 	}
 	
 	public void createFrame() {
@@ -79,14 +79,11 @@ public class Frame implements ActionListener {
 		case "nextDay":
 			//GUI: 
 			dayCount++; //increases day (temp)
-			gamemenu.updateDayButton("Next Day (" + dayCount + ")"); //Sets text of button to match day
+			game.updateDayButton("Next Day (" + dayCount + ")"); //Sets text of button to match day
 			
 			//Other method calling:
 			
 
-			//callsmethods
-			dayCount++; //temp int for testing gui
-			game.updateDayButton("Next Day (" + dayCount + ")");
 			stats.updateRescources();
  			break;
 		
