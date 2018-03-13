@@ -20,7 +20,7 @@ public class Gamemenu extends JFrame {
 	private JTextArea nextDayHeader;
 	
 
-	public Gamemenu(Frame parent) {
+	public Gamemenu(Frame parent, Stats stats) {
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
 		setBounds(600, 400, 2000, 1000);
@@ -59,9 +59,9 @@ public class Gamemenu extends JFrame {
 		panel1.add(pauseButton);
 		panel1.add(nextDay);
 
-		for (int row = 0; row < 5; row++) {
-			for (int col = 0; col < 5; col++) {
-				JButton[][] grid = new JButton[5][5];
+		for (int row = 0; row < gameConstants.ROW; row++) {
+			for (int col = 0; col < gameConstants.COL; col++) {
+				JButton[][] grid = new JButton[gameConstants.ROW][gameConstants.COL];
 				JLabel l = new JLabel(row + " | " + col);
 				grid[row][col] = new JButton();
 				grid[row][col].add(l);
@@ -84,7 +84,7 @@ public class Gamemenu extends JFrame {
 
 	public void createPanels() {
 		panel2 = new JPanel();
-		panel2.setLayout(new GridLayout(5, 5));
+		panel2.setLayout(new GridLayout(gameConstants.ROW, gameConstants.COL));
 		panel1 = new JPanel(); // Section 1
 		panel1.setLayout(null);
 
@@ -108,6 +108,7 @@ public class Gamemenu extends JFrame {
 		int defense = 0;
 		int taxIncome = 0;
 		int income = 5;
+
 		// --------------------------------------------
 
 		String text = "Gold: " + gold + " \nPeople: " + people + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
