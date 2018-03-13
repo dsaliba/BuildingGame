@@ -29,17 +29,14 @@ public class Frame implements ActionListener {
 	JPanel p2; // Section 2
 	JPanel p;
 	
-<<<<<<< HEAD
 	Gamemenu gamemenu;
 	
 	public Frame() {
-		gamemenu = new Gamemenu(this);
+		gamemenu = new Gamemenu(this, stats);
 	}
 
-	public void createFrame() {
-		// --------------Frame Setup-----------------
-		game = gamemenu; // JFrame
-=======
+
+
 	public Frame(Stats stats) {
 		this.stats = stats;
 	}
@@ -47,7 +44,6 @@ public class Frame implements ActionListener {
 	public void createFrame() {
 		// --------------Frame Setup-----------------
 		game = new Gamemenu(this, stats); // JFrame
->>>>>>> 2a6e30358c43690867fe90746f31f41ae8ad3d24
 		start = new Startmenu(this); // start screen
 		pause = new Pausemenu(this); // pause screen
 	}
@@ -85,15 +81,13 @@ public class Frame implements ActionListener {
 			dayCount++; //increases day (temp)
 			gamemenu.updateDayButton("Next Day (" + dayCount + ")"); //Sets text of button to match day
 			
-<<<<<<< HEAD
 			//Other method calling:
 			
-=======
+
 			//callsmethods
 			dayCount++; //temp int for testing gui
 			game.updateDayButton("Next Day (" + dayCount + ")");
 			stats.updateRescources();
->>>>>>> 2a6e30358c43690867fe90746f31f41ae8ad3d24
  			break;
 		
 
