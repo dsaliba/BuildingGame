@@ -20,7 +20,7 @@ public class Gamemenu extends JFrame {
 	private JTextArea nextDayHeader;
 	
 
-	public Gamemenu(Frame parent) {
+	public Gamemenu(Frame parent, Stats stats) {
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
 		setBounds(600, 400, 2000, 1000);

@@ -3,7 +3,8 @@
 public class Tester {
 
 	public static void main(String[] args) {
-		Frame f = new Frame();
+		Stats stats = new Stats();
+		Frame f = new Frame(stats);
 		f.createFrame();
 	}
 }

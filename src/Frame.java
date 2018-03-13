@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import com.sun.xml.internal.ws.api.pipe.NextAction;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -21,29 +24,24 @@ public class Frame implements ActionListener {
 
 	BufferedImage background = null;
 	BufferedImage red = null;
-
+	private Stats stats;
 	 static int dayCount = 0; //temp int
 
-	Stats stats;
-	JFrame game;
+	Gamemenu game;
 	JFrame start; // start screen
 	JFrame pause;
 	JPanel p2; // Section 2
 	JPanel p;
 	
-	Gamemenu gamemenu;
-	
-	public Frame() {
-		gamemenu = new Gamemenu(this);
-		stats = new Stats();
+	public Frame(Stats stats) {
+		this.stats = stats;
 	}
-
+	
 	public void createFrame() {
 		// --------------Frame Setup-----------------
-		game = gamemenu; // JFrame
+		game = new Gamemenu(this, stats); // JFrame
 		start = new Startmenu(this); // start screen
 		pause = new Pausemenu(this); // pause screen
-
 	}
 
 	@Override
@@ -75,17 +73,16 @@ public class Frame implements ActionListener {
 			break;
 			
 		case "nextDay":
-			//GUI: 
-			dayCount++; //increases day (temp)
-			gamemenu.updateDayButton("Next Day (" + dayCount + ")"); //Sets text of button to match day
+			System.out.println("day is " + dayCount);
 			
+			//callsmethods
+			dayCount++; //temp int for testing gui
+			game.updateDayButton("Next Day (" + dayCount + ")");
 			stats.updateRescources();
-			//Other method calling:
-			
  			break;
 		
 
-		
+		//parent.actionPerformed(new ActionEvent(xxxxxx));
 		}
 
 	}
