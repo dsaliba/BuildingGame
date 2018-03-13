@@ -62,19 +62,23 @@ public class Gamemenu extends JFrame {
 		for (int row = 0; row < gameConstants.ROW; row++) {
 			for (int col = 0; col < gameConstants.COL; col++) {
 				JButton[][] grid = new JButton[gameConstants.ROW][gameConstants.COL];
-				JLabel l = new JLabel(row + " | " + col);
+				JLabel l = new JLabel(row + "|" + col);
 				grid[row][col] = new JButton();
 				grid[row][col].add(l);
 				grid[row][col].setBackground(Color.WHITE);
 				panel2.add(grid[row][col]);
 
-				grid[row][col].setActionCommand(row + " | " + col);
+				grid[row][col].setActionCommand(row + "|" + col);
 				grid[row][col].addActionListener(new ActionListener() {
 					// methodbuild(row, col);
 
 					public void actionPerformed(ActionEvent e) {
 						// TODO Auto-generated method stub
-
+						String id = e.getActionCommand();
+						int pipe = id.indexOf("|");
+						int r = Integer.parseInt(id.substring(0, pipe));
+						int c = Integer.parseInt(id.substring(pipe+1, id.length()));
+						Stats.buildings[r][c] = new Agriculture();
 					}
 				});
 			}
