@@ -58,6 +58,8 @@ public class Gamemenu extends JFrame {
 		
 		panel1.add(pauseButton);
 		panel1.add(nextDay);
+		
+		
 
 		for (int row = 0; row < gameConstants.ROW; row++) {
 			for (int col = 0; col < gameConstants.COL; col++) {
@@ -71,10 +73,10 @@ public class Gamemenu extends JFrame {
 				grid[row][col].setActionCommand(row + " | " + col);
 				grid[row][col].addActionListener(new ActionListener() {
 					// methodbuild(row, col);
-
+					
 					public void actionPerformed(ActionEvent e) {
-						// TODO Auto-generated method stub
-
+						System.out.println("test");
+						
 					}
 				});
 			}
