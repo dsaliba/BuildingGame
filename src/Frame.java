@@ -24,6 +24,7 @@ public class Frame implements ActionListener {
 
 	 static int dayCount = 0; //temp int
 
+	Stats stats;
 	JFrame game;
 	JFrame start; // start screen
 	JFrame pause;
@@ -34,6 +35,7 @@ public class Frame implements ActionListener {
 	
 	public Frame() {
 		gamemenu = new Gamemenu(this);
+		stats = new Stats();
 	}
 
 	public void createFrame() {
@@ -77,6 +79,7 @@ public class Frame implements ActionListener {
 			dayCount++; //increases day (temp)
 			gamemenu.updateDayButton("Next Day (" + dayCount + ")"); //Sets text of button to match day
 			
+			stats.updateRescources();
 			//Other method calling:
 			
  			break;
