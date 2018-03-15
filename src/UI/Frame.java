@@ -16,6 +16,8 @@ public class Frame implements ActionListener {
 	private Gamemenu game;
 	private JFrame start; // start screen
 	private JFrame pause;
+	private JFrame upgrade;
+	
 
 	
 	
@@ -35,6 +37,7 @@ public class Frame implements ActionListener {
 		game = new Gamemenu(this, stats); // JFrame
 		start = new Startmenu(this); // start screen
 		pause = new Pausemenu(this); // pause screen
+		upgrade = new Upgrademenu(this);
 	}
 
 	@Override
@@ -75,10 +78,16 @@ public class Frame implements ActionListener {
 
 			stats.updateRescources();
  			break;
-		case "Upgrade":
+		case "upgrade":
 			
 			break;
 		
+		case "remove":
+			
+			break;
+		case "close":
+			upgrade.dispose();
+			break;
 		}
 
 	}
