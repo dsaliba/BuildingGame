@@ -23,7 +23,7 @@ public class Gamemenu extends JFrame {
 	private JPanel panel2;
 	private JTextArea status;
 	private JSlider taxSlider;
-	private JTextArea nextDayHeader;
+	
 	
 
 	public Gamemenu(Frame parent, Stats stats) {
@@ -76,17 +76,22 @@ public class Gamemenu extends JFrame {
 				grid[row][col].setBackground(Color.WHITE);
 				panel2.add(grid[row][col]);
 
-				grid[row][col].setActionCommand(row + "|" + col);
+				grid[row][col].addActionListener(parent);
+				grid[row][col].setActionCommand("buttonPressed");
+				
+		//		grid[row][col].setActionCommand(row + "|" + col);
 				grid[row][col].addActionListener(new ActionListener() {
+				
 					// methodbuild(row, col);
 					
 					public void actionPerformed(ActionEvent e) {
 						
 						// TODO Auto-generated method stub
-						String id = e.getActionCommand();
-						int pipe = id.indexOf("|");
-						int r = Integer.parseInt(id.substring(0, pipe));
-						int c = Integer.parseInt(id.substring(pipe+1, id.length()));
+					//	String id = e.getActionCommand();
+					//	int pipe = id.indexOf("|");
+					//	int r = Integer.parseInt(id.substring(0, pipe));
+					//	int c = Integer.parseInt(id.substring(pipe+1, id.length()));
+						
 					}
 				});
 			}
@@ -131,14 +136,13 @@ public class Gamemenu extends JFrame {
 		status = new JTextArea(text);
 		status.setLineWrap(true);
 		status.setWrapStyleWord(true);
-		// status.setBounds(0, 200, 1000, 700);
+		status.setBounds(0, 200, 1000, 700);
 		status.setFont(new Font("Monospaced", Font.PLAIN, 40));
 		status.setLineWrap(true);
 		status.setEditable(false);
 		status.setWrapStyleWord(true);
-		status.setVisible(false);
-
-		// panel1.add(status);
+		status.setVisible(true);
+		panel1.add(status);
 
 		JTextArea header = new JTextArea("Tax Amount: ");
 		header.setBounds(250, 10, 500, 50);

@@ -78,6 +78,11 @@ public class Frame implements ActionListener {
 
 			stats.updateRescources();
  			break;
+ 			
+		case "buttonPressed":
+			upgrade.setVisible(true);
+			break;
+			
 		case "upgrade":
 			
 			break;
