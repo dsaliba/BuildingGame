@@ -128,9 +128,9 @@ public class Gamemenu extends JFrame {
 
 		// --------------------------------------------
 
-		String text = "Gold: " + Stats.coins + " \nPeople: " + Stats.population + "\nHappiness: " + Stats.happiness + "%" + "\nTax: " + "TAXHERE"
-				+ "\nFood: " + Stats.food + "\nBuildings: " + "BUILDINGS HERE" + "\nDefense: " + Stats.defense + "\nTax Amount: "
-				+ taxIncome + "\nIncome: " + Stats.coinsIncome + "\nFood Yield: " + Stats.foodIncome;
+		String text = "Gold: " + Stats.coins + " \nPeople: " + Stats.population + "\nHappiness: " + Stats.happiness + "%" + "\nTax: " + Stats.tax
+				+ "\nFood: " + Stats.food + "\nBuildings: " + Stats.numBuildings + "\nDefense: " + Stats.defense + "\nTax Amount: "
+				+ Stats.coinTax + "\nIncome: " + Stats.coinsIncome + "\nFood Yield: " + Stats.foodIncome;
 
 		// text area
 		status = new JTextArea(text);

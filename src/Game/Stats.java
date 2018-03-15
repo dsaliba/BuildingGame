@@ -15,6 +15,9 @@ public class Stats {
 	public static int foodIncome;
 	public static int population;
 	public static int maxPopuulation;
+	public static String tax;
+	public static double coinTax;
+	public static int numBuildings;
 	
 	public static Building[][] buildings;
 	
@@ -33,6 +36,9 @@ public class Stats {
 		foodIncome = 0;
 		population = 0;
 		maxPopuulation = 0;
+		tax = "Medium";
+		coinTax = 0.0;
+		numBuildings = 0;
 	}
 	
 	public void runDay() {
