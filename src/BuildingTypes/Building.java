@@ -1,5 +1,12 @@
 package BuildingTypes;
 
+/**
+ * 
+ * @author Dimitri Saliba
+ * @author Mike Chang
+ * @author Luke Souter
+ *
+ */
 public abstract class Building {
 	
 	/**

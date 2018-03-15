@@ -1,5 +1,12 @@
 package BuildingTypes;
 
+/**
+ * 
+ * @author Dimitri Saliba
+ * @author Mike Chang
+ * @author Luke Souter
+ *
+ */
 public class Commerce extends Building{
 
 	public Commerce() {
