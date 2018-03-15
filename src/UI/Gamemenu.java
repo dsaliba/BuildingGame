@@ -114,18 +114,6 @@ public class Gamemenu extends JFrame {
 	}
 
 	public void createText() {
-		// temp values
-		
-		int gold = 100;
-		int happiness = 50;
-		String tax = "Medium";
-		int people = 0;
-		int food = 5;
-		int buildings = 0;
-		int defense = 0;
-		int taxIncome = 0;
-		int income = 5;
-
 		// --------------------------------------------
 
 		String text = "Gold: " + Stats.coins + " \nPeople: " + Stats.population + "\nHappiness: " + Stats.happiness + "%" + "\nTax: " + Stats.tax
