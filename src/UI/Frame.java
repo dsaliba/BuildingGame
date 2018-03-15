@@ -83,8 +83,11 @@ public class Frame implements ActionListener {
 			upgrade.setVisible(true);
 			break;
 			
-		case "buildUpgrade":
+		case "upgrade":
 			
+			break;
+			
+		case "build":
 			break;
 		
 		case "remove":

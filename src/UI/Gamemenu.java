@@ -79,6 +79,8 @@ public class Gamemenu extends JFrame {
 				grid[row][col].addActionListener(parent);
 				grid[row][col].setActionCommand("buttonPressed");
 				
+				
+				
 		//		grid[row][col].setActionCommand(row + "|" + col);
 				grid[row][col].addActionListener(new ActionListener() {
 				

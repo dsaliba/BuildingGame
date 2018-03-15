@@ -52,9 +52,11 @@ public class Upgrademenu extends JFrame{
 		upgrade.setBackground(Color.WHITE);
 		upgrade.setFont(new Font("Monospaced", Font.BOLD, 40));
 		upgrade.addActionListener(parent);
-		upgrade.setActionCommand("buildUpgrade");
+		upgrade.setActionCommand("upgrade");
 		upgrade.setVisible(true);
 		add(upgrade);
+		
+		
 		
 		
 		}
