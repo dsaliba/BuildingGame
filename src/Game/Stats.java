@@ -60,6 +60,7 @@ public class Stats {
 			if (coins >= 20) {
 				buildings[x][y] = new Agriculture();
 				coins -= 20;
+				updateRescources();
 				return 20;
 			}
 			break;
@@ -67,6 +68,7 @@ public class Stats {
 			if (coins >= 50) {
 				buildings[x][y] = new Commerce();
 				coins -= 50;
+				updateRescources();
 				return 50;
 			}
 			break;
@@ -74,6 +76,7 @@ public class Stats {
 			if (coins >= 100) {
 				buildings[x][y] = new Defense();
 				coins -= 100;
+				updateRescources();
 				return 100;
 			}
 			break;
@@ -81,6 +84,7 @@ public class Stats {
 			if (coins >= 25) {
 				buildings[x][y] = new Shelter();
 				coins -= 25;
+				updateRescources();
 				return 25;
 			}
 			break;
@@ -88,6 +92,7 @@ public class Stats {
 			if (coins >= 10) {
 				buildings[x][y] = new Recreation();
 				coins -= 10;
+				updateRescources();
 				return 10;
 			}
 			break;
