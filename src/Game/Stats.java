@@ -70,6 +70,7 @@ public class Stats {
 		}
 		coins += coinsIncome;
 		food += foodIncome;
+		System.out.println(coins);
 	}
 
 }

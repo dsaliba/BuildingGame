@@ -1,5 +1,12 @@
 package BuildingTypes;
 
+/**
+ * 
+ * @author Dimitri Saliba
+ * @author Mike Chang
+ * @author Luke Souter
+ *
+ */
 public class Recreation extends Building{
 
 	public Recreation() {
