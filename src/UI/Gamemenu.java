@@ -31,7 +31,11 @@ public class Gamemenu extends JFrame {
 	private JSlider taxSlider;
 	private JButton[][] grid;
 	private JLabel farmImage;
-	private BufferedImage farm = null;
+	private BufferedImage picture = null;
+
+	private String buildingImages[] = { "Images\\AdvancedFarm.png", "Images\\Cottage.png", "Images\\Farm.png",
+			"Images\\Grass.png", "Images\\Keep.png", "Images\\MerchantTent.png", "Images\\Shop.png",
+			"Images\\StoneHouse.png", "Images\\Tent.png", "Images\\Tower.png" };
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
@@ -85,7 +89,7 @@ public class Gamemenu extends JFrame {
 				panel2.add(grid[row][col]);
 				grid[row][col].addActionListener(parent);
 				grid[row][col].setActionCommand("tile" + row + "|" + col);
-
+				updatePlotButton(row, col, null, 3);
 				// grid[row][col].setActionCommand(row + "|" + col);
 				grid[row][col].addActionListener(new ActionListener() {
 
@@ -146,15 +150,14 @@ public class Gamemenu extends JFrame {
 
 	}
 
-	public void createImages(int x, int y, BufferedImage picture) { 
+	public void createImages(int x, int y, int i) {
 		try {
-			picture = ImageIO.read(new File("Images\\Farm.png"));
+			picture = ImageIO.read(new File(buildingImages[i]));
 			System.out.println("Get Image: " + picture);
 			System.out.println("Load image into frame");
 
 			farmImage = new JLabel(new ImageIcon(picture));
 			grid[x][y].setIcon(new ImageIcon(picture));
-			
 
 		} catch (Exception exp) {
 			exp.printStackTrace();
@@ -165,9 +168,9 @@ public class Gamemenu extends JFrame {
 		status.setText(stats.toString());
 	}
 
-	public void updatePlotButton(int x, int y, String name) {
+	public void updatePlotButton(int x, int y, String name, int i) {
 		grid[x][y].setText(name);
-		createImages(x, y, farm);
+		createImages(x, y, i);
 	}
 
 	public void updateDayButton(String text) {

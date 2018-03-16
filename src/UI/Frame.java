@@ -106,7 +106,7 @@ public class Frame implements ActionListener {
 			System.out.println(cost);
 			if (cost > 0) {
 				stats.coins -= cost;
-				game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+				game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 0);
 			}
 			stats.updateRescources();
 			game.updateStatus();
@@ -120,7 +120,7 @@ public class Frame implements ActionListener {
 
 		case "0": // A
 			stats.setBuilding('a', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 0);
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -129,7 +129,7 @@ public class Frame implements ActionListener {
 		case "1": // C
 			
 			stats.setBuilding('c', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 0);
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -138,7 +138,7 @@ public class Frame implements ActionListener {
 		case "2": // D
 			
 			stats.setBuilding('d', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 0);
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -147,7 +147,7 @@ public class Frame implements ActionListener {
 		case "3": // R
 		
 			stats.setBuilding('r', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 2);
 			stats.updateRescources();
 
 			game.updateStatus();
@@ -155,7 +155,7 @@ public class Frame implements ActionListener {
 			break;
 		case "4": // S
 			stats.setBuilding('s', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 1);
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -166,9 +166,9 @@ public class Frame implements ActionListener {
 			System.out.println("rem");
 			stats.setBuilding('e', lastX, lastY);
 			
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 3);
 			stats.updateRescources();
-
+			
 			game.updateStatus();
 			build.setVisible(false);
 			upgrade.setVisible(false);
