@@ -63,7 +63,7 @@ public class Gamemenu extends JFrame {
 	public void createButtons() {
 
 		pauseButton = new JButton("Pause");// pause button
-		pauseButton.setBounds(0, 1, 200, 100);
+		pauseButton.setBounds(0, 1, 250, 100);
 		pauseButton.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseButton.setBackground(Color.WHITE);
 		pauseButton.addActionListener(parent);
@@ -72,7 +72,7 @@ public class Gamemenu extends JFrame {
 
 		String nextDayText = "Next Day (" + day + ")";
 		nextDay = new JButton(nextDayText); // next day button (Not implemented yet)
-		nextDay.setBounds(800, 1, 200, 100);
+		nextDay.setBounds(750, 1, 250, 100);
 		nextDay.setFont(new Font("Monospaced", Font.BOLD, 20));
 		nextDay.addActionListener(parent);
 		nextDay.setActionCommand("nextDay");

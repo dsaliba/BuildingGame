@@ -145,7 +145,7 @@ public class Frame implements ActionListener {
 
 		case "0": // A
 			stats.setBuilding('a', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 0);
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 2);
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -154,7 +154,7 @@ public class Frame implements ActionListener {
 		case "1": // C
 			
 			stats.setBuilding('c', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 0);
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 5);
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -163,7 +163,7 @@ public class Frame implements ActionListener {
 		case "2": // D
 			
 			stats.setBuilding('d', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 0);
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 11);
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -180,7 +180,7 @@ public class Frame implements ActionListener {
 			break;
 		case "4": // S
 			stats.setBuilding('s', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 1);
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 8);
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
