@@ -146,7 +146,6 @@ public class Stats {
 				}
 			}
 		}
-		//Added
 		double taxNum = 0;
 		switch(tax) {
 		case "Low":
