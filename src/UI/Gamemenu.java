@@ -29,7 +29,7 @@ public class Gamemenu extends JFrame {
 	private JPanel panel2;
 	private JTextArea status;
 	private JSlider taxSlider;
-<<<<<<< HEAD
+
 	private JButton[][] grid;
 	private JLabel farmImage;
 	private BufferedImage picture = null;
@@ -37,9 +37,8 @@ public class Gamemenu extends JFrame {
 	private String buildingImages[] = { "Images\\AdvancedFarm.png", "Images\\Cottage.png", "Images\\Farm.png",
 			"Images\\Grass.png", "Images\\Keep.png", "Images\\MerchantTent.png", "Images\\Shop.png",
 			"Images\\StoneHouse.png", "Images\\Tent.png", "Images\\Tower.png" };
-=======
-	public JButton[][] grid;
->>>>>>> branch 'master' of https://github.com/dsaliba/BuildingGame.git
+
+
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
