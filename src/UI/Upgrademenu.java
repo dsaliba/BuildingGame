@@ -56,7 +56,7 @@ public class Upgrademenu extends JFrame{
 		upgrade.setVisible(true);
 		add(upgrade);
 		
-		
+													
 		
 		
 		}

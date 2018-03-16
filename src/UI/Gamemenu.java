@@ -23,6 +23,7 @@ public class Gamemenu extends JFrame {
 	private JPanel panel2;
 	private JTextArea status;
 	private JSlider taxSlider;
+	private JButton[][] grid;
 	
 	
 
@@ -66,20 +67,17 @@ public class Gamemenu extends JFrame {
 		panel1.add(nextDay);
 		
 		
-
+//this causes so many problems.........
 		for (int row = 0; row < gameConstants.ROW; row++) {
 			for (int col = 0; col < gameConstants.COL; col++) {
-				JButton[][] grid = new JButton[gameConstants.ROW][gameConstants.COL];
+				grid = new JButton[gameConstants.ROW][gameConstants.COL];
 				JLabel l = new JLabel(row + "|" + col);
-				grid[row][col] = new JButton();
+				grid[row][col] = new JButton(l.getText());
 				grid[row][col].add(l);
 				grid[row][col].setBackground(Color.WHITE);
 				panel2.add(grid[row][col]);
-
 				grid[row][col].addActionListener(parent);
-				grid[row][col].setActionCommand("buttonPressed");
-				
-				
+				grid[row][col].setActionCommand("build");
 				
 		//		grid[row][col].setActionCommand(row + "|" + col);
 				grid[row][col].addActionListener(new ActionListener() {
@@ -142,6 +140,9 @@ public class Gamemenu extends JFrame {
 		panel1.add(header);
 
 		
+	}
+	public void updatePlotButton(int x, int y) {
+		grid[x][y].setText("test");
 	}
 	
 	public void updateDayButton(String text) {
