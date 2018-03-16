@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
 public class Buildmenu extends JFrame {
-	private final String[] buildingLabels = { "a.png", "c.png", "d.png", "r.png", "s.png", "e.png" };
+	private final String[] buildingLabels = { "a.png", "c.png", "d.png", "r.png", "s.png"};
 	private Frame parent;
 	private JButton close;
 	private JButton upgrade;
