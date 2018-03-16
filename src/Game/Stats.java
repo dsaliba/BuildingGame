@@ -55,6 +55,8 @@ public class Stats {
 		if (population > maxPopuulation) {
 			population = maxPopuulation;
 		}
+		
+		coins += coinTax;
 		updateRescources();
 	}
 	
@@ -144,13 +146,26 @@ public class Stats {
 				}
 			}
 		}
+		double taxNum = 0;
+		switch(tax) {
+		case "Low":
+			taxNum = 2.3;
+			break;
+		case "Medium":
+			taxNum = 2.5;
+			break;
+		case "High":
+			taxNum = 2.7;
+			break;
+		}
+		coinTax = population*taxNum;
 	}
 
 	
 	public String toString() {
 		updateRescources();
 		return "Gold: " + coins + " \nPeople: " + population + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
-				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Amount: "
+				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Income: "
 				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome;
 	}
 }
