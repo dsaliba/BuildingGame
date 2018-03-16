@@ -25,7 +25,7 @@ public class Gamemenu extends JFrame {
 	private JPanel panel2;
 	private JTextArea status;
 	private JSlider taxSlider;
-	private JButton[][] grid;
+	public JButton[][] grid;
 	Stats stats;
 	
 	
