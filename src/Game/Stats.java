@@ -50,6 +50,12 @@ public class Stats {
 		updateRescources();
 		coins += coinsIncome;
 		food += foodIncome;
+		int people = (int) ((Math.random() * 5) * ((double)population + 0.5));
+		population += people;
+		if (population > maxPopuulation) {
+			population = maxPopuulation;
+		}
+		updateRescources();
 	}
 	
 	public double setBuilding(char building, int x, int y) {
@@ -57,10 +63,12 @@ public class Stats {
 			if(building == 'e') {
 				buildings[x][y] = new EmpteyPlot();
 				updateRescources();
+				numBuildings --;
 				return 0;
 			}
 			return -2.0;
 		}
+		numBuildings ++;
 		switch (building) {
 		case 'a':
 			if (coins >= 20) {
@@ -128,7 +136,7 @@ public class Stats {
 					foodIncome += Integer.parseInt(id.substring(1));
 					break;
 				case 'p':
-					population += Integer.parseInt(id.substring(1));
+					maxPopuulation += Integer.parseInt(id.substring(1));
 					break;
 				case 'h':
 					happiness += Integer.parseInt(id.substring(1));
