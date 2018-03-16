@@ -44,7 +44,7 @@ public class Buildmenu extends JFrame {
 		closeButton.setVisible(true);
 		add(closeButton);
 
-		for (int i = 0; i < buildingLabels.length - 1; i++) {
+		for (int i = 0; i < buildingLabels.length; i++) {
 			bl = new JButton("" + buildingLabels[i]);
 			bl.addActionListener(parent);
 			bl.setActionCommand("" + i);
