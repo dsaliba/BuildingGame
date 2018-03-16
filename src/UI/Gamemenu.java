@@ -3,6 +3,10 @@ package UI;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import com.sun.xml.internal.ws.spi.db.RepeatedElementBridge;
@@ -26,9 +30,9 @@ public class Gamemenu extends JFrame {
 	private JTextArea status;
 	private JSlider taxSlider;
 	private JButton[][] grid;
+	private JLabel farmImage;
+	private BufferedImage farm = null;
 	Stats stats;
-	
-	
 
 	public Gamemenu(Frame parent, Stats stats) {
 		grid = new JButton[gameConstants.ROW][gameConstants.COL];
@@ -43,10 +47,10 @@ public class Gamemenu extends JFrame {
 		createButtons();
 		createSlider();
 		createText();
-		
+
 		add(panel1);
 		add(panel2);
-		
+
 	}
 
 	public void createButtons() {
@@ -67,15 +71,13 @@ public class Gamemenu extends JFrame {
 		nextDay.setActionCommand("nextDay");
 		nextDay.setBackground(Color.WHITE);
 		nextDay.setVisible(true);
-		
+
 		panel1.add(pauseButton);
 		panel1.add(nextDay);
-		
-		
-//this causes so many problems.........
+
 		for (int row = 0; row < gameConstants.ROW; row++) {
 			for (int col = 0; col < gameConstants.COL; col++) {
-				
+
 				JLabel l = new JLabel(row + "|" + col);
 				grid[row][col] = new JButton("e0");
 				grid[row][col].add(l);
@@ -83,20 +85,20 @@ public class Gamemenu extends JFrame {
 				panel2.add(grid[row][col]);
 				grid[row][col].addActionListener(parent);
 				grid[row][col].setActionCommand("tile" + row + "|" + col);
-				
-		//		grid[row][col].setActionCommand(row + "|" + col);
+
+				// grid[row][col].setActionCommand(row + "|" + col);
 				grid[row][col].addActionListener(new ActionListener() {
-				
+
 					// methodbuild(row, col);
-					
+
 					public void actionPerformed(ActionEvent e) {
-						
+
 						// TODO Auto-generated method stub
-					//	String id = e.getActionCommand();
-					//	int pipe = id.indexOf("|");
-					//	int r = Integer.parseInt(id.substring(0, pipe));
-					//	int c = Integer.parseInt(id.substring(pipe+1, id.length()));
-						
+						// String id = e.getActionCommand();
+						// int pipe = id.indexOf("|");
+						// int r = Integer.parseInt(id.substring(0, pipe));
+						// int c = Integer.parseInt(id.substring(pipe+1, id.length()));
+
 					}
 				});
 			}
@@ -142,16 +144,32 @@ public class Gamemenu extends JFrame {
 		header.setEditable(false);
 		panel1.add(header);
 
-		
 	}
-	
+
+	public void createImages(int x, int y, BufferedImage picture) { 
+		try {
+			picture = ImageIO.read(new File("Images\\Farm.png"));
+			System.out.println("Get Image: " + picture);
+			System.out.println("Load image into frame");
+
+			farmImage = new JLabel(new ImageIcon(picture));
+			grid[x][y].setIcon(new ImageIcon(picture));
+			
+
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		}
+	}
+
 	public void updateStatus() {
 		status.setText(stats.toString());
 	}
+
 	public void updatePlotButton(int x, int y, String name) {
 		grid[x][y].setText(name);
+		createImages(x, y, farm);
 	}
-	
+
 	public void updateDayButton(String text) {
 		nextDay.setText(text);
 	}

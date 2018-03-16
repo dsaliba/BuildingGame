@@ -3,9 +3,13 @@ package UI;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 public class Buildmenu extends JFrame {
@@ -16,7 +20,9 @@ public class Buildmenu extends JFrame {
 	private JButton remove;
 	private JTextArea info;
 	private JButton closeButton;
-
+	private JButton bl;
+	private JLabel test;
+	
 	public Buildmenu(Frame parent) {
 
 		this.parent = parent;
@@ -24,6 +30,7 @@ public class Buildmenu extends JFrame {
 		setBounds(500, 400, 1000, 500);
 		// setVisible(true);
 		createButtons();
+		createImages();
 	}
 
 	public void createButtons() {
@@ -37,15 +44,26 @@ public class Buildmenu extends JFrame {
 		closeButton.setVisible(true);
 		add(closeButton);
 
-		for (int i = 0; i < buildingLabels.length; i++) {
-			JButton bl = new JButton("" + i);
+		for (int i = 0; i < buildingLabels.length - 1; i++) {
+			bl = new JButton("" + buildingLabels[i]);
 			bl.addActionListener(parent);
 			bl.setActionCommand("" + i);
-			
+			bl.setFont(new Font("Monospaced", Font.BOLD, 40));
+			bl.setBackground(Color.WHITE);
 			add(bl);
 		}
 
 
+	}
+	
+	public void createImages() {
+		 try {
+			    Image img = ImageIO.read(getClass().getResource("Images/test.gif"));
+			    bl.setIcon(new ImageIcon(img));
+			   
+			  } catch (Exception ex) {
+			    System.out.println("Build menu images are not loading.");
+			  }
 	}
 
 }
