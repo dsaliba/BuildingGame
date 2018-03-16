@@ -4,6 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import com.sun.xml.internal.ws.policy.spi.AbstractQNameValidator;
+
 import Game.Stats;
 
 public class Frame implements ActionListener {
@@ -47,6 +49,21 @@ public class Frame implements ActionListener {
 		
 		// build.setVisible(true);
 
+		if(e.getActionCommand().contains("tile")) {
+			String id = e.getActionCommand().substring(4);
+				int pipe = id.indexOf("|");
+				int r = Integer.parseInt(id.substring(0, pipe));
+				int c = Integer.parseInt(id.substring(pipe+1, id.length()));
+				lastX = r;
+				lastY = c;
+				if(stats.buildings[r][c].toString().equals("e0")) {
+					build.setVisible(true);
+				}
+				else {
+					upgrade.setVisible(true);
+				}
+		}
+		
 		switch (e.getActionCommand()) {
 		case "start":
 			start.setVisible(false);
@@ -77,35 +94,25 @@ public class Frame implements ActionListener {
 			// GUI:
 			dayCount++; // increases day (temp)
 			game.updateDayButton("Next Day (" + dayCount + ")"); // Sets text of button to match day
-
 			// Other method calling:
 
-			stats.updateRescources();
+			stats.runDay();
+			game.updateStatus();
 			break;
 
-		case "buttonPressed":
-
-			build.setVisible(true);
-			break;
 
 		case "upgrade":
-
+			double cost = stats.buildings[lastX][lastY].upgrade(stats.coins);
+			System.out.println(cost);
+			if (cost > 0) {
+				stats.coins -= cost;
+				game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			}
+			stats.updateRescources();
+			game.updateStatus();
 			break;
 
-		case "build":
-			source = (JButton) e.getSource();
-			coordinate = source.getText();
-			x = coordinate.charAt(0);
-			lastX = x - '0';
-			y = coordinate.charAt(2);
-			lastY = y - '0';
-			build.setVisible(true);
-			
-			break;
 
-		case "remove":
-
-			break;
 		case "close":
 			upgrade.dispose();
 			build.dispose();
@@ -113,44 +120,63 @@ public class Frame implements ActionListener {
 
 		case "0": // A
 			stats.setBuilding('a', lastX, lastY);
-			game.updatePlotButton(lastX, lastY);
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			stats.updateRescources();
+			game.updateStatus();
+			build.setVisible(false);
 
 			break;
 		case "1": // C
 			
 			stats.setBuilding('c', lastX, lastY);
-			game.updatePlotButton(lastX, lastY);
-			System.out.println("1");
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			stats.updateRescources();
+			game.updateStatus();
+			build.setVisible(false);
 
 			break;
 		case "2": // D
 			
 			stats.setBuilding('d', lastX, lastY);
-			game.updatePlotButton(lastX, lastY);
-			System.out.println("2");
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			stats.updateRescources();
+			game.updateStatus();
+			build.setVisible(false);
 
 			break;
 		case "3": // R
 		
 			stats.setBuilding('r', lastX, lastY);
-			game.updatePlotButton(lastX, lastY);
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			stats.updateRescources();
 
-			System.out.println("3");
+			game.updateStatus();
+			build.setVisible(false);
 			break;
 		case "4": // S
 			stats.setBuilding('s', lastX, lastY);
-			game.updatePlotButton(lastX, lastY);
-			System.out.println("4");
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			stats.updateRescources();
+			game.updateStatus();
+			build.setVisible(false);
 
 			break;
 		case "5": // E
-			stats.setBuilding('a', lastX, lastY);
-			game.updatePlotButton(lastX, lastY);
+		case "remove":
+			System.out.println("rem");
+			stats.setBuilding('e', lastX, lastY);
+			
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString());
+			stats.updateRescources();
 
-			System.out.println("5");
+			game.updateStatus();
+			build.setVisible(false);
+			upgrade.setVisible(false);
 			break;
 
 		}
+		
+		
 
 	}
 

@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+import com.sun.xml.internal.ws.spi.db.RepeatedElementBridge;
+
 import BuildingTypes.Agriculture;
 import Game.Stats;
 import Game.gameConstants;
@@ -24,16 +26,19 @@ public class Gamemenu extends JFrame {
 	private JTextArea status;
 	private JSlider taxSlider;
 	private JButton[][] grid;
+	Stats stats;
 	
 	
 
 	public Gamemenu(Frame parent, Stats stats) {
+		grid = new JButton[gameConstants.ROW][gameConstants.COL];
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
 		setBounds(600, 400, 2000, 1000);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.stats = stats;
 		createPanels();
 		createButtons();
 		createSlider();
@@ -70,14 +75,14 @@ public class Gamemenu extends JFrame {
 //this causes so many problems.........
 		for (int row = 0; row < gameConstants.ROW; row++) {
 			for (int col = 0; col < gameConstants.COL; col++) {
-				grid = new JButton[gameConstants.ROW][gameConstants.COL];
+				
 				JLabel l = new JLabel(row + "|" + col);
-				grid[row][col] = new JButton(l.getText());
+				grid[row][col] = new JButton("e0");
 				grid[row][col].add(l);
 				grid[row][col].setBackground(Color.WHITE);
 				panel2.add(grid[row][col]);
 				grid[row][col].addActionListener(parent);
-				grid[row][col].setActionCommand("build");
+				grid[row][col].setActionCommand("tile" + row + "|" + col);
 				
 		//		grid[row][col].setActionCommand(row + "|" + col);
 				grid[row][col].addActionListener(new ActionListener() {
@@ -116,9 +121,7 @@ public class Gamemenu extends JFrame {
 	public void createText() {
 		// --------------------------------------------
 
-		String text = "Gold: " + Stats.coins + " \nPeople: " + Stats.population + "\nHappiness: " + Stats.happiness + "%" + "\nTax: " + Stats.tax
-				+ "\nFood: " + Stats.food + "\nBuildings: " + Stats.numBuildings + "\nDefense: " + Stats.defense + "\nTax Amount: "
-				+ Stats.coinTax + "\nIncome: " + Stats.coinsIncome + "\nFood Yield: " + Stats.foodIncome;
+		String text = stats.toString();
 
 		// text area
 		status = new JTextArea(text);
@@ -141,8 +144,12 @@ public class Gamemenu extends JFrame {
 
 		
 	}
-	public void updatePlotButton(int x, int y) {
-		grid[x][y].setText("test");
+	
+	public void updateStatus() {
+		status.setText(stats.toString());
+	}
+	public void updatePlotButton(int x, int y, String name) {
+		grid[x][y].setText(name);
 	}
 	
 	public void updateDayButton(String text) {

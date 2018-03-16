@@ -48,11 +48,17 @@ public class Stats {
 	
 	public void runDay() {
 		updateRescources();
-		
+		coins += coinsIncome;
+		food += foodIncome;
 	}
 	
 	public double setBuilding(char building, int x, int y) {
 		if (!buildings[x][y].toString().equals("e0")) {
+			if(building == 'e') {
+				buildings[x][y] = new EmpteyPlot();
+				updateRescources();
+				return 0;
+			}
 			return -2.0;
 		}
 		switch (building) {
@@ -96,6 +102,8 @@ public class Stats {
 				return 10;
 			}
 			break;
+
+			
 		}
 		return -1.0;
 	}
@@ -128,8 +136,13 @@ public class Stats {
 				}
 			}
 		}
-		coins += coinsIncome;
-		food += foodIncome;
 	}
 
+	
+	public String toString() {
+		updateRescources();
+		return "Gold: " + coins + " \nPeople: " + population + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
+				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Amount: "
+				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome;
+	}
 }
