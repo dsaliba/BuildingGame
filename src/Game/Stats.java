@@ -23,6 +23,7 @@ public class Stats {
 	public static String tax;
 	public static double coinTax;
 	public static int numBuildings;
+	public static int taxHap;
 	
 	public static Building[][] buildings;
 	
@@ -44,19 +45,33 @@ public class Stats {
 		tax = "Medium";
 		coinTax = 0.0;
 		numBuildings = 0;
+		taxHap = 0;
+		
 	}
 	
 	public void runDay() {
 		updateRescources();
+		if (tax.equals("Low")) {
+			taxHap -= 5;
+		}else if(tax.equals("High")) {
+			taxHap += 5;
+		}
 		coins += coinsIncome;
 		food += foodIncome;
-		int people = (int) ((Math.random() * 5) * ((double)population + 0.5));
+		if(happiness > 30) {
+			int people = (int) ((Math.random() * 5) * ((double)population + 0.5));
+		
 		population += people;
 		if (population > maxPopuulation) {
 			population = maxPopuulation;
 		}
+		}else {
+			population--;
+			if (population < 0) population = 0;
+		}
 		
 		coins += coinTax;
+		
 		updateRescources();
 	}
 	
@@ -140,9 +155,10 @@ public class Stats {
 				case 'p':
 					maxPopuulation += Integer.parseInt(id.substring(1));
 					break;
-				case 'h':
+				case 'r':
 					happiness += Integer.parseInt(id.substring(1));
 					break;
+					
 				}
 			}
 		}
@@ -159,6 +175,7 @@ public class Stats {
 			break;
 		}
 		coinTax = population*taxNum;
+		happiness += taxHap;
 	}
 
 	
