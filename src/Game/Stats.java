@@ -60,7 +60,9 @@ public class Stats {
 		food += foodIncome;
 		if(happiness > 30) {
 			int people = (int) ((Math.random() * 5) * ((double)population + 0.5));
-		
+		if (population < 70) {
+			if (people > 1) people = 1;
+		}
 		population += people;
 		if (population > maxPopuulation) {
 			population = maxPopuulation;
