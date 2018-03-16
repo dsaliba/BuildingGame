@@ -163,7 +163,7 @@ public class Frame implements ActionListener {
 		case "2": // D
 			
 			stats.setBuilding('d', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 11);
+			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 9);
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
