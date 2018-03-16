@@ -2,6 +2,11 @@ package UI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import com.sun.xml.internal.ws.policy.spi.AbstractQNameValidator;
@@ -20,14 +25,34 @@ public class Frame implements ActionListener {
 	private JFrame build;
 	private int lastX = -1;
 	private int lastY = -1;
+	
+	
+	
+	BufferedImage[][] icons;
 
-	public Frame() {
+	public Frame() throws IOException {
 		game = new Gamemenu(this, stats);
+		
 	}
 
-	public Frame(Stats stats) {
+	public Frame(Stats stats) throws IOException {
 		this.stats = stats;
 		dayCount = 0;
+		icons = new BufferedImage[5][];
+		icons[0] = new BufferedImage[3];
+		icons[1] = new BufferedImage[2];
+		icons[2] = new BufferedImage[3];
+		icons[3] = new BufferedImage[2];
+		icons[4] = new BufferedImage[2];
+		icons[1][1] = ImageIO.read(new File("Images\\AdvancedFarm.png"));
+		icons[0][1] = ImageIO.read(new File("Images\\Cottage.png"));
+		icons[1][0] = ImageIO.read(new File("Images\\Farm.png"));
+		icons[2][0] = ImageIO.read(new File("Images\\Keep.png"));
+		icons[3][0] = ImageIO.read(new File("Images\\MerchantTent.png"));
+		icons[3][1] = ImageIO.read(new File("Images\\Shop.png"));
+		icons[0][2] = ImageIO.read(new File("Images\\StoneHouse.png"));
+		icons[0][0] = ImageIO.read(new File("Images\\Tent.png"));
+		icons[2][0] = ImageIO.read(new File("Images\\Tower.png"));
 	}
 
 	public void createFrame() {
@@ -176,7 +201,14 @@ public class Frame implements ActionListener {
 
 		}
 		
-		
+		for (int r = 0; r < stats.buildings.length; r++) {
+			for (int c = 0; c < stats.buildings[r].length;  c++) {
+				switch(stats.buildings[r][c].toString().charAt(0)) {
+				
+					
+				}
+			}
+		}
 
 	}
 
