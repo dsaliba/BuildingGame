@@ -30,7 +30,7 @@ public class Gamemenu extends JFrame {
 	private JTextArea status;
 	private JSlider taxSlider;
 
-	private JButton[][] grid;
+	public JButton[][] grid;
 	private JLabel farmImage;
 	private BufferedImage picture = null;
 
@@ -92,7 +92,7 @@ public class Gamemenu extends JFrame {
 				panel2.add(grid[row][col]);
 				grid[row][col].addActionListener(parent);
 				grid[row][col].setActionCommand("tile" + row + "|" + col);
-				updatePlotButton(row, col, null, 3);
+				grid[row][col].setIcon(new ImageIcon("Images//" + stats.buildings[row][col].toString() + ".png"));
 				// grid[row][col].setActionCommand(row + "|" + col);
 				grid[row][col].addActionListener(new ActionListener() {
 
@@ -153,28 +153,11 @@ public class Gamemenu extends JFrame {
 
 	}
 
-	public void createImages(int x, int y, int i) {
-		try {
-			picture = ImageIO.read(new File(buildingImages[i]));
-			System.out.println("Get Image: " + picture);
-			System.out.println("Load image into frame");
-
-			farmImage = new JLabel(new ImageIcon(picture));
-			grid[x][y].setIcon(new ImageIcon(picture));
-
-		} catch (Exception exp) {
-			exp.printStackTrace();
-		}
-	}
 
 	public void updateStatus() {
 		status.setText(stats.toString());
 	}
 
-	public void updatePlotButton(int x, int y, String name, int i) {
-		grid[x][y].setText(name);
-		createImages(x, y, i);
-	}
 
 	public void updateDayButton(String text) {
 		nextDay.setText(text);

@@ -23,12 +23,12 @@ public class Frame implements ActionListener {
 	private JFrame pause;
 	private JFrame upgrade;
 	private JFrame build;
-	private int lastX = -1;
-	private int lastY = -1;
+	private int lastX = 0;
+	private int lastY = 0;
 	
 	
 	
-	BufferedImage[][] icons;
+
 
 	public Frame() throws IOException {
 		game = new Gamemenu(this, stats);
@@ -38,21 +38,7 @@ public class Frame implements ActionListener {
 	public Frame(Stats stats) throws IOException {
 		this.stats = stats;
 		dayCount = 0;
-		icons = new BufferedImage[5][];
-		icons[0] = new BufferedImage[3];
-		icons[1] = new BufferedImage[2];
-		icons[2] = new BufferedImage[3];
-		icons[3] = new BufferedImage[2];
-		icons[4] = new BufferedImage[2];
-		icons[1][1] = ImageIO.read(new File("Images\\AdvancedFarm.png"));
-		icons[0][1] = ImageIO.read(new File("Images\\Cottage.png"));
-		icons[1][0] = ImageIO.read(new File("Images\\Farm.png"));
-		icons[2][0] = ImageIO.read(new File("Images\\Keep.png"));
-		icons[3][0] = ImageIO.read(new File("Images\\MerchantTent.png"));
-		icons[3][1] = ImageIO.read(new File("Images\\Shop.png"));
-		icons[0][2] = ImageIO.read(new File("Images\\StoneHouse.png"));
-		icons[0][0] = ImageIO.read(new File("Images\\Tent.png"));
-		icons[2][0] = ImageIO.read(new File("Images\\Tower.png"));
+
 	}
 
 	public void createFrame() {
@@ -131,7 +117,7 @@ public class Frame implements ActionListener {
 			System.out.println(cost);
 			if (cost > 0) {
 				stats.coins -= cost;
-				game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 0);
+				game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + stats.buildings[lastX][lastY].toString() + ".png"));
 			}
 			stats.updateRescources();
 			game.updateStatus();
@@ -145,7 +131,9 @@ public class Frame implements ActionListener {
 
 		case "0": // A
 			stats.setBuilding('a', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 2);
+			
+
+
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -154,7 +142,7 @@ public class Frame implements ActionListener {
 		case "1": // C
 			
 			stats.setBuilding('c', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 5);
+			
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -163,7 +151,7 @@ public class Frame implements ActionListener {
 		case "2": // D
 			
 			stats.setBuilding('d', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 9);
+			
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -172,7 +160,7 @@ public class Frame implements ActionListener {
 		case "3": // R
 		
 			stats.setBuilding('r', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 2);
+			
 			stats.updateRescources();
 
 			game.updateStatus();
@@ -180,7 +168,7 @@ public class Frame implements ActionListener {
 			break;
 		case "4": // S
 			stats.setBuilding('s', lastX, lastY);
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 8);
+			
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -191,7 +179,7 @@ public class Frame implements ActionListener {
 			System.out.println("rem");
 			stats.setBuilding('e', lastX, lastY);
 			
-			game.updatePlotButton(lastX, lastY, stats.buildings[lastX][lastY].toString(), 3);
+			
 			stats.updateRescources();
 			
 			game.updateStatus();
@@ -200,7 +188,7 @@ public class Frame implements ActionListener {
 			break;
 
 		}
-		
+		game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + stats.buildings[lastX][lastY].toString() + ".png"));
 		for (int r = 0; r < stats.buildings.length; r++) {
 			for (int c = 0; c < stats.buildings[r].length;  c++) {
 				switch(stats.buildings[r][c].toString().charAt(0)) {
