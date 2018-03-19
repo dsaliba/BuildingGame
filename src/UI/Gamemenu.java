@@ -14,6 +14,7 @@ import com.sun.xml.internal.ws.spi.db.RepeatedElementBridge;
 import BuildingTypes.Agriculture;
 import Game.Stats;
 import Game.gameConstants;
+import javafx.scene.layout.Border;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -28,7 +29,10 @@ public class Gamemenu extends JFrame {
 	private JPanel panel1;
 	private JPanel panel2;
 	private JTextArea status;
+	private JTextArea console;
 	private JSlider taxSlider;
+	
+	private String[] queue;
 
 	public JButton[][] grid;
 	private JLabel farmImage;
@@ -42,6 +46,7 @@ public class Gamemenu extends JFrame {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
+		queue = new String[]{"", "", ""};
 		grid = new JButton[gameConstants.ROW][gameConstants.COL];
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
@@ -136,11 +141,11 @@ public class Gamemenu extends JFrame {
 		status = new JTextArea(text);
 		status.setLineWrap(true);
 		status.setWrapStyleWord(true);
-		status.setBounds(0, 200, 1000, 700);
+		status.setBounds(0, 200, 1000, 550);
 		status.setFont(new Font("Monospaced", Font.PLAIN, 40));
-		status.setLineWrap(true);
+		//status.setLineWrap(true);
 		status.setEditable(false);
-		status.setWrapStyleWord(true);
+		//status.setWrapStyleWord(true);
 		status.setVisible(true);
 		panel1.add(status);
 
@@ -150,7 +155,23 @@ public class Gamemenu extends JFrame {
 		header.setVisible(true);
 		header.setEditable(false);
 		panel1.add(header);
-
+		
+		console = new JTextArea(queue[2]+"\n"+queue[1]+"\n"+queue[0]);
+		console.setLineWrap(true);
+		console.setWrapStyleWord(true);
+		console.setBounds(0, 750, 1000, 200);
+		console.setFont(new Font("Monospaced", Font.PLAIN, 40));
+		console.setEditable(false);
+		console.setVisible(true);
+		panel1.add(console);
+	}
+	
+	public void updateQueue(String phrase) {
+		System.out.println(phrase);
+		queue[2] = queue[1];
+		queue[1] = queue[0];
+		queue[0] = phrase;
+		console.setText(queue[2]+"\n"+queue[1]+"\n"+queue[0]);
 	}
 
 
