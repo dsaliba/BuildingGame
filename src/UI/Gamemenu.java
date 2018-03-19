@@ -160,7 +160,7 @@ public class Gamemenu extends JFrame {
 		console.setLineWrap(true);
 		console.setWrapStyleWord(true);
 		console.setBounds(0, 750, 1000, 200);
-		console.setFont(new Font("Monospaced", Font.PLAIN, 40));
+		console.setFont(new Font("Monospaced", Font.PLAIN, 35));
 		console.setEditable(false);
 		console.setVisible(true);
 		panel1.add(console);

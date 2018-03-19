@@ -121,6 +121,7 @@ public class Frame implements ActionListener {
 			}
 			stats.updateRescources();
 			game.updateStatus();
+			upgrade.dispose();
 			break;
 
 
