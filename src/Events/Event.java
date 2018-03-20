@@ -1,12 +1,11 @@
 package Events;
 
-import com.sun.org.glassfish.external.statistics.Stats;
+import Game.Stats;
 
 public abstract class Event {
-	public double probability;
+	public int probability;
+	public int dayAvailable;
 	
-	public abstract String execute(Stats stats) {
-		
-	}
+	public abstract String execute(Stats stats);
 	
 }
