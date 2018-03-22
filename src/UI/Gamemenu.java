@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Hashtable;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -130,6 +131,14 @@ public class Gamemenu extends JFrame {
 		taxSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 1);
 		taxSlider.setBounds(535, 1, 150, 100);
 		taxSlider.addChangeListener(parent);
+		
+		Hashtable<Integer, JLabel> labelTable = new Hashtable();
+		labelTable.put( new Integer(0), new JLabel("Low") );
+		labelTable.put( new Integer(1), new JLabel("Medium") );
+		labelTable.put( new Integer(2), new JLabel("High") );
+		taxSlider.setLabelTable(labelTable);
+		taxSlider.setPaintLabels(true);
+		
 		panel1.add(taxSlider);
 	}
 
