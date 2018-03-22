@@ -2,18 +2,20 @@ package Game;
 
 import java.util.ArrayList;
 
-import Events.Event;
+import Events.*;
 
 public class EventPlanner {
 	Stats stats;
 	ArrayList<Event> events;
 	
 	public EventPlanner(Stats s) {
+		events = new ArrayList<Event>();
+		events.add(new Murder());
 		stats = s;
 	}
 	
 	public String runEvent() {
-		if (events.size() == 0) return "";
+		
 		int count = 0;
 		for (Event e: events) {
 			if (stats.day >= e.dayAvailable && e.specialConditions(stats)) {
@@ -22,14 +24,18 @@ public class EventPlanner {
 			
 		}
 		
+		if (count == 0) return "";
+		
 		int rng = (int) ((Math.random()*count) + 1);
 		
 		int newCount = 0;
+		int last = 0;
 		for (Event e: events) {
 			if (stats.day >= e.dayAvailable && e.specialConditions(stats)) {
-				count += e.probability;
+				last = newCount;
+				newCount += e.probability;
 			}
-			if (newCount == rng) {
+			if (rng > last && rng <= newCount) {
 				return e.execute(stats);
 			}
 		}

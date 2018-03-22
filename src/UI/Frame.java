@@ -111,8 +111,8 @@ public class Frame implements ActionListener {
 			// Other method calling:
 
 			stats.runDay();
-			game.updateStatus();
 			game.updateQueue(ep.runEvent());
+			game.updateStatus();
 			break;
 
 

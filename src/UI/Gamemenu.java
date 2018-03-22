@@ -167,7 +167,7 @@ public class Gamemenu extends JFrame {
 	}
 	
 	public void updateQueue(String phrase) {
-		System.out.println(phrase);
+		if (phrase.equals("")) return;
 		queue[2] = queue[1];
 		queue[1] = queue[0];
 		queue[0] = phrase;
