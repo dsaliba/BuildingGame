@@ -129,7 +129,7 @@ public class Gamemenu extends JFrame {
 
 	public void createSlider() {
 		taxSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 1);
-		taxSlider.setBounds(535, 1, 150, 100);
+		taxSlider.setBounds(420, 65, 150, 45);
 		taxSlider.addChangeListener(parent);
 		
 		Hashtable<Integer, JLabel> labelTable = new Hashtable();
@@ -159,9 +159,9 @@ public class Gamemenu extends JFrame {
 		status.setVisible(true);
 		panel1.add(status);
 
-		JTextArea header = new JTextArea("Tax Amount: ");
-		header.setBounds(250, 10, 500, 50);
-		header.setFont(new Font("Monospaced", Font.PLAIN, 40));
+		JTextArea header = new JTextArea("Tax Amount");
+		header.setBounds(410, 5, 175, 50);
+		header.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		header.setVisible(true);
 		header.setEditable(false);
 		panel1.add(header);
