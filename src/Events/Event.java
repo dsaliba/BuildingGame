@@ -8,4 +8,5 @@ public abstract class Event {
 	
 	public abstract String execute(Stats stats);
 	
+	public abstract boolean specialConditions(Stats stats);
 }

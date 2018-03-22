@@ -24,6 +24,7 @@ public class Stats {
 	public static double coinTax;
 	public static int numBuildings;
 	public static int taxHap;
+	public static int day;
 	
 	public static Building[][] buildings;
 	
@@ -46,10 +47,12 @@ public class Stats {
 		coinTax = 0.0;
 		numBuildings = 0;
 		taxHap = 0;
+		day = 0;
 		
 	}
 	
 	public void runDay() {
+		day++;
 		updateRescources();
 		if (tax.equals("Low")) {
 			taxHap -= 5;

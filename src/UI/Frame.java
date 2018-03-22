@@ -11,6 +11,7 @@ import javax.swing.*;
 
 import com.sun.xml.internal.ws.policy.spi.AbstractQNameValidator;
 
+import Game.EventPlanner;
 import Game.Stats;
 
 public class Frame implements ActionListener {
@@ -25,6 +26,7 @@ public class Frame implements ActionListener {
 	private JFrame build;
 	private int lastX = 0;
 	private int lastY = 0;
+	private EventPlanner ep;
 	
 	
 	
@@ -48,6 +50,7 @@ public class Frame implements ActionListener {
 		pause = new Pausemenu(this); // pause screen
 		upgrade = new Upgrademenu(this);
 		build = new Buildmenu(this);
+		ep = new EventPlanner(stats);
 	}
 
 	@Override
@@ -109,6 +112,7 @@ public class Frame implements ActionListener {
 
 			stats.runDay();
 			game.updateStatus();
+			game.updateQueue(ep.runEvent());
 			break;
 
 
