@@ -129,6 +129,7 @@ public class Gamemenu extends JFrame {
 	public void createSlider() {
 		taxSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 1);
 		taxSlider.setBounds(535, 1, 150, 100);
+		taxSlider.addChangeListener(parent);
 		panel1.add(taxSlider);
 	}
 

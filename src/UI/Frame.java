@@ -8,13 +8,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import com.sun.xml.internal.ws.policy.spi.AbstractQNameValidator;
 
 import Game.EventPlanner;
 import Game.Stats;
 
-public class Frame implements ActionListener {
+public class Frame implements ActionListener, ChangeListener{
 
 	private Stats stats;
 	public static int dayCount; // temp int
@@ -53,6 +55,23 @@ public class Frame implements ActionListener {
 		ep = new EventPlanner(stats);
 	}
 
+	public void stateChanged(ChangeEvent e) {
+		JSlider slider = (JSlider)e.getSource();
+		switch (slider.getValue()) {
+		case 0:
+			stats.tax = "Low";
+			break;
+		case 1:
+			stats.tax = "Medium";
+			break;
+		case 2:
+			stats.tax = "High";
+			break;
+		}
+		stats.updateRescources();
+		game.updateStatus();
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 

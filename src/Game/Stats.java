@@ -55,9 +55,9 @@ public class Stats {
 		day++;
 		updateRescources();
 		if (tax.equals("Low")) {
-			taxHap -= 5;
-		}else if(tax.equals("High")) {
 			taxHap += 5;
+		}else if(tax.equals("High")) {
+			taxHap -= 5;
 		}
 		coins += coinsIncome;
 		food += foodIncome;
@@ -181,6 +181,12 @@ public class Stats {
 		}
 		coinTax = population*taxNum;
 		happiness += taxHap;
+		if(happiness >= 100) {
+			happiness = 100;
+		}
+		if (happiness <= 0) {
+			happiness = 0;
+		}
 	}
 
 	
