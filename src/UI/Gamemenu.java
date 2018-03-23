@@ -22,6 +22,7 @@ import BuildingTypes.Agriculture;
 import Game.Stats;
 import Game.gameConstants;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -39,6 +40,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JTextArea status;
 	private JTextArea console;
 	private JSlider taxSlider;
+	//private Histogram histogram;
 
 	private String[] queue;
 
@@ -215,6 +217,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		status.setEditable(false);
 		status.setVisible(true);
 		panel1.add(status, a);
+
 
 		
 		GridBagConstraints t = new GridBagConstraints();
