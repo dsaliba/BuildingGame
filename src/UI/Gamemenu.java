@@ -111,9 +111,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1.add(nextDay, d);
 
 
-		panel1.add(pauseButton);
-		panel1.add(nextDay);
-		
 		for (int row = 0; row < gameConstants.ROW; row++) {
 			for (int col = 0; col < gameConstants.COL; col++) {
 
