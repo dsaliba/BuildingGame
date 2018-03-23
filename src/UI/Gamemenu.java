@@ -106,16 +106,14 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		nextDay.setBackground(Color.WHITE);
 		nextDay.setVisible(true);
 
-<<<<<<< HEAD
+
 		panel1.add(pauseButton, c);
 		panel1.add(nextDay, d);
 
-=======
+
 		panel1.add(pauseButton);
 		panel1.add(nextDay);
 		
-		
->>>>>>> 182fa1e1d06cbdf2c4685e35e4ce1101854b4130
 		for (int row = 0; row < gameConstants.ROW; row++) {
 			for (int col = 0; col < gameConstants.COL; col++) {
 
