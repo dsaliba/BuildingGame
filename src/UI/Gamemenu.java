@@ -16,6 +16,8 @@ import java.util.Hashtable;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import org.jfree.ui.RefineryUtilities;
+
 import com.sun.xml.internal.ws.spi.db.RepeatedElementBridge;
 
 import BuildingTypes.Agriculture;
@@ -40,7 +42,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JTextArea status;
 	private JTextArea console;
 	private JSlider taxSlider;
-	//private Histogram histogram;
+	public Histogram histogram;
 
 	private String[] queue;
 
@@ -73,6 +75,12 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		add(panel2);
 		addComponentListener(this);
 
+		histogram = new Histogram(stats);
+		histogram.pack();
+	    RefineryUtilities.centerFrameOnScreen(histogram);
+	    
+	    histogram.setVisible(true);
+	    histogram.updateData();
 	}
 
 	public void createButtons() {

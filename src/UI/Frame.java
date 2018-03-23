@@ -130,6 +130,7 @@ public class Frame implements ActionListener, ChangeListener{
 			// Other method calling:
 
 			stats.runDay();
+			game.histogram.updateData();
 			game.updateQueue(ep.runEvent());
 			game.updateStatus();
 			break;
