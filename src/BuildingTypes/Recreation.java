@@ -1,5 +1,7 @@
 package BuildingTypes;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Dimitri Saliba
@@ -7,13 +9,17 @@ package BuildingTypes;
  * @author Luke Souter
  *
  */
-public class Recreation extends Building{
+public class Recreation extends Building {
 
 	public Recreation() {
 		super();
 		level = 1;
 	}
 
+	public Recreation(int level) {
+		super();
+		this.level = level;
+	}
 	
 	@Override
 	public String newDay() {

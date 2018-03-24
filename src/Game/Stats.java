@@ -1,4 +1,5 @@
 package Game;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -13,8 +14,8 @@ import BuildingTypes.Shelter;
 
 
 @SuppressWarnings("javadoc")
-public class Stats implements Serializable {
-	public static double coins;
+public class Stats implements Serializable{
+	public static int coins;
 	public static int food;
 	public static int happiness;
 	public static int defense;
@@ -52,6 +53,8 @@ public class Stats implements Serializable {
 		day = 0;
 		
 	}
+	
+	
 	
 	public void runDay() {
 		day++;

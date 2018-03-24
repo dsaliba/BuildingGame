@@ -1,5 +1,7 @@
 package BuildingTypes;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Dimitri Saliba
@@ -7,13 +9,17 @@ package BuildingTypes;
  * @author Luke Souter
  *
  */
-public class Defense extends Building{
+public class Defense extends Building {
 
 	public Defense() {
 		super();
 		level = 1;
 	}
 
+	public Defense(int level) {
+		super();
+		this.level = level;
+	}
 	
 	@Override
 	public String newDay() {

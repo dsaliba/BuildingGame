@@ -1,5 +1,7 @@
 package BuildingTypes;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Dimitri Saliba
@@ -7,11 +9,16 @@ package BuildingTypes;
  * @author Luke Souter
  *
  */
-public class Shelter extends Building{
+public class Shelter extends Building {
 
 	public Shelter() {
 		super();
 		level = 1;
+	}
+	
+	public Shelter(int level) {
+		super();
+		this.level = level;
 	}
 
 	

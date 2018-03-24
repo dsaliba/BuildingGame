@@ -1,5 +1,7 @@
 package BuildingTypes;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Dimitri Saliba
@@ -7,8 +9,10 @@ package BuildingTypes;
  * @author Luke Souter
  *
  */
-public class EmpteyPlot extends Building{
+public class EmpteyPlot extends Building {
 
+	
+	
 	@Override
 	public String newDay() {
 		// TODO Auto-generated method stub

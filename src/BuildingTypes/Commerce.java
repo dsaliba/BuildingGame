@@ -1,5 +1,7 @@
 package BuildingTypes;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Dimitri Saliba
@@ -7,11 +9,16 @@ package BuildingTypes;
  * @author Luke Souter
  *
  */
-public class Commerce extends Building{
+public class Commerce extends Building {
 
 	public Commerce() {
 		super();
 		level = 1;
+	}
+	
+	public Commerce(int level) {
+		super();
+		this.level = level;
 	}
 
 	

@@ -1,5 +1,7 @@
 package BuildingTypes;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Dimitri Saliba
@@ -12,6 +14,11 @@ public class Agriculture extends Building {
 	public Agriculture() {
 		super();
 		level = 1;
+	}
+	
+	public Agriculture(int level) {
+		super();
+		this.level = level;
 	}
 
 	

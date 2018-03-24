@@ -1,5 +1,7 @@
 package UI;
 
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
@@ -14,6 +16,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Savepoint;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -23,11 +26,12 @@ import javax.swing.event.ChangeListener;
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import Game.EventPlanner;
+import Game.SaveManager;
 import Game.Stats;
 
 public class Frame implements ActionListener, ChangeListener{
 
-	private Stats stats;
+	public Stats stats;
 	public static int dayCount; // temp int
 
 	private Gamemenu game;
@@ -38,9 +42,8 @@ public class Frame implements ActionListener, ChangeListener{
 	private int lastX = 0;
 	private int lastY = 0;
 	private EventPlanner ep;
-	private ObjectInputStream decoder;
-	private ObjectOutputStream encoder;
-	private BufferedOutputStream outputStream;
+	private SaveManager saveManager;
+	
 	
 	
 
@@ -48,15 +51,12 @@ public class Frame implements ActionListener, ChangeListener{
 	public Frame() throws IOException {
 		//game = new Gamemenu(this);
 		dayCount = 0;
-		
-		outputStream = new BufferedOutputStream(new FileOutputStream("SaveGame.ser"));
-        encoder = new ObjectOutputStream(outputStream);
+		saveManager = new SaveManager();
+        
 	}
 
 	public Frame(Stats stats) throws IOException {
 		this.stats = stats;
-		
-
 	}
 
 	public void createFrame() {
@@ -120,17 +120,7 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 		case "continue":
 			start.setVisible(false);
-			
-			
-			try {
-				BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream("SaveGame.ser"));
-				decoder = new ObjectInputStream(inputStream);
-				stats =  (Stats) decoder.readObject();
-			} catch (ClassNotFoundException | IOException e3) {
-				// TODO Auto-generated catch block
-				e3.printStackTrace();
-			}
-			System.out.println(stats);
+			stats = saveManager.readSave();
 			game = new Gamemenu(this, stats);
 			game.setVisible(true);
 			break;
@@ -138,28 +128,14 @@ public class Frame implements ActionListener, ChangeListener{
 			game.dispose();
 			start.dispose();
 			pause.dispose();
-			try {
-				encoder.writeObject((Object)stats);
-				outputStream.flush();
-				encoder.flush();
-			} catch (IOException e2) {
-				e2.printStackTrace();
-			}
-	
+			saveManager.writeSave(stats);
 			return;
 
 		case "exitMainMenu":
 			game.setVisible(false);
 			pause.setVisible(false);
 			start.setVisible(true);
-			try {
-				encoder.writeObject((Object)stats);
-				outputStream.flush();
-				encoder.flush();
-				
-			} catch (IOException e2) {
-				e2.printStackTrace();
-			} 
+			saveManager.writeSave(stats);
 			return;
 
 		case "resume":

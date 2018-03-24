@@ -1,5 +1,7 @@
 package BuildingTypes;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author Dimitri Saliba
@@ -9,10 +11,11 @@ package BuildingTypes;
  */
 public abstract class Building {
 	
+	
 	/**
 	 * The stage of evolution
 	 */
-	protected int level;
+	public int level;
 	
 	
 	/**
