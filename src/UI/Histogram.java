@@ -17,6 +17,7 @@ public class Histogram extends ApplicationFrame {
 
 	private DefaultCategoryDataset dataset;
 	private Stats stats;
+	public ChartPanel chart;
    public Histogram(Stats stats) {
       super("");
       this.stats = stats;
@@ -29,9 +30,10 @@ public class Histogram extends ApplicationFrame {
          true,true,false);
          
       
-      ChartPanel chartPanel = new ChartPanel(lineChart);
-      chartPanel.setPreferredSize( new java.awt.Dimension( 560 , 367 ) );
-      setContentPane(chartPanel);
+      chart = new ChartPanel(lineChart);
+      chart.setPreferredSize( new java.awt.Dimension( 560 , 367 ) );
+      updateData();
+      //setContentPane(chart);
       
    }
 

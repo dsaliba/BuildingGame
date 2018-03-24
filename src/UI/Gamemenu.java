@@ -16,6 +16,8 @@ import java.util.Hashtable;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
 import org.jfree.ui.RefineryUtilities;
 
 import com.sun.xml.internal.ws.spi.db.RepeatedElementBridge;
@@ -26,6 +28,7 @@ import Game.gameConstants;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -70,17 +73,29 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		createButtons();
 		createSlider();
 		createText();
-
+		creatHistogram();
 		add(panel1);
 		add(panel2);
 		addComponentListener(this);
-
+		histogram.updateData();
+		
+	}
+	
+	public void creatHistogram() {
 		histogram = new Histogram(stats);
 		histogram.pack();
 	    RefineryUtilities.centerFrameOnScreen(histogram);
 	    
 	    histogram.setVisible(true);
 	    histogram.updateData();
+	    GridBagConstraints t = new GridBagConstraints();
+		t.fill = GridBagConstraints.BOTH;
+		t.gridx = 1;
+		t.gridy = 3;
+		t.gridheight = 5;
+		t.gridwidth = 2;
+		t.weightx = 2;
+	    panel1.add(histogram.chart, t);
 	}
 
 	public void createButtons() {
@@ -210,8 +225,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		a.fill = GridBagConstraints.BOTH;
 		a.gridx = 0;
 		a.gridy = 3;
-		a.gridwidth = 3;
-		a.weightx = 1;
+		//a.gridwidth = 1;
+		a.weightx = 0;
 		
 		
 		String text = stats.toString();
@@ -246,7 +261,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		b.fill = GridBagConstraints.BOTH;
 		b.gridx = 0;
 		b.gridy = 4;
-		b.gridwidth = 3;
+		//b.gridwidth = 3;
 		b.weightx = 1;
 		
 		console = new JTextArea(queue[2] + "\n" + queue[1] + "\n" + queue[0]);
@@ -270,7 +285,10 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 	public void updateStatus() {
 		status.setText(stats.toString());
+		
 	}
+	
+	
 
 	public void updateDayButton(String text) {
 		nextDay.setText(text);
