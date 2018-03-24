@@ -135,9 +135,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		for (int row = 0; row < gameConstants.ROW; row++) {
 			for (int col = 0; col < gameConstants.COL; col++) {
 
-				JLabel l = new JLabel(row + "|" + col);
+				//JLabel l = new JLabel(row + "|" + col);
 				grid[row][col] = new JButton("e0");
-				grid[row][col].add(l);
+				//grid[row][col].add(l);
 				grid[row][col].setBackground(Color.WHITE);
 				panel2.add(grid[row][col]);
 				grid[row][col].addActionListener(parent);
