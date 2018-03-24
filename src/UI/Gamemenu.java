@@ -92,7 +92,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		t.fill = GridBagConstraints.BOTH;
 		t.gridx = 1;
 		t.gridy = 3;
-		t.gridheight = 5;
+		t.gridheight = 1;
 		t.gridwidth = 2;
 		t.weightx = 2;
 	    panel1.add(histogram.chart, t);
@@ -261,7 +261,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		b.fill = GridBagConstraints.BOTH;
 		b.gridx = 0;
 		b.gridy = 4;
-		//b.gridwidth = 3;
+		b.gridwidth = 3;
 		b.weightx = 1;
 		
 		console = new JTextArea(queue[2] + "\n" + queue[1] + "\n" + queue[0]);
@@ -280,7 +280,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		queue[2] = queue[1];
 		queue[1] = queue[0];
 		queue[0] = phrase;
-		console.setText(queue[2] + "\n" + queue[1] + "\n" + queue[0]);
+		console.setText(""+queue[2] + "\n" + queue[1] + "\n" + queue[0]);
 	}
 
 	public void updateStatus() {
