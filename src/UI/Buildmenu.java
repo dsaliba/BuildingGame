@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import com.sun.javafx.iio.ImageStorage;
 
 public class Buildmenu extends JFrame {
-	private final String[] buildingLabels = { "f1", "c1", "d1", "h1", "p1"};
+	private final String[] buildingLabels = {"f1", "c1", "d1", "h1", "p1"};
 	private Frame parent;
 	private JButton close;
 	private JButton upgrade;
@@ -47,7 +47,7 @@ public class Buildmenu extends JFrame {
 		add(closeButton);
 
 		for (int i = 0; i < buildingLabels.length; i++) {
-			bl = new JButton("" + buildingLabels[i]);
+			bl = new JButton("");
 			bl.setIcon(new ImageIcon("Images\\" + buildingLabels[i] + ".png"));
 			bl.addActionListener(parent);
 			bl.setActionCommand("" + i);
