@@ -43,7 +43,7 @@ public class Pausemenu extends JFrame{
 		pauseExitMainMenu.setActionCommand("exitMainMenu");
 		pauseExitMainMenu.setBackground(Color.WHITE);
 		
-		pauseExitGame = new JButton("Exit Game");
+		pauseExitGame = new JButton("Save and Exit");
 		pauseExitGame.setBounds(12, 600, 462, 75);
 		pauseExitGame.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseExitGame.addActionListener(parent);

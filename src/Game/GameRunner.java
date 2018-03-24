@@ -6,8 +6,8 @@ import UI.Frame;
 public class GameRunner {
 	
 	public static void main(String[] args) throws IOException {
-		Stats stats = new Stats();
-		Frame frame = new Frame(stats);
+		Frame frame = new Frame();
 		frame.createFrame();
+		
 	}
 }

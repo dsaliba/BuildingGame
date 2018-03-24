@@ -3,15 +3,24 @@ package UI;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.beans.XMLDecoder;
+import java.beans.XMLEncoder;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import com.sun.xml.internal.ws.policy.spi.AbstractQNameValidator;
+import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import Game.EventPlanner;
 import Game.Stats;
@@ -29,25 +38,30 @@ public class Frame implements ActionListener, ChangeListener{
 	private int lastX = 0;
 	private int lastY = 0;
 	private EventPlanner ep;
-	
+	private ObjectInputStream decoder;
+	private ObjectOutputStream encoder;
+	private BufferedOutputStream outputStream;
 	
 	
 
 
 	public Frame() throws IOException {
-		game = new Gamemenu(this, stats);
+		//game = new Gamemenu(this);
+		dayCount = 0;
 		
+		outputStream = new BufferedOutputStream(new FileOutputStream("SaveGame.ser"));
+        encoder = new ObjectOutputStream(outputStream);
 	}
 
 	public Frame(Stats stats) throws IOException {
 		this.stats = stats;
-		dayCount = 0;
+		
 
 	}
 
 	public void createFrame() {
 		// --------------Frame Setup-----------------
-		game = new Gamemenu(this, stats); // JFrame
+		//game = new Gamemenu(this, stats); // JFrame
 		start = new Startmenu(this); // start screen
 		pause = new Pausemenu(this); // pause screen
 		upgrade = new Upgrademenu(this);
@@ -98,30 +112,63 @@ public class Frame implements ActionListener, ChangeListener{
 		}
 		
 		switch (e.getActionCommand()) {
-		case "start":
+		case "new game":
 			start.setVisible(false);
+			stats = new Stats();
+			game = new Gamemenu(this, stats);
 			game.setVisible(true);
-
+			break;
+		case "continue":
+			start.setVisible(false);
+			
+			
+			try {
+				BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream("SaveGame.ser"));
+				decoder = new ObjectInputStream(inputStream);
+				stats =  (Stats) decoder.readObject();
+			} catch (ClassNotFoundException | IOException e3) {
+				// TODO Auto-generated catch block
+				e3.printStackTrace();
+			}
+			System.out.println(stats);
+			game = new Gamemenu(this, stats);
+			game.setVisible(true);
 			break;
 		case "exit":
 			game.dispose();
 			start.dispose();
 			pause.dispose();
-			break;
+			try {
+				encoder.writeObject((Object)stats);
+				outputStream.flush();
+				encoder.flush();
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			}
+	
+			return;
 
 		case "exitMainMenu":
 			game.setVisible(false);
 			pause.setVisible(false);
 			start.setVisible(true);
-			break;
+			try {
+				encoder.writeObject((Object)stats);
+				outputStream.flush();
+				encoder.flush();
+				
+			} catch (IOException e2) {
+				e2.printStackTrace();
+			} 
+			return;
 
 		case "resume":
 			pause.setVisible(false);
-			break;
+			return;
 
 		case "pause":
 			pause.setVisible(true);
-			break;
+			return;
 
 		case "nextDay":
 			// GUI:
@@ -152,7 +199,7 @@ public class Frame implements ActionListener, ChangeListener{
 		case "close":
 			upgrade.dispose();
 			build.dispose();
-			break;
+			return;
 
 		case "0": // A
 			stats.setBuilding('a', lastX, lastY);

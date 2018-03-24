@@ -1,4 +1,5 @@
 package Game;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import BuildingTypes.Agriculture;
@@ -11,7 +12,8 @@ import BuildingTypes.Shelter;
 
 
 
-public class Stats {
+@SuppressWarnings("javadoc")
+public class Stats implements Serializable {
 	public static double coins;
 	public static int food;
 	public static int happiness;
