@@ -36,7 +36,6 @@ import java.awt.GridBagLayout;
 
 public class Gamemenu extends JFrame implements ComponentListener {
 
-	int day = Frame.dayCount;
 	private Frame parent;
 	private JButton nextDay;
 	private JButton pauseButton;
@@ -53,10 +52,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JLabel farmImage;
 	private BufferedImage picture = null;
 
-	private String buildingImages[] = { "Images\\AdvancedFarm.png", "Images\\Cottage.png", "Images\\Farm.png",
-			"Images\\Grass.png", "Images\\Keep.png", "Images\\MerchantTent.png", "Images\\Shop.png",
-			"Images\\StoneHouse.png", "Images\\Tent.png", "Images\\Tower.png" };
-
+	
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
@@ -122,7 +118,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		pauseButton.setActionCommand("pause");
 		pauseButton.setVisible(true);
 
-		String nextDayText = "Next Day (" + day + ")";
+		String nextDayText = "Next Day (" + stats.day + ")";
 		nextDay = new JButton(nextDayText); // next day button (Not implemented yet)
 		
 		nextDay.setFont(new Font("Monospaced", Font.BOLD, 20));

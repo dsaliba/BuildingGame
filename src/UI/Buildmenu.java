@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import com.sun.javafx.iio.ImageStorage;
 
 public class Buildmenu extends JFrame {
-	private final String[] buildingLabels = {"f1", "c1", "d1", "h1", "p1"};
+	private final String[] buildingLabels = {"f1", "c1", "d1", "r1", "p1"};
 	private Frame parent;
 	private JButton close;
 	private JButton upgrade;
@@ -29,7 +29,7 @@ public class Buildmenu extends JFrame {
 
 		this.parent = parent;
 		setLayout(new GridLayout(1, 6));
-		setBounds(500, 400, 1000, 500);
+		setBounds(500, 400, 1000, 250);
 		// setVisible(true);
 		createButtons();
 		createImages();

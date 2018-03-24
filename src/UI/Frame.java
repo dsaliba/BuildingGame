@@ -32,7 +32,6 @@ import Game.Stats;
 public class Frame implements ActionListener, ChangeListener{
 
 	public Stats stats;
-	public static int dayCount; // temp int
 
 	private Gamemenu game;
 	private JFrame start; // start screen
@@ -49,8 +48,6 @@ public class Frame implements ActionListener, ChangeListener{
 
 
 	public Frame() throws IOException {
-		//game = new Gamemenu(this);
-		dayCount = 0;
 		saveManager = new SaveManager();
         
 	}
@@ -123,6 +120,8 @@ public class Frame implements ActionListener, ChangeListener{
 			stats = saveManager.readSave();
 			game = new Gamemenu(this, stats);
 			game.setVisible(true);
+			game.updateDayButton("Next Day (" + stats.day + ")"); // Sets text of button to match day
+			
 			break;
 		case "exit":
 			game.dispose();
@@ -147,9 +146,7 @@ public class Frame implements ActionListener, ChangeListener{
 			return;
 
 		case "nextDay":
-			// GUI:
-			dayCount++; // increases day (temp)
-			game.updateDayButton("Next Day (" + dayCount + ")"); // Sets text of button to match day
+			game.updateDayButton("Next Day (" + stats.day + ")"); // Sets text of button to match day
 			// Other method calling:
 
 			stats.runDay();
