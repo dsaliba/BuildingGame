@@ -37,10 +37,9 @@ public class Buildmenu extends JFrame {
 
 	public void createButtons() {
 
-		closeButton = new JButton("Close");
+		closeButton = new JButton("");
 		closeButton.setBounds(0, 1, 200, 100);
-		closeButton.setFont(new Font("Monospaced", Font.BOLD, 40));
-		closeButton.setBackground(Color.WHITE);
+		closeButton.setIcon(new ImageIcon("Images\\close.png"));
 		closeButton.addActionListener(parent);
 		closeButton.setActionCommand("close");
 		closeButton.setVisible(true);

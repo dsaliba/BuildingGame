@@ -22,7 +22,7 @@ public class Upgrademenu extends JFrame{
 		
 		this.parent = parent;
 		setLayout(new GridLayout(1, 3));
-		setBounds(500, 400, 1000, 500);
+		setBounds(500, 400, 590, 250);
 		//setVisible(true);
 		createButtons();
 	}
@@ -30,27 +30,24 @@ public class Upgrademenu extends JFrame{
 	
 	public void createButtons() {
 		
-		closeButton = new JButton("Close");
+		closeButton = new JButton("");
 		closeButton.setBounds(0, 1, 200, 100);
-		closeButton.setFont(new Font("Monospaced", Font.BOLD, 40));
-		closeButton.setBackground(Color.WHITE);
+		closeButton.setIcon(new ImageIcon("Images\\close.png"));
 		closeButton.addActionListener(parent);
 		closeButton.setActionCommand("close");
 		closeButton.setVisible(true);
 		add(closeButton);
 		
-		remove = new JButton("Remove");
-		remove.setBackground(Color.WHITE);
-		remove.setFont(new Font("Monospaced", Font.BOLD, 40));
+		remove = new JButton("");
+		remove.setIcon(new ImageIcon("Images\\remove.png"));
 		remove.addActionListener(parent);
 		remove.setActionCommand("remove");
 		remove.setVisible(true);
 		add(remove);
 		
 		
-		upgrade = new JButton("Upgrade/Build");
-		upgrade.setBackground(Color.WHITE);
-		upgrade.setFont(new Font("Monospaced", Font.BOLD, 40));
+		upgrade = new JButton("");
+		upgrade.setIcon(new ImageIcon("Images\\upgrade.png"));
 		upgrade.addActionListener(parent);
 		upgrade.setActionCommand("upgrade");
 		upgrade.setVisible(true);
