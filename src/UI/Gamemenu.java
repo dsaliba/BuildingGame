@@ -2,6 +2,7 @@ package UI;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -36,9 +37,12 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JButton pauseButton;
 	private JPanel panel1;
 	private JPanel panel2;
+	private JPanel topBar;
 	private JTextArea status;
 	private JTextArea console;
 	private JSlider taxSlider;
+	private JPanel left;
+	private JPanel right;
 	public Histogram histogram;
 
 	private String[] queue;
@@ -54,7 +58,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		queue = new String[] { "\n", "\n", "\n" };
 		grid = new JButton[gameConstants.ROW][gameConstants.COL];
 		this.parent = parent;
-		setLayout(new GridLayout(1, 2));
+		setLayout(new FlowLayout());
 		setBounds(600, 400, 2000, 1000);
 		setResizable(true);
 		setLocationRelativeTo(null);
@@ -65,8 +69,11 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		createSlider();
 		createText();
 		creatHistogram();
-		add(panel1);
-		add(panel2);
+
+		left.setVisible(true);
+		right.setVisible(true);
+		add(left);
+		add(right);
 		addComponentListener(this);
 		histogram.updateData();
 		
@@ -132,8 +139,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		nextDay.setVisible(true);
 
 
-		panel1.add(pauseButton, c);
-		panel1.add(nextDay, d);
+		topBar.add(pauseButton, c);
+		topBar.add(nextDay, d);
 
 
 		for (int row = 0; row < gameConstants.ROW; row++) {
@@ -194,7 +201,21 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1 = new JPanel(); // Section 1
 
 		panel1.setLayout(new GridBagLayout());
+		
+		
+		topBar = new JPanel();
+		topBar.setLayout(new GridBagLayout());
 
+		
+		left = new JPanel();
+		left.setLayout(new GridLayout(2, 1));
+		
+		right = new JPanel();
+		right.setLayout(new GridLayout(1, 1));
+		
+		right.add(panel2);
+		left.add(topBar);
+		left.add(panel1);
 	}
 
 	public void createSlider() {
@@ -217,7 +238,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		taxSlider.setLabelTable(labelTable);
 		taxSlider.setPaintLabels(true);
 
-		panel1.add(taxSlider, s);
+		topBar.add(taxSlider, s);
 	}
 	
 	
@@ -258,7 +279,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		header.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		header.setVisible(true);
 		header.setEditable(false);
-		panel1.add(header, t);
+		topBar.add(header, t);
 
 		GridBagConstraints b = new GridBagConstraints();
 		b.fill = GridBagConstraints.BOTH;
