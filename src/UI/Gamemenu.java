@@ -1,38 +1,33 @@
 package UI;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.Hashtable;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
 import org.jfree.ui.RefineryUtilities;
 
-import com.sun.xml.internal.ws.spi.db.RepeatedElementBridge;
-
-import BuildingTypes.Agriculture;
 import Game.Stats;
 import Game.gameConstants;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 
 public class Gamemenu extends JFrame implements ComponentListener {
 
@@ -77,21 +72,30 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		
 	}
 	
-	public void creatHistogram() {
-		histogram = new Histogram(stats);
-		histogram.pack();
-	    RefineryUtilities.centerFrameOnScreen(histogram);
-	    
-	    histogram.setVisible(true);
-	    histogram.updateData();
-	    GridBagConstraints t = new GridBagConstraints();
-		t.fill = GridBagConstraints.BOTH;
-		t.gridx = 1;
-		t.gridy = 3;
-		t.gridheight = 1;
-		t.gridwidth = 2;
-		t.weightx = 2;
-	    panel1.add(histogram.chart, t);
+	@Override
+	public void componentHidden(ComponentEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void componentMoved(ComponentEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void componentResized(ComponentEvent arg0) {
+//		int W = 2;
+//		int H = 1;
+//		Rectangle b = arg0.getComponent().getBounds();
+//		arg0.getComponent().setBounds(b.x, b.y, b.width, b.width * H / W);
+	}
+
+	@Override
+	public void componentShown(ComponentEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 
 	public void createButtons() {
@@ -118,7 +122,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		pauseButton.setActionCommand("pause");
 		pauseButton.setVisible(true);
 
-		String nextDayText = "Next Day (" + stats.day + ")";
+		String nextDayText = "Next Day (" + Stats.day + ")";
 		nextDay = new JButton(nextDayText); // next day button (Not implemented yet)
 		
 		nextDay.setFont(new Font("Monospaced", Font.BOLD, 20));
@@ -142,12 +146,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				panel2.add(grid[row][col]);
 				grid[row][col].addActionListener(parent);
 				grid[row][col].setActionCommand("tile" + row + "|" + col);
-				grid[row][col].setIcon(new ImageIcon("Images//" + stats.buildings[row][col].toString() + ".png"));
+				grid[row][col].setIcon(new ImageIcon("Images//" + Stats.buildings[row][col].toString() + ".png"));
 				// grid[row][col].setActionCommand(row + "|" + col);
 				grid[row][col].addActionListener(new ActionListener() {
 
 					// methodbuild(row, col);
 
+					@Override
 					public void actionPerformed(ActionEvent e) {
 
 						// TODO Auto-generated method stub
@@ -200,7 +205,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		s.gridy = 1;
 		s.gridheight = 1;
 
-		taxSlider = new JSlider(JSlider.HORIZONTAL, 0, 2, 1);
+		taxSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 2, 1);
 		
 		
 		taxSlider.addChangeListener(parent);
@@ -214,6 +219,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		panel1.add(taxSlider, s);
 	}
+	
+	
 
 	public void createText() {
 		// --------------------------------------------
@@ -272,6 +279,27 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1.add(console, b);
 	}
 
+	public void creatHistogram() {
+		histogram = new Histogram(stats);
+		histogram.pack();
+	    RefineryUtilities.centerFrameOnScreen(histogram);
+	    
+	    histogram.setVisible(true);
+	    histogram.updateData();
+	    GridBagConstraints t = new GridBagConstraints();
+		t.fill = GridBagConstraints.BOTH;
+		t.gridx = 1;
+		t.gridy = 3;
+		t.gridheight = 1;
+		t.gridwidth = 2;
+		t.weightx = 2;
+	    panel1.add(histogram.chart, t);
+	}
+
+	public void updateDayButton(String text) {
+		nextDay.setText(text);
+	}
+
 	public void updateQueue(String phrase) {
 		if (phrase.equals(""))
 			return;
@@ -284,38 +312,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public void updateStatus() {
 		status.setText(stats.toString());
 		
-	}
-	
-	
-
-	public void updateDayButton(String text) {
-		nextDay.setText(text);
-	}
-
-	@Override
-	public void componentResized(ComponentEvent arg0) {
-//		int W = 2;
-//		int H = 1;
-//		Rectangle b = arg0.getComponent().getBounds();
-//		arg0.getComponent().setBounds(b.x, b.y, b.width, b.width * H / W);
-	}
-
-	@Override
-	public void componentMoved(ComponentEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void componentShown(ComponentEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void componentHidden(ComponentEvent e) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

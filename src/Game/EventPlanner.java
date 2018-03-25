@@ -2,7 +2,8 @@ package Game;
 
 import java.util.ArrayList;
 
-import Events.*;
+import Events.Event;
+import Events.Murder;
 
 public class EventPlanner {
 	Stats stats;
@@ -18,7 +19,7 @@ public class EventPlanner {
 		
 		int count = 0;
 		for (Event e: events) {
-			if (stats.day >= e.dayAvailable && e.specialConditions(stats)) {
+			if (Stats.day >= e.dayAvailable && e.specialConditions(stats)) {
 				count += e.probability;
 			}
 			
@@ -31,7 +32,7 @@ public class EventPlanner {
 		int newCount = 0;
 		int last = 0;
 		for (Event e: events) {
-			if (stats.day >= e.dayAvailable && e.specialConditions(stats)) {
+			if (Stats.day >= e.dayAvailable && e.specialConditions(stats)) {
 				last = newCount;
 				newCount += e.probability;
 			}

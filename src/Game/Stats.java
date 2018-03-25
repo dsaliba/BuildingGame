@@ -1,7 +1,6 @@
 package Game;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import BuildingTypes.Agriculture;
 import BuildingTypes.Building;
@@ -67,7 +66,7 @@ public class Stats implements Serializable{
 		coins += coinsIncome;
 		food += foodIncome;
 		if(happiness > 30) {
-			int people = (int) ((Math.random() * 5) * ((double)population + 0.5));
+			int people = (int) ((Math.random() * 5) * (population + 0.5));
 		if (population < 70) {
 			if (people > 1) people = 1;
 		}
@@ -143,6 +142,15 @@ public class Stats implements Serializable{
 		return -1;
 	}
 	
+	@Override
+	public String toString() {
+		updateRescources();
+		return "Gold: " + coins + " \nPeople: " + population + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
+				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Income: "
+				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome;
+	}
+
+	
 	public void updateRescources() {
 		defense = 0;
 		happiness = 50;
@@ -192,13 +200,5 @@ public class Stats implements Serializable{
 		if (happiness <= 0) {
 			happiness = 0;
 		}
-	}
-
-	
-	public String toString() {
-		updateRescources();
-		return "Gold: " + coins + " \nPeople: " + population + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
-				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Income: "
-				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome;
 	}
 }

@@ -1,7 +1,5 @@
 package BuildingTypes;
 
-import java.io.Serializable;
-
 /**
  * 
  * @author Dimitri Saliba
@@ -37,6 +35,11 @@ public class Defense extends Building {
 
 
 	@Override
+	public String toString() {
+		return "d" + level;
+	}
+	
+	@Override
 	public int upgrade(double money) {
 		if (level < 3) {
 			switch (level){
@@ -49,11 +52,6 @@ public class Defense extends Building {
 			}
 		}
 		return -1;
-	}
-	
-	@Override
-	public String toString() {
-		return "d" + level;
 	}
 	
 }

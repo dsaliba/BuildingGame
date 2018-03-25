@@ -4,26 +4,14 @@ package UI;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.beans.XMLDecoder;
-import java.beans.XMLEncoder;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.sql.Savepoint;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-import com.sun.org.apache.bcel.internal.generic.NEW;
 
 import Game.EventPlanner;
 import Game.SaveManager;
@@ -56,33 +44,6 @@ public class Frame implements ActionListener, ChangeListener{
 		this.stats = stats;
 	}
 
-	public void createFrame() {
-		// --------------Frame Setup-----------------
-		//game = new Gamemenu(this, stats); // JFrame
-		start = new Startmenu(this); // start screen
-		pause = new Pausemenu(this); // pause screen
-		upgrade = new Upgrademenu(this);
-		build = new Buildmenu(this);
-		ep = new EventPlanner(stats);
-	}
-
-	public void stateChanged(ChangeEvent e) {
-		JSlider slider = (JSlider)e.getSource();
-		switch (slider.getValue()) {
-		case 0:
-			stats.tax = "Low";
-			break;
-		case 1:
-			stats.tax = "Medium";
-			break;
-		case 2:
-			stats.tax = "High";
-			break;
-		}
-		stats.updateRescources();
-		game.updateStatus();
-	}
-	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -100,7 +61,7 @@ public class Frame implements ActionListener, ChangeListener{
 				int c = Integer.parseInt(id.substring(pipe+1, id.length()));
 				lastX = r;
 				lastY = c;
-				if(stats.buildings[r][c].toString().equals("e0")) {
+				if(Stats.buildings[r][c].toString().equals("e0")) {
 					build.setVisible(true);
 				}
 				else {
@@ -120,7 +81,7 @@ public class Frame implements ActionListener, ChangeListener{
 			stats = saveManager.readSave();
 			game = new Gamemenu(this, stats);
 			game.setVisible(true);
-			game.updateDayButton("Next Day (" + stats.day + ")"); // Sets text of button to match day
+			game.updateDayButton("Next Day (" + Stats.day + ")"); // Sets text of button to match day
 			
 			break;
 		case "exit":
@@ -146,7 +107,7 @@ public class Frame implements ActionListener, ChangeListener{
 			return;
 
 		case "nextDay":
-			game.updateDayButton("Next Day (" + stats.day + ")"); // Sets text of button to match day
+			game.updateDayButton("Next Day (" + Stats.day + ")"); // Sets text of button to match day
 			// Other method calling:
 
 			stats.runDay();
@@ -157,13 +118,13 @@ public class Frame implements ActionListener, ChangeListener{
 
 
 		case "upgrade":
-			int cost = stats.buildings[lastX][lastY].upgrade(stats.coins);
+			int cost = Stats.buildings[lastX][lastY].upgrade(Stats.coins);
 			if (cost == -1) {
 				game.updateQueue("You dont have enough money to upgrade that building");
 			}
 			if (cost > 0) {
-				stats.coins -= cost;
-				game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + stats.buildings[lastX][lastY].toString() + ".png"));
+				Stats.coins -= cost;
+				game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + Stats.buildings[lastX][lastY].toString() + ".png"));
 			}
 			stats.updateRescources();
 			game.updateStatus();
@@ -243,10 +204,10 @@ public class Frame implements ActionListener, ChangeListener{
 			game.updateQueue("You already have a building there, you need to remove it to do this");
 			break;
 		}
-		game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + stats.buildings[lastX][lastY].toString() + ".png"));
-		for (int r = 0; r < stats.buildings.length; r++) {
-			for (int c = 0; c < stats.buildings[r].length;  c++) {
-				switch(stats.buildings[r][c].toString().charAt(0)) {
+		game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + Stats.buildings[lastX][lastY].toString() + ".png"));
+		for (int r = 0; r < Stats.buildings.length; r++) {
+			for (int c = 0; c < Stats.buildings[r].length;  c++) {
+				switch(Stats.buildings[r][c].toString().charAt(0)) {
 				
 					
 				}
@@ -262,5 +223,33 @@ public class Frame implements ActionListener, ChangeListener{
 			// JLabel(new ImageIcon(titleScreen)); gamemenu.setlabel(this);
 			break;
 		}
+	}
+	
+	public void createFrame() {
+		// --------------Frame Setup-----------------
+		//game = new Gamemenu(this, stats); // JFrame
+		start = new Startmenu(this); // start screen
+		pause = new Pausemenu(this); // pause screen
+		upgrade = new Upgrademenu(this);
+		build = new Buildmenu(this);
+		ep = new EventPlanner(stats);
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		JSlider slider = (JSlider)e.getSource();
+		switch (slider.getValue()) {
+		case 0:
+			Stats.tax = "Low";
+			break;
+		case 1:
+			Stats.tax = "Medium";
+			break;
+		case 2:
+			Stats.tax = "High";
+			break;
+		}
+		stats.updateRescources();
+		game.updateStatus();
 	}
 }

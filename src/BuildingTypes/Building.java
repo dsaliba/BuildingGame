@@ -1,7 +1,5 @@
 package BuildingTypes;
 
-import java.io.Serializable;
-
 /**
  * 
  * @author Dimitri Saliba

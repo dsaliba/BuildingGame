@@ -12,8 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
-import com.sun.javafx.iio.ImageStorage;
-
 public class Buildmenu extends JFrame {
 	private final String[] buildingLabels = {"f1", "c1", "d1", "r1", "p1"};
 	private Frame parent;

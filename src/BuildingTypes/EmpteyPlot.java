@@ -1,7 +1,5 @@
 package BuildingTypes;
 
-import java.io.Serializable;
-
 /**
  * 
  * @author Dimitri Saliba
@@ -20,14 +18,14 @@ public class EmpteyPlot extends Building {
 	}
 
 	@Override
-	public int upgrade(double money) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
 		return "e0";
+	}
+
+	@Override
+	public int upgrade(double money) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

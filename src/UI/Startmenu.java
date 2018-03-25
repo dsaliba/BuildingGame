@@ -1,14 +1,15 @@
 package UI;
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Startmenu extends JFrame {
 
@@ -37,6 +38,24 @@ public class Startmenu extends JFrame {
 	
 	
 	
+	public void createBackground() {
+
+		//BufferedImage titleScreen = null; // Images
+		try {
+			titleScreen = ImageIO.read(
+					new File("Images\\TitleScreen2.png"));
+			System.out.println("Get Image: " + titleScreen);
+			System.out.println("Load image into frame");
+
+			background = new JLabel(new ImageIcon(titleScreen));
+			getContentPane().add(background);
+			//pack();
+
+		} catch (Exception exp) {
+			exp.printStackTrace();
+		}
+	}
+
 	public void createButtons() {
 		startButton = new JButton("New Game"); // play button
 		startButton.setBounds(850, 400, 300, 100);
@@ -62,23 +81,5 @@ public class Startmenu extends JFrame {
 		exitButton.setActionCommand("exit");
 		exitButton.setBackground(Color.WHITE);
 
-	}
-
-	public void createBackground() {
-
-		//BufferedImage titleScreen = null; // Images
-		try {
-			titleScreen = ImageIO.read(
-					new File("Images\\TitleScreen2.png"));
-			System.out.println("Get Image: " + titleScreen);
-			System.out.println("Load image into frame");
-
-			background = new JLabel(new ImageIcon(titleScreen));
-			getContentPane().add(background);
-			//pack();
-
-		} catch (Exception exp) {
-			exp.printStackTrace();
-		}
 	}
 }
