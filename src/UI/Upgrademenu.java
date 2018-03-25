@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.Color;
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
@@ -30,11 +31,11 @@ public class Upgrademenu extends JFrame{
 	public void createButtons() {
 		
 		closeButton = new JButton("");
-		closeButton.setBounds(0, 1, 200, 100);
 		closeButton.setIcon(new ImageIcon("Images\\close.png"));
 		closeButton.addActionListener(parent);
 		closeButton.setActionCommand("close");
 		closeButton.setVisible(true);
+		closeButton.setBackground(Color.WHITE);
 		add(closeButton);
 		
 		remove = new JButton("");
@@ -42,6 +43,7 @@ public class Upgrademenu extends JFrame{
 		remove.addActionListener(parent);
 		remove.setActionCommand("remove");
 		remove.setVisible(true);
+		remove.setBackground(Color.WHITE);
 		add(remove);
 		
 		
@@ -50,6 +52,7 @@ public class Upgrademenu extends JFrame{
 		upgrade.addActionListener(parent);
 		upgrade.setActionCommand("upgrade");
 		upgrade.setVisible(true);
+		upgrade.setBackground(Color.WHITE);
 		add(upgrade);
 		
 													
