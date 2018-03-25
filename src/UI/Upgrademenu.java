@@ -21,7 +21,7 @@ public class Upgrademenu extends JFrame{
 		
 		this.parent = parent;
 		setLayout(new GridLayout(1, 3));
-		setBounds(500, 400, 590, 250);
+		setBounds(500, 400, 540, 180);
 		//setVisible(true);
 		createButtons();
 	}
