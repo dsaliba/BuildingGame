@@ -37,18 +37,18 @@ public class Recreation extends Building {
 
 
 	@Override
-	public double upgrade(double money) {
+	public int upgrade(double money) {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 150.0) {
+				if (money >= 150) {
 					level++;
-					return 150.0;
+					return 150;
 				}
 				break;
 			}
 		}
-		return -1.0;
+		return -1;
 	}
 	
 	@Override

@@ -20,7 +20,7 @@ public class EmpteyPlot extends Building {
 	}
 
 	@Override
-	public double upgrade(double money) {
+	public int upgrade(double money) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

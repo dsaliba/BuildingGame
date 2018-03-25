@@ -39,18 +39,18 @@ public class Agriculture extends Building {
 	
 
 	@Override
-	public double upgrade(double money) {
+	public int upgrade(double money) {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 300.0) {
+				if (money >= 300) {
 					level++;
-					return 300.0;
+					return 300;
 				}
 				break;
 			}
 		}
-		return -1.0;
+		return -1;
 	}
 
 	@Override

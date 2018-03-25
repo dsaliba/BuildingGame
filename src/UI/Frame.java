@@ -107,7 +107,7 @@ public class Frame implements ActionListener, ChangeListener{
 					upgrade.setVisible(true);
 				}
 		}
-		
+		int error = 0;
 		switch (e.getActionCommand()) {
 		case "new game":
 			start.setVisible(false);
@@ -157,8 +157,10 @@ public class Frame implements ActionListener, ChangeListener{
 
 
 		case "upgrade":
-			double cost = stats.buildings[lastX][lastY].upgrade(stats.coins);
-			System.out.println(cost);
+			int cost = stats.buildings[lastX][lastY].upgrade(stats.coins);
+			if (cost == -1) {
+				game.updateQueue("You dont have enough money to upgrade that building");
+			}
 			if (cost > 0) {
 				stats.coins -= cost;
 				game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + stats.buildings[lastX][lastY].toString() + ".png"));
@@ -175,7 +177,7 @@ public class Frame implements ActionListener, ChangeListener{
 			return;
 
 		case "0": // A
-			stats.setBuilding('a', lastX, lastY);
+			error = stats.setBuilding('a', lastX, lastY);
 			
 
 
@@ -186,7 +188,7 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 		case "1": // C
 			
-			stats.setBuilding('c', lastX, lastY);
+			error = stats.setBuilding('c', lastX, lastY);
 			
 			stats.updateRescources();
 			game.updateStatus();
@@ -195,7 +197,7 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 		case "2": // D
 			
-			stats.setBuilding('d', lastX, lastY);
+			error = stats.setBuilding('d', lastX, lastY);
 			
 			stats.updateRescources();
 			game.updateStatus();
@@ -204,7 +206,7 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 		case "3": // R
 		
-			stats.setBuilding('r', lastX, lastY);
+			error = stats.setBuilding('r', lastX, lastY);
 			
 			stats.updateRescources();
 
@@ -212,7 +214,7 @@ public class Frame implements ActionListener, ChangeListener{
 			build.setVisible(false);
 			break;
 		case "4": // S
-			stats.setBuilding('s', lastX, lastY);
+			error = stats.setBuilding('s', lastX, lastY);
 			
 			stats.updateRescources();
 			game.updateStatus();
@@ -222,7 +224,7 @@ public class Frame implements ActionListener, ChangeListener{
 		case "5": // E
 		case "remove":
 			System.out.println("rem");
-			stats.setBuilding('e', lastX, lastY);
+			error = stats.setBuilding('e', lastX, lastY);
 			
 			
 			stats.updateRescources();
@@ -232,6 +234,14 @@ public class Frame implements ActionListener, ChangeListener{
 			upgrade.setVisible(false);
 			break;
 
+		}
+		switch (error) {
+		case -1:
+			game.updateQueue("You dont have enough money to build that");
+			break;
+		case -2:
+			game.updateQueue("You already have a building there, you need to remove it to do this");
+			break;
 		}
 		game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + stats.buildings[lastX][lastY].toString() + ".png"));
 		for (int r = 0; r < stats.buildings.length; r++) {

@@ -47,7 +47,7 @@ public class Stats implements Serializable{
 		population = 0;
 		maxPopuulation = 0;
 		tax = "Medium";
-		coinTax = 0.0;
+		coinTax = 0;
 		numBuildings = 0;
 		taxHap = 0;
 		day = 0;
@@ -85,7 +85,7 @@ public class Stats implements Serializable{
 		updateRescources();
 	}
 	
-	public double setBuilding(char building, int x, int y) {
+	public int setBuilding(char building, int x, int y) {
 		if (!buildings[x][y].toString().equals("e0")) {
 			if(building == 'e') {
 				buildings[x][y] = new EmpteyPlot();
@@ -93,7 +93,7 @@ public class Stats implements Serializable{
 				numBuildings --;
 				return 0;
 			}
-			return -2.0;
+			return -2;
 		}
 		numBuildings ++;
 		switch (building) {
@@ -140,7 +140,7 @@ public class Stats implements Serializable{
 
 			
 		}
-		return -1.0;
+		return -1;
 	}
 	
 	public void updateRescources() {
