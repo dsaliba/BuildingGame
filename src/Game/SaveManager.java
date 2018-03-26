@@ -37,6 +37,7 @@ public class SaveManager {
 		Stats.coins = Integer.parseInt(reader.nextLine());
 		Stats.happiness = Integer.parseInt(reader.nextLine());
 		Stats.day = Integer.parseInt(reader.nextLine());
+		Stats.population = Integer.parseInt(reader.nextLine());
 		for (int r = 0; r < x; r++) {
 			for (int c = 0; c < y; c++) {
 				String id = reader.nextLine();
@@ -75,7 +76,7 @@ public class SaveManager {
 		try {
 			writer = new FileWriter(save);
 		
-		writer.write(Stats.coins + "\n" + Stats.happiness + "\n" + Stats.day + "\n");
+		writer.write(Stats.coins + "\n" + Stats.happiness + "\n" + Stats.day + "\n" + Stats.population + "\n");
 		for (Building[] buildings : Stats.buildings) {
 			for(Building building : buildings) {
 				writer.write(building.toString() + "\n");
