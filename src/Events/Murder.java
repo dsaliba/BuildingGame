@@ -8,6 +8,7 @@ public class Murder extends Event{
 		super();
 		probability = 1;
 		dayAvailable = 5;
+		buffer = 3;
 	}
 	
 	@Override

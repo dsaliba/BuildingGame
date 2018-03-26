@@ -2,6 +2,8 @@ package Game;
 
 import java.util.ArrayList;
 
+import javax.naming.InsufficientResourcesException;
+
 import Events.Event;
 import Events.Murder;
 
@@ -19,7 +21,7 @@ public class EventPlanner {
 		
 		int count = 0;
 		for (Event e: events) {
-			if (Stats.day >= e.dayAvailable && e.specialConditions(stats)) {
+			if (e.available(stats)) {
 				count += e.probability;
 			}
 			
@@ -31,13 +33,19 @@ public class EventPlanner {
 		
 		int newCount = 0;
 		int last = 0;
-		for (Event e: events) {
-			if (Stats.day >= e.dayAvailable && e.specialConditions(stats)) {
+		for (int i = 0; i < events.size(); i++) {
+			if (events.get(i).available(stats)) {
 				last = newCount;
-				newCount += e.probability;
+				newCount += events.get(i).probability;
 			}
 			if (rng > last && rng <= newCount) {
-				return e.execute(stats);
+				for (Event e: events) {
+					e.count ++;
+				}
+				events.get(i).count = 0;
+				String message = events.get(i).execute(stats);
+				if(events.get(i).buffer == -1)events.remove(i);
+				return message;
 			}
 		}
 		return null;
