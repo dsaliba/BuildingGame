@@ -55,7 +55,7 @@ public class Stats implements Serializable{
 	
 	
 	
-	public void runDay() {
+	public String runDay() {
 		day++;
 		updateRescources();
 		if (tax.equals("Low")) {
@@ -81,7 +81,17 @@ public class Stats implements Serializable{
 		
 		coins += coinTax;
 		
+		int leftover = food - population;
+		if (leftover >= 0) {
+			food = leftover;
+		}else {
+			food = 0;
+			population -= leftover;
+			updateRescources();
+			return -leftover + "People died of starvation, consider building or upgrading farms";
+		}
 		updateRescources();
+		return "";
 	}
 	
 	public int setBuilding(char building, int x, int y) {

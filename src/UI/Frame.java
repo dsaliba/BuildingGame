@@ -110,7 +110,7 @@ public class Frame implements ActionListener, ChangeListener{
 			game.updateDayButton("Next Day (" + Stats.day + ")"); // Sets text of button to match day
 			// Other method calling:
 
-			stats.runDay();
+			game.updateQueue(stats.runDay());
 			game.histogram.updateData();
 			game.updateQueue(ep.runEvent());
 			game.updateStatus();
