@@ -61,7 +61,7 @@ public class Frame implements ActionListener, ChangeListener{
 				int c = Integer.parseInt(id.substring(pipe+1, id.length()));
 				lastX = r;
 				lastY = c;
-				if(Stats.buildings[r][c].toString().equals("e0")) {
+				if(Stats.buildings.get(r).get(c).toString().equals("e0")) {
 					build.setVisible(true);
 				}
 				else {
@@ -118,13 +118,13 @@ public class Frame implements ActionListener, ChangeListener{
 
 
 		case "upgrade":
-			int cost = Stats.buildings[lastX][lastY].upgrade(Stats.coins);
+			int cost = Stats.buildings.get(lastX).get(lastY).upgrade(Stats.coins);
 			if (cost == -1) {
 				game.updateQueue("You dont have enough money to upgrade that building");
 			}
 			if (cost > 0) {
 				Stats.coins -= cost;
-				game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + Stats.buildings[lastX][lastY].toString() + ".png"));
+				game.grid.get(lastX).get(lastY).setIcon(new ImageIcon("Images//" + Stats.buildings.get(lastX).get(lastY).toString() + ".png"));
 			}
 			stats.updateRescources();
 			game.updateStatus();
@@ -204,10 +204,10 @@ public class Frame implements ActionListener, ChangeListener{
 			game.updateQueue("You already have a building there, you need to remove it to do this");
 			break;
 		}
-		game.grid[lastX][lastY].setIcon(new ImageIcon("Images//" + Stats.buildings[lastX][lastY].toString() + ".png"));
-		for (int r = 0; r < Stats.buildings.length; r++) {
-			for (int c = 0; c < Stats.buildings[r].length;  c++) {
-				switch(Stats.buildings[r][c].toString().charAt(0)) {
+		game.grid.get(lastX).get(lastY).setIcon(new ImageIcon("Images//" + Stats.buildings.get(lastX).get(lastY).toString() + ".png"));
+		for (int r = 0; r < Stats.width; r++) {
+			for (int c = 0; c < Stats.hieght;  c++) {
+				switch(Stats.buildings.get(r).get(c).toString().charAt(0)) {
 				
 					
 				}

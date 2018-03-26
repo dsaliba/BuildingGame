@@ -13,6 +13,7 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.Hashtable;
 
 import javax.swing.ImageIcon;
@@ -26,8 +27,8 @@ import javax.swing.SwingConstants;
 
 import org.jfree.ui.RefineryUtilities;
 
+import BuildingTypes.Building;
 import Game.Stats;
-import Game.gameConstants;
 
 public class Gamemenu extends JFrame implements ComponentListener {
 
@@ -43,7 +44,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 	private String[] queue;
 
-	public JButton[][] grid;
+	public ArrayList<ArrayList<JButton>> grid;
 	private JLabel farmImage;
 	private BufferedImage picture = null;
 
@@ -52,7 +53,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 	public Gamemenu(Frame parent, Stats stats) {
 		queue = new String[] { "\n", "\n", "\n" };
-		grid = new JButton[gameConstants.ROW][gameConstants.COL];
+		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
 		setBounds(600, 400, 2000, 1000);
@@ -122,7 +123,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		pauseButton.setActionCommand("pause");
 		pauseButton.setVisible(true);
 
-		String nextDayText = "Next Day (" + Stats.day + ")";
+		String nextDayText = "Next Day (" + stats.day + ")";
 		nextDay = new JButton(nextDayText); // next day button (Not implemented yet)
 		
 		nextDay.setFont(new Font("Monospaced", Font.BOLD, 20));
@@ -136,19 +137,20 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1.add(nextDay, d);
 
 
-		for (int row = 0; row < gameConstants.ROW; row++) {
-			for (int col = 0; col < gameConstants.COL; col++) {
+		for (int row = 0; row < stats.width; row++) {
+			grid.add(new ArrayList<JButton>());
+			for (int col = 0; col < stats.hieght; col++) {
 
 				//JLabel l = new JLabel(row + "|" + col);
-				grid[row][col] = new JButton("e0");
+				grid.get(row).add(new JButton("e0"));
 				//grid[row][col].add(l);
-				grid[row][col].setBackground(Color.WHITE);
-				panel2.add(grid[row][col]);
-				grid[row][col].addActionListener(parent);
-				grid[row][col].setActionCommand("tile" + row + "|" + col);
-				grid[row][col].setIcon(new ImageIcon("Images//" + Stats.buildings[row][col].toString() + ".png"));
+				grid.get(row).get(col).setBackground(Color.WHITE);
+				panel2.add(grid.get(row).get(col));
+				grid.get(row).get(col).addActionListener(parent);
+				grid.get(row).get(col).setActionCommand("tile" + row + "|" + col);
+				grid.get(row).get(col).setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
 				// grid[row][col].setActionCommand(row + "|" + col);
-				grid[row][col].addActionListener(new ActionListener() {
+				grid.get(row).get(col).addActionListener(new ActionListener() {
 
 					// methodbuild(row, col);
 
@@ -163,7 +165,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 					}
 				});
-				grid[row][col].addComponentListener(new ComponentAdapter() {
+				grid.get(row).get(col).addComponentListener(new ComponentAdapter() {
 				
 			      @Override
                   public void componentResized(ComponentEvent e) {
@@ -190,7 +192,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 	public void createPanels() {
 		panel2 = new JPanel();
-		panel2.setLayout(new GridLayout(gameConstants.ROW, gameConstants.COL));
+		panel2.setLayout(new GridLayout(stats.width, stats.hieght));
 		panel1 = new JPanel(); // Section 1
 
 		panel1.setLayout(new GridBagLayout());
@@ -281,10 +283,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 	public void creatHistogram() {
 		histogram = new Histogram(stats);
-		histogram.pack();
-	    RefineryUtilities.centerFrameOnScreen(histogram);
-	    
-	    histogram.setVisible(true);
 	    histogram.updateData();
 	    GridBagConstraints t = new GridBagConstraints();
 		t.fill = GridBagConstraints.BOTH;

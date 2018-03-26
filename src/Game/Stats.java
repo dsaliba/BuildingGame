@@ -1,6 +1,9 @@
 package Game;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 import BuildingTypes.Agriculture;
 import BuildingTypes.Building;
@@ -27,14 +30,19 @@ public class Stats implements Serializable{
 	public static int numBuildings;
 	public static int taxHap;
 	public static int day;
+	public static int width;
+	public static int hieght;
 	
-	public static Building[][] buildings;
+	public static ArrayList<ArrayList<Building>> buildings;
 	
 	public Stats() {
-		buildings = new Building[gameConstants.ROW][gameConstants.COL];
-		for (int r = 0; r < buildings.length; r++) {
-			for (int c = 0; c < buildings[r].length; c++) {
-				buildings[r][c] = new BuildingTypes.EmpteyPlot();
+		hieght = 6;
+		width = 6;
+		buildings = new ArrayList<ArrayList<Building>>();
+		for (int r = 0; r < width; r++) {
+			buildings.add(new ArrayList<Building>());
+			for (int c = 0; c < hieght; c++) {
+				buildings.get(r).add(new EmpteyPlot());
 			}
 		}
 		coins = 200;
@@ -99,9 +107,9 @@ public class Stats implements Serializable{
 	}
 	
 	public int setBuilding(char building, int x, int y) {
-		if (!buildings[x][y].toString().equals("e0")) {
+		if (!buildings.get(x).get(y).toString().equals("e0")) {
 			if(building == 'e') {
-				buildings[x][y] = new EmpteyPlot();
+				buildings.get(x).set(y, new EmpteyPlot());
 				updateRescources();
 				numBuildings --;
 				return 0;
@@ -112,7 +120,7 @@ public class Stats implements Serializable{
 		switch (building) {
 		case 'a':
 			if (coins >= 20) {
-				buildings[x][y] = new Agriculture();
+				buildings.get(x).set(y, new Agriculture());
 				coins -= 20;
 				updateRescources();
 				return 20;
@@ -120,7 +128,7 @@ public class Stats implements Serializable{
 			break;
 		case 'c':
 			if (coins >= 50) {
-				buildings[x][y] = new Commerce();
+				buildings.get(x).set(y, new Commerce());
 				coins -= 50;
 				updateRescources();
 				return 50;
@@ -128,7 +136,7 @@ public class Stats implements Serializable{
 			break;
 		case 'd':
 			if (coins >= 100) {
-				buildings[x][y] = new Defense();
+				buildings.get(x).set(y, new Defense());
 				coins -= 100;
 				updateRescources();
 				return 100;
@@ -136,7 +144,7 @@ public class Stats implements Serializable{
 			break;
 		case 's':
 			if (coins >= 25) {
-				buildings[x][y] = new Shelter();
+				buildings.get(x).set(y, new Shelter());
 				coins -= 25;
 				updateRescources();
 				return 25;
@@ -144,7 +152,7 @@ public class Stats implements Serializable{
 			break;
 		case 'r':
 			if (coins >= 10) {
-				buildings[x][y] = new Recreation();
+				buildings.get(x).set(y, new Recreation());
 				coins -= 10;
 				updateRescources();
 				return 10;
@@ -171,7 +179,7 @@ public class Stats implements Serializable{
 		maxPopuulation = 0;
 		foodIncome = 0;
 		coinsIncome = 0;
-		for (Building[] buildingList: buildings) {
+		for (ArrayList<Building> buildingList: buildings) {
 			for (Building building: buildingList) {
 				String id = building.toString();
 				switch (id.charAt(0)) {

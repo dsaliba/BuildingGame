@@ -11,13 +11,13 @@ import org.jfree.ui.ApplicationFrame;
 
 import Game.Stats;
 
-public class Histogram extends ApplicationFrame {
+public class Histogram{
 
 	private DefaultCategoryDataset dataset;
 	private Stats stats;
 	public ChartPanel chart;
    public Histogram(Stats stats) {
-      super("");
+      //super("");
       this.stats = stats;
       dataset = new DefaultCategoryDataset();
       JFreeChart lineChart = ChartFactory.createLineChart(
@@ -29,7 +29,7 @@ public class Histogram extends ApplicationFrame {
          
       
       chart = new ChartPanel(lineChart);
-      chart.setPreferredSize( new java.awt.Dimension( 560 , 367 ) );
+      //chart.setPreferredSize( new java.awt.Dimension( 560 , 367 ) );
       updateData();
       //setContentPane(chart);
       
