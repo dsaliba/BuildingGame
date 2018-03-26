@@ -159,7 +159,7 @@ public class Stats implements Serializable{
 	@Override
 	public String toString() {
 		updateRescources();
-		return "Gold: " + coins + " \nPeople: " + population + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
+		return "Gold: " + coins + " \nPeople: " + population + "/" + maxPopuulation  + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
 				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Income: "
 				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome;
 	}
