@@ -8,17 +8,18 @@ public class Murder extends Event{
 		super();
 		probability = 1;
 		dayAvailable = 5;
+		buffer = 3;
 	}
 	
 	@Override
 	public String execute(Stats stats) {
-		stats.population --;
+		Stats.population --;
 		return "A town member has been killed";
 	}
 
 	@Override
 	public boolean specialConditions(Stats stats) {
-		return (stats.population > 1);
+		return (Stats.population > 1);
 	}
 
 }

@@ -2,6 +2,7 @@ package UI;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.Image;
 
@@ -11,8 +12,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
-
-import com.sun.javafx.iio.ImageStorage;
 
 public class Buildmenu extends JFrame {
 	private final String[] buildingLabels = {"f1", "c1", "d1", "r1", "p1"};
@@ -29,32 +28,48 @@ public class Buildmenu extends JFrame {
 
 		this.parent = parent;
 		setLayout(new GridLayout(1, 6));
+<<<<<<< HEAD
 		setBounds(500, 400, 1000, 250);
 		setResizable(false);
+=======
+		setBounds(500, 400, 1000, 180);
+>>>>>>> 25bff48ae1f6aad47d32433087ee2d0766f8b720
 		// setVisible(true);
 		createButtons();
 		createImages();
 	}
 
 	public void createButtons() {
-
-		closeButton = new JButton("Close");
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridheight = 1;
+		c.weightx = 1;
+		
+		closeButton = new JButton("");
 		closeButton.setBounds(0, 1, 200, 100);
-		closeButton.setFont(new Font("Monospaced", Font.BOLD, 40));
-		closeButton.setBackground(Color.WHITE);
+		closeButton.setIcon(new ImageIcon("Images\\close.png"));
 		closeButton.addActionListener(parent);
 		closeButton.setActionCommand("close");
+		closeButton.setBackground(Color.WHITE);
 		closeButton.setVisible(true);
-		add(closeButton);
+		add(closeButton, c);
 
 		for (int i = 0; i < buildingLabels.length; i++) {
+			GridBagConstraints b = new GridBagConstraints();
+			b.fill = GridBagConstraints.BOTH;
+			b.gridx =i+1;
+			b.gridy = 0;
+			b.gridheight = 1;
+			b.weightx = 1;
 			bl = new JButton("");
 			bl.setIcon(new ImageIcon("Images\\" + buildingLabels[i] + ".png"));
 			bl.addActionListener(parent);
 			bl.setActionCommand("" + i);
 			bl.setFont(new Font("Monospaced", Font.BOLD, 40));
 			bl.setBackground(Color.WHITE);
-			add(bl);
+			add(bl, b);
 		}
 
 

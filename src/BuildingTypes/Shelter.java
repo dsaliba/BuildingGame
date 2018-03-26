@@ -1,7 +1,5 @@
 package BuildingTypes;
 
-import java.io.Serializable;
-
 /**
  * 
  * @author Dimitri Saliba
@@ -41,29 +39,29 @@ public class Shelter extends Building {
 
 
 	@Override
-	public double upgrade(double money) {
+	public String toString() {
+		return "p" + level;
+	}
+	
+	@Override
+	public int upgrade(double money) {
 		if (level < 4) {
 			switch (level){
 			case 1:
 				if (money >= 100.0) {
 					level++;
-					return 100.0;
+					return 100;
 				}
 				break;
 			case 2: 
 				if (money >= 500.0) {
 					level++;
-					return 500.0;
+					return 500;
 				}
 				break;
 			}
 		}
-		return -1.0;
-	}
-	
-	@Override
-	public String toString() {
-		return "p" + level;
+		return -1;
 	}
 	
 }

@@ -1,7 +1,5 @@
 package BuildingTypes;
 
-import java.io.Serializable;
-
 /**
  * 
  * @author Dimitri Saliba
@@ -37,22 +35,22 @@ public class Recreation extends Building {
 
 
 	@Override
-	public double upgrade(double money) {
+	public String toString() {
+		return "r" + level;
+	}
+	
+	@Override
+	public int upgrade(double money) {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 150.0) {
+				if (money >= 150) {
 					level++;
-					return 150.0;
+					return 150;
 				}
 				break;
 			}
 		}
-		return -1.0;
-	}
-	
-	@Override
-	public String toString() {
-		return "r" + level;
+		return -1;
 	}
 }

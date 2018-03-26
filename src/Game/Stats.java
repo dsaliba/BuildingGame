@@ -1,7 +1,6 @@
 package Game;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import BuildingTypes.Agriculture;
 import BuildingTypes.Building;
@@ -47,7 +46,7 @@ public class Stats implements Serializable{
 		population = 0;
 		maxPopuulation = 0;
 		tax = "Medium";
-		coinTax = 0.0;
+		coinTax = 0;
 		numBuildings = 0;
 		taxHap = 0;
 		day = 0;
@@ -67,7 +66,7 @@ public class Stats implements Serializable{
 		coins += coinsIncome;
 		food += foodIncome;
 		if(happiness > 30) {
-			int people = (int) ((Math.random() * 5) * ((double)population + 0.5));
+			int people = (int) ((Math.random() * 5) * (population + 0.5));
 		if (population < 70) {
 			if (people > 1) people = 1;
 		}
@@ -85,7 +84,7 @@ public class Stats implements Serializable{
 		updateRescources();
 	}
 	
-	public double setBuilding(char building, int x, int y) {
+	public int setBuilding(char building, int x, int y) {
 		if (!buildings[x][y].toString().equals("e0")) {
 			if(building == 'e') {
 				buildings[x][y] = new EmpteyPlot();
@@ -93,7 +92,7 @@ public class Stats implements Serializable{
 				numBuildings --;
 				return 0;
 			}
-			return -2.0;
+			return -2;
 		}
 		numBuildings ++;
 		switch (building) {
@@ -140,8 +139,17 @@ public class Stats implements Serializable{
 
 			
 		}
-		return -1.0;
+		return -1;
 	}
+	
+	@Override
+	public String toString() {
+		updateRescources();
+		return "Gold: " + coins + " \nPeople: " + population + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
+				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Income: "
+				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome;
+	}
+
 	
 	public void updateRescources() {
 		defense = 0;
@@ -192,13 +200,5 @@ public class Stats implements Serializable{
 		if (happiness <= 0) {
 			happiness = 0;
 		}
-	}
-
-	
-	public String toString() {
-		updateRescources();
-		return "Gold: " + coins + " \nPeople: " + population + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
-				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Income: "
-				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome;
 	}
 }

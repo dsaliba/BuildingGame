@@ -1,7 +1,5 @@
 package BuildingTypes;
 
-import java.io.Serializable;
-
 /**
  * 
  * @author Dimitri Saliba
@@ -39,23 +37,23 @@ public class Agriculture extends Building {
 	
 
 	@Override
-	public double upgrade(double money) {
+	public String toString() {
+		return "f" + level;
+	}
+
+	@Override
+	public int upgrade(double money) {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 300.0) {
+				if (money >= 300) {
 					level++;
-					return 300.0;
+					return 300;
 				}
 				break;
 			}
 		}
-		return -1.0;
-	}
-
-	@Override
-	public String toString() {
-		return "f" + level;
+		return -1;
 	}
 	
 }

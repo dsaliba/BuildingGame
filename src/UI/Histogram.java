@@ -2,16 +2,14 @@ package UI;
 
 
 
-import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.ui.ApplicationFrame;
-import org.jfree.ui.RefineryUtilities;
-
-import Game.Stats;
-
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.ui.ApplicationFrame;
+
+import Game.Stats;
 
 public class Histogram extends ApplicationFrame {
 
@@ -38,11 +36,11 @@ public class Histogram extends ApplicationFrame {
    }
 
    public void updateData() {
-      dataset.addValue( stats.coins , "Coins" , stats.day + "" );
-      dataset.addValue( stats.food , "Food" , stats.day + "" );
-      dataset.addValue( stats.population , "Population" , stats.day + "" );
-      dataset.addValue( stats.defense , "Defense" , stats.day + "" );
-      dataset.addValue( stats.happiness , "Happiness" , stats.day + "" );
+      dataset.addValue( Stats.coins , "Coins" , Stats.day + "" );
+      dataset.addValue( Stats.food , "Food" , Stats.day + "" );
+      dataset.addValue( Stats.population , "Population" , Stats.day + "" );
+      dataset.addValue( Stats.defense , "Defense" , Stats.day + "" );
+      dataset.addValue( Stats.happiness , "Happiness" , Stats.day + "" );
 
    }
    

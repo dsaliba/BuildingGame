@@ -1,7 +1,5 @@
 package BuildingTypes;
 
-import java.io.Serializable;
-
 /**
  * 
  * @author Dimitri Saliba
@@ -38,22 +36,22 @@ public class Commerce extends Building {
 
 
 	@Override
-	public double upgrade(double money) {
+	public String toString() {
+		return "c" + level;
+	}
+	
+	@Override
+	public int upgrade(double money) {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 250.0) {
+				if (money >= 250) {
 					level++;
-					return 250.0;
+					return 250;
 				}
 				break;
 			}
 		}
-		return -1.0;
-	}
-	
-	@Override
-	public String toString() {
-		return "c" + level;
+		return -1;
 	}
 }

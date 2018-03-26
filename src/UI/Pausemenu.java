@@ -6,6 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+import javax.swing.WindowConstants;
 
 public class Pausemenu extends JFrame{
 
@@ -18,7 +19,7 @@ public class Pausemenu extends JFrame{
 	public Pausemenu(Frame parent) {
 		this.parent = parent;
 		System.out.println("isrunning");
-		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		setBounds(1350, 500, 500, 700);
 		setLayout(null);
 		setResizable(false);

@@ -2,15 +2,17 @@ package Game;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.Scanner;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
-import BuildingTypes.*;
+import BuildingTypes.Agriculture;
+import BuildingTypes.Building;
+import BuildingTypes.Commerce;
+import BuildingTypes.Defense;
+import BuildingTypes.EmpteyPlot;
+import BuildingTypes.Recreation;
+import BuildingTypes.Shelter;
 
 
 
@@ -32,30 +34,30 @@ public class SaveManager {
 			reader = new Scanner(save);
 		
 		
-		stats.coins = Integer.parseInt(reader.nextLine());
-		stats.happiness = Integer.parseInt(reader.nextLine());
-		stats.day = Integer.parseInt(reader.nextLine());
+		Stats.coins = Integer.parseInt(reader.nextLine());
+		Stats.happiness = Integer.parseInt(reader.nextLine());
+		Stats.day = Integer.parseInt(reader.nextLine());
 		for (int r = 0; r < x; r++) {
 			for (int c = 0; c < y; c++) {
 				String id = reader.nextLine();
 				switch(id.charAt(0)) {
 				case 'f':
-					stats.buildings[r][c] = new Agriculture(id.charAt(1)-48);
+					Stats.buildings[r][c] = new Agriculture(id.charAt(1)-48);
 					break;
 				case 'c':
-					stats.buildings[r][c] = new Commerce(id.charAt(1)-48);
+					Stats.buildings[r][c] = new Commerce(id.charAt(1)-48);
 					break;
 				case 'd':
-					stats.buildings[r][c] = new Defense(id.charAt(1)-48);
+					Stats.buildings[r][c] = new Defense(id.charAt(1)-48);
 					break;
 				case 'h':
-					stats.buildings[r][c] = new Recreation(id.charAt(1)-48);
+					Stats.buildings[r][c] = new Recreation(id.charAt(1)-48);
 					break;
 				case 'p':
-					stats.buildings[r][c] = new Shelter(id.charAt(1)-48);
+					Stats.buildings[r][c] = new Shelter(id.charAt(1)-48);
 					break;
 				default:
-					stats.buildings[r][c] = new EmpteyPlot();
+					Stats.buildings[r][c] = new EmpteyPlot();
 				}
 			}
 		}
@@ -73,8 +75,8 @@ public class SaveManager {
 		try {
 			writer = new FileWriter(save);
 		
-		writer.write(stats.coins + "\n" + stats.happiness + "\n" + stats.day + "\n");
-		for (Building[] buildings : stats.buildings) {
+		writer.write(Stats.coins + "\n" + Stats.happiness + "\n" + Stats.day + "\n");
+		for (Building[] buildings : Stats.buildings) {
 			for(Building building : buildings) {
 				writer.write(building.toString() + "\n");
 			}
