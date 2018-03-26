@@ -48,7 +48,7 @@ public class Upgrademenu extends JFrame{
 		add(remove);
 		
 		
-		upgrade = new JButton("Upgrade/Build");
+		upgrade = new JButton("Upgrade");
 		upgrade.setBackground(Color.WHITE);
 		upgrade.setFont(new Font("Monospaced", Font.BOLD, 40));
 		upgrade.addActionListener(parent);
