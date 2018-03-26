@@ -28,12 +28,10 @@ public class Buildmenu extends JFrame {
 
 		this.parent = parent;
 		setLayout(new GridLayout(1, 6));
-<<<<<<< HEAD
 		setBounds(500, 400, 1000, 250);
 		setResizable(false);
-=======
 		setBounds(500, 400, 1000, 180);
->>>>>>> 25bff48ae1f6aad47d32433087ee2d0766f8b720
+
 		// setVisible(true);
 		createButtons();
 		createImages();

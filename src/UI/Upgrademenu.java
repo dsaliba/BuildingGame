@@ -1,6 +1,7 @@
 package UI;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.ImageIcon;
@@ -47,14 +48,11 @@ public class Upgrademenu extends JFrame{
 		add(remove);
 		
 		
-<<<<<<< HEAD
 		upgrade = new JButton("Upgrade");
 		upgrade.setBackground(Color.WHITE);
 		upgrade.setFont(new Font("Monospaced", Font.BOLD, 40));
-=======
 		upgrade = new JButton("");
 		upgrade.setIcon(new ImageIcon("Images\\upgrade.png"));
->>>>>>> 25bff48ae1f6aad47d32433087ee2d0766f8b720
 		upgrade.addActionListener(parent);
 		upgrade.setActionCommand("upgrade");
 		upgrade.setVisible(true);
