@@ -38,9 +38,9 @@ public class SaveManager {
 		stats.day = Integer.parseInt(reader.nextLine());
 		stats.population = Integer.parseInt(reader.nextLine());
 		stats.width = Integer.parseInt(reader.nextLine());
-		stats.hieght = Integer.parseInt(reader.nextLine());
+		stats.height = Integer.parseInt(reader.nextLine());
 		for (int r = 0; r < stats.width; r++) {
-			for (int c = 0; c < stats.hieght; c++) {
+			for (int c = 0; c < stats.height; c++) {
 				String id = reader.nextLine();
 				switch(id.charAt(0)) {
 				case 'f':
@@ -77,7 +77,7 @@ public class SaveManager {
 		try {
 			writer = new FileWriter(save);
 		
-		writer.write(Stats.coins + "\n" + Stats.happiness + "\n" + Stats.day + "\n" + Stats.population + "\n" + stats.width + "\n" + stats.hieght + "\n");
+		writer.write(Stats.coins + "\n" + Stats.happiness + "\n" + Stats.day + "\n" + Stats.population + "\n" + stats.width + "\n" + stats.height + "\n");
 		for (ArrayList<Building> buildings : Stats.buildings) {
 			for(Building building : buildings) {
 				writer.write(building.toString() + "\n");

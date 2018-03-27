@@ -31,17 +31,17 @@ public class Stats implements Serializable{
 	public static int taxHap;
 	public static int day;
 	public static int width;
-	public static int hieght;
+	public static int height;
 	
 	public static ArrayList<ArrayList<Building>> buildings;
 	
 	public Stats() {
-		hieght = 6;
+		height = 6;
 		width = 6;
 		buildings = new ArrayList<ArrayList<Building>>();
 		for (int r = 0; r < width; r++) {
 			buildings.add(new ArrayList<Building>());
-			for (int c = 0; c < hieght; c++) {
+			for (int c = 0; c < height; c++) {
 				buildings.get(r).add(new EmpteyPlot());
 			}
 		}

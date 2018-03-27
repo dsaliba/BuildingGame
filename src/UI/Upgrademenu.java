@@ -64,5 +64,11 @@ public class Upgrademenu extends JFrame{
 		
 		}
 	
+	public void toggleUpgrade(boolean showUpgrade) {
+		if(showUpgrade == true) {
+			
+		}
+	}
+	
 	
 }
