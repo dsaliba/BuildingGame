@@ -2,6 +2,7 @@ package UI;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -45,7 +46,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JSlider taxSlider;
 	private JButton addGrid;
 	public Histogram histogram;
-	private int expasionCount;
+	private int expansionCount;
 	private String[] queue;
 
 	public ArrayList<ArrayList<JButton>> grid;
@@ -55,7 +56,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
-		expasionCount = 0;
+		expansionCount = 0;
 		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
@@ -193,7 +194,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		if (stats.coins > stats.width * 200) {
 			stats.width++;
 			stats.height++;
-			expasionCount++;
+			expansionCount++;
 			for(ArrayList<Building> list: stats.buildings) {
 				list.add(new EmpteyPlot());
 			}
@@ -241,18 +242,25 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				//
 				// });
 			}
-			for (int row = 0; row < stats.width -1 + expasionCount; row++) {
-				for (int col = 0; col < stats.height - 1 + expasionCount; col++) {
+			for (int row = 0; row < stats.width -1 + expansionCount; row++) {
+				for (int col = 0; col < stats.height - 1 + expansionCount; col++) {
+					
 				//	System.out.print("test" + grid.get(row).get(col));
-					//System.out.println(row + " | " + col);
+					System.out.println(row + " | " + col + "| Expansion: " + expansionCount);
 					if (col == row) {
 						panel2.add(grid.get(row).get(col));
+						grid.get(row).add(new JButton("e0"));
+						grid.get(row).get(col).setBackground(Color.WHITE);
 					}
-					if (col == expasionCount + col) {
+					if (col == expansionCount + col) {
 						panel2.add(grid.get(row).get(col));
+						grid.get(row).add(new JButton("e0"));
+						grid.get(row).get(col).setBackground(Color.WHITE);
 					}
-					if (row == expasionCount + row) {
+					if (row == expansionCount + row) {
 						panel2.add(grid.get(row).get(col));
+						grid.get(row).add(new JButton("e0"));
+						grid.get(row).get(col).setBackground(Color.WHITE);
 					}
 					grid.get(row).get(col).setVisible(true);
 				}
@@ -272,8 +280,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public void createPanels() {
 
 		panel2 = new JPanel();
-		panel2.setLayout(new GridLayout(stats.width, stats.height));
-
+//		panel2.setLayout(new GridLayout(stats.width, stats.height));
+		panel2.setLayout(new FlowLayout());
 		panel1 = new JPanel(); // Section 1
 
 		panel1.setLayout(new GridBagLayout());
