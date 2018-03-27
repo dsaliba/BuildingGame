@@ -292,6 +292,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		t.gridwidth = 2;
 		t.weightx = 2;
 	    panel1.add(histogram.chart, t);
+	    GridBagConstraints a = new GridBagConstraints();
+		a.fill = GridBagConstraints.BOTH;
+		a.gridx = 1;
+		a.gridy = 4;
+		a.weightx = 0;
+		a.gridwidth = 2;
+	    panel1.add(histogram.chart,a);
 	}
 
 	public void updateDayButton(String text) {
