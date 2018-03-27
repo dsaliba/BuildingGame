@@ -168,25 +168,25 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(row).get(col).setActionCommand("tile" + row + "|" + col);
 				grid.get(row).get(col).setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
 				
-				grid.get(row).get(col).addComponentListener(new ComponentAdapter() {
-				
-			      @Override
-                  public void componentResized(ComponentEvent e) {
-                      JButton btn = (JButton) e.getComponent();
-                      Dimension size = btn.getSize();
-                      Insets insets = btn.getInsets();
-                      size.width -= insets.left + insets.right;
-                      size.height -= insets.top + insets.bottom;
-                      if (size.width > size.height) {
-                          size.width = -1;
-                      } else {
-                          size.height = -1;
-                      }
-                   //   Image scaled = .getScaledInstance(size.width, size.height, java.awt.Image.SCALE_SMOOTH);
-                 //     btn.setIcon(new ImageIcon(scaled));
-                  }
-
-              });
+//				grid.get(row).get(col).addComponentListener(new ComponentAdapter() {
+//				
+//			      @Override
+//                  public void componentResized(ComponentEvent e) {
+//                      JButton btn = (JButton) e.getComponent();
+//                      Dimension size = btn.getSize();
+//                      Insets insets = btn.getInsets();
+//                      size.width -= insets.left + insets.right;
+//                      size.height -= insets.top + insets.bottom;
+//                      if (size.width > size.height) {
+//                          size.width = -1;
+//                      } else {
+//                          size.height = -1;
+//                      }
+//                   //   Image scaled = .getScaledInstance(size.width, size.height, java.awt.Image.SCALE_SMOOTH);
+//                 //     btn.setIcon(new ImageIcon(scaled));
+//                  }
+//
+//              });
 
 			}
 		}
@@ -208,23 +208,23 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				System.out.println("tile" + stats.width + "|" + i);
 				grid.get(stats.width-1).get(i).setActionCommand("tile" + stats.width + "|" + i);
 				grid.get(stats.width-1).get(i).setIcon(new ImageIcon("Images//" + stats.buildings.get(stats.width-1).get(i).toString() + ".png"));
-				grid.get(stats.width-1).get(i).addComponentListener(new ComponentAdapter() {
-				
-			      @Override
-                  public void componentResized(ComponentEvent e) {
-                      JButton btn = (JButton) e.getComponent();
-                      Dimension size = btn.getSize();
-                      Insets insets = btn.getInsets();
-                      size.width -= insets.left + insets.right;
-                      size.height -= insets.top + insets.bottom;
-                      if (size.width > size.height) {
-                          size.width = -1;
-                      } else {
-                          size.height = -1;
-                      }
-			}
-				
-		});
+//				grid.get(stats.width-1).get(i).addComponentListener(new ComponentAdapter() {
+//				
+//			      @Override
+//                  public void componentResized(ComponentEvent e) {
+//                      JButton btn = (JButton) e.getComponent();
+//                      Dimension size = btn.getSize();
+//                      Insets insets = btn.getInsets();
+//                      size.width -= insets.left + insets.right;
+//                      size.height -= insets.top + insets.bottom;
+//                      if (size.width > size.height) {
+//                          size.width = -1;
+//                      } else {
+//                          size.height = -1;
+//                      }
+//			}
+//				
+//		});
 			}
 			//add(panel2);
 			addGrid.setText("Buy Land: [" + 200*stats.width + "]");
