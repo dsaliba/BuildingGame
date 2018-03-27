@@ -55,7 +55,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
-		expasionCount = 6;
+		expasionCount = 0;
 		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
@@ -218,6 +218,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				// panel2.add(grid.get(stats.width-1).get(i));
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
 				System.out.println("tile" + stats.width + "|" + i);
+				
 				grid.get(stats.width - 1).get(i).setActionCommand("tile" + stats.width + "|" + i);
 				grid.get(stats.width - 1).get(i).setIcon(
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
@@ -242,7 +243,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			}
 			for (int row = 0; row < stats.width -1 + expasionCount; row++) {
 				for (int col = 0; col < stats.height - 1 + expasionCount; col++) {
-					System.out.println(row + " | " + col);
+				//	System.out.print("test" + grid.get(row).get(col));
+					//System.out.println(row + " | " + col);
 					if (col == row) {
 						panel2.add(grid.get(row).get(col));
 					}
@@ -252,6 +254,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 					if (row == expasionCount + row) {
 						panel2.add(grid.get(row).get(col));
 					}
+					grid.get(row).get(col).setVisible(true);
 				}
 			}
 			// add(panel2);

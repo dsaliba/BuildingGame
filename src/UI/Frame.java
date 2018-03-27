@@ -62,7 +62,8 @@ public class Frame implements ActionListener, ChangeListener{
 				lastX = r;
 				lastY = c;
 				if(Stats.buildings.get(r).get(c).toString().equals("e0")) {
-					build.setVisible(true);
+					System.out.println(r + "|" + c);
+					build.setVisible(true); ///buildshit
 				}
 				else {
 					upgrade.setVisible(true);
@@ -147,9 +148,6 @@ public class Frame implements ActionListener, ChangeListener{
 
 		case "0": // A
 			error = stats.setBuilding('a', lastX, lastY);
-			
-
-
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
