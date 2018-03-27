@@ -131,7 +131,15 @@ public class Frame implements ActionListener, ChangeListener{
 			upgrade.dispose();
 			break;
 
-
+		case "buy land":
+			error = game.buyTiles();
+			if (error > 0) {
+				stats.coins -=  error;
+			}
+			stats.updateRescources();
+			game.updateStatus();
+			break;
+			
 		case "close":
 			upgrade.dispose();
 			build.dispose();
@@ -203,16 +211,18 @@ public class Frame implements ActionListener, ChangeListener{
 		case -2:
 			game.updateQueue("You already have a building there, you need to remove it to do this");
 			break;
+		case -3:
+			game.updateQueue("You dont have enough money to buy land");
 		}
 		game.grid.get(lastX).get(lastY).setIcon(new ImageIcon("Images//" + Stats.buildings.get(lastX).get(lastY).toString() + ".png"));
-		for (int r = 0; r < Stats.width; r++) {
-			for (int c = 0; c < Stats.hieght;  c++) {
-				switch(Stats.buildings.get(r).get(c).toString().charAt(0)) {
-				
-					
-				}
-			}
-		}
+//		for (int r = 0; r < Stats.width; r++) {
+//			for (int c = 0; c < Stats.hieght;  c++) {
+//				switch(Stats.buildings.get(r).get(c).toString().charAt(0)) {
+//				
+//					
+//				}
+//			}
+//		}
 
 	}
 

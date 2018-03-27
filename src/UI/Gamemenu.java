@@ -27,6 +27,8 @@ import javax.swing.SwingConstants;
 
 import org.jfree.ui.RefineryUtilities;
 
+import com.sun.rowset.internal.Row;
+
 import BuildingTypes.Building;
 import BuildingTypes.EmpteyPlot;
 import Game.Stats;
@@ -41,6 +43,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JTextArea status;
 	private JTextArea console;
 	private JSlider taxSlider;
+	private JButton addGrid;
 	public Histogram histogram;
 
 	private String[] queue;
@@ -53,11 +56,11 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
-		queue = new String[] { "\n", "\n", "\n" };
+		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
-		setBounds(600, 400, 2000, 1000);
+		setBounds(0, 0, 1920, 1080);
 		setResizable(true);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,6 +118,12 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		d.gridy = 0;
 		d.gridheight = 2;
 		d.weightx = 0.5;
+		
+		GridBagConstraints g = new GridBagConstraints();
+		g.fill = GridBagConstraints.BOTH;
+		g.gridx = 0;
+		g.gridy = 2;
+		g.gridwidth = 3;
 
 		pauseButton = new JButton("Pause");// pause button
 		
@@ -132,8 +141,16 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		nextDay.setActionCommand("nextDay");
 		nextDay.setBackground(Color.WHITE);
 		nextDay.setVisible(true);
+		
+		addGrid = new JButton("Buy Land: [" + 200*stats.width + "]");
+		
+		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
+		addGrid.setBackground(Color.WHITE);
+		addGrid.addActionListener(parent);
+		addGrid.setActionCommand("buy land");
+		addGrid.setVisible(true);
 
-
+		panel1.add(addGrid, g);
 		panel1.add(pauseButton, c);
 		panel1.add(nextDay, d);
 
@@ -177,21 +194,21 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	}
 
 	public int buyTiles() {
-		if (stats.coins > stats.width *  400) {
+		if (stats.coins > stats.width *  200) {
 			stats.width ++;
 			stats.hieght ++;
 			grid.add(new ArrayList<JButton>());
 			stats.buildings.add(new ArrayList<Building>());
-			for (int i = 0; i < stats.width; i++) {
-				stats.buildings.get(stats.width).set(i, new EmpteyPlot());
-				
-				grid.get(stats.width).add(new JButton("e0"));
-				grid.get(stats.width).get(i).setBackground(Color.WHITE);
-				panel2.add(grid.get(stats.width).get(i));
-				grid.get(stats.width).get(i).addActionListener(parent);
-				grid.get(stats.width).get(i).setActionCommand("tile" + stats.width + "|" + i);
-				grid.get(stats.width).get(i).setIcon(new ImageIcon("Images//" + stats.buildings.get(stats.width).get(i).toString() + ".png"));
-				grid.get(stats.width).get(i).addComponentListener(new ComponentAdapter() {
+			for (int i = 0; i < stats.hieght; i++) {
+				stats.buildings.get(stats.width-1).add(new EmpteyPlot());
+				grid.get(stats.width-1).add(new JButton("e0"));
+				grid.get(stats.width-1).get(i).setBackground(Color.WHITE);
+				//panel2.add(grid.get(stats.width-1).get(i));
+				grid.get(stats.width-1).get(i).addActionListener(parent);
+				System.out.println("tile" + stats.width + "|" + i);
+				grid.get(stats.width-1).get(i).setActionCommand("tile" + stats.width + "|" + i);
+				grid.get(stats.width-1).get(i).setIcon(new ImageIcon("Images//" + stats.buildings.get(stats.width-1).get(i).toString() + ".png"));
+				grid.get(stats.width-1).get(i).addComponentListener(new ComponentAdapter() {
 				
 			      @Override
                   public void componentResized(ComponentEvent e) {
@@ -209,30 +226,46 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				
 		});
 			}
-			return stats.width *  400;
+			//add(panel2);
+			addGrid.setText("Buy Land: [" + 200*stats.width + "]");
+			createGrid();
+			return stats.width *  200;
 			
 		}else {
-			return -1;
+			return -3;
 		}
 	}
 	
 	
 	public void createPanels() {
+		
 		panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(stats.width, stats.hieght));
+		
 		panel1 = new JPanel(); // Section 1
 
 		panel1.setLayout(new GridBagLayout());
 
 	}
+	
+	public void createGrid() {
+		panel2 = new JPanel();
+		panel2.setLayout(new GridLayout(stats.width, stats.hieght));
+		for(int row = 0; row < stats.width-1; row++) {
+			for(int col = 0; col < stats.hieght-1; col++) {
+				panel2.add(grid.get(row).get(col));
+			}
+		}
+	}
 
 	public void createSlider() {
 
-		GridBagConstraints s = new GridBagConstraints();
-		s.fill = GridBagConstraints.NONE;
-		s.gridx = 1;
-		s.gridy = 1;
-		s.gridheight = 1;
+
+		GridBagConstraints t = new GridBagConstraints();
+		t.fill = GridBagConstraints.BOTH;
+		t.gridx = 1;
+		t.gridy = 1;
+		t.gridheight = 1;
 
 		taxSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 2, 1);
 		
@@ -246,7 +279,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		taxSlider.setLabelTable(labelTable);
 		taxSlider.setPaintLabels(true);
 
-		panel1.add(taxSlider, s);
+		panel1.add(taxSlider, t);
 	}
 	
 	
@@ -256,8 +289,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		GridBagConstraints a = new GridBagConstraints();
 		a.fill = GridBagConstraints.BOTH;
 		a.gridx = 0;
-		a.gridy = 3;
-		//a.gridwidth = 1;
+		a.gridy = 4;
 		a.weightx = 0;
 		
 		
@@ -267,7 +299,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		status = new JTextArea(text);
 		status.setLineWrap(true);
 		status.setWrapStyleWord(true);
-		status.setFont(new Font("Monospaced", Font.PLAIN, 40));
+		status.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		// status.setLineWrap(true);
 		status.setEditable(false);
 		status.setVisible(true);
@@ -292,17 +324,17 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		GridBagConstraints b = new GridBagConstraints();
 		b.fill = GridBagConstraints.BOTH;
 		b.gridx = 0;
-		b.gridy = 4;
+		b.gridy = 6;
 		b.gridwidth = 3;
 		b.gridheight = 0;
 		b.weighty = 0;
-		b.weightx = 1;
+		b.weightx = 0;
 		
-		console = new JTextArea(queue[2] + "\n" + queue[1] + "\n" + queue[0]);
+		console = new JTextArea(queue[5] + "\n" + queue[4] + "\n" + queue[3] + "\n" + queue[2] + "\n" + queue[1] + "\n" + queue[0]);
 		console.setLineWrap(true);
 		console.setWrapStyleWord(true);
 		
-		console.setFont(new Font("Monospaced", Font.PLAIN, 35));
+		console.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		console.setEditable(false);
 		console.setVisible(true);
 		panel1.add(console, b);
@@ -311,14 +343,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public void creatHistogram() {
 		histogram = new Histogram(stats);
 	    histogram.updateData();
-	    GridBagConstraints t = new GridBagConstraints();
-		t.fill = GridBagConstraints.BOTH;
-		t.gridx = 1;
-		t.gridy = 3;
-		t.gridheight = 1;
-		t.gridwidth = 2;
-		t.weightx = 2;
-	    panel1.add(histogram.chart, t);
+	    GridBagConstraints a = new GridBagConstraints();
+		a.fill = GridBagConstraints.BOTH;
+		a.gridx = 1;
+		a.gridy = 4;
+		a.weightx = 0;
+		a.gridwidth = 2;
+	    panel1.add(histogram.chart,a);
 	}
 
 	public void updateDayButton(String text) {
@@ -328,10 +359,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public void updateQueue(String phrase) {
 		if (phrase.equals(""))
 			return;
+		queue[5] = queue[4];
+		queue[4] = queue[3];
+		queue[3] = queue[2];
 		queue[2] = queue[1];
 		queue[1] = queue[0];
 		queue[0] = phrase;
-		console.setText(""+queue[2] + "\n" + queue[1] + "\n" + queue[0]);
+		console.setText(queue[5] + "\n" + queue[4] + "\n" + queue[3] + "\n" + queue[2] + "\n" + queue[1] + "\n" + queue[0]);
 	}
 
 	public void updateStatus() {

@@ -45,7 +45,7 @@ public class Stats implements Serializable{
 				buildings.get(r).add(new EmpteyPlot());
 			}
 		}
-		coins = 200;
+		coins = 2000;
 		food = 0;
 		happiness = 0;
 		defense = 0;

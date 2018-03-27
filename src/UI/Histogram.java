@@ -29,7 +29,7 @@ public class Histogram{
          
       
       chart = new ChartPanel(lineChart);
-      //chart.setPreferredSize( new java.awt.Dimension( 560 , 367 ) );
+      chart.setPreferredSize( new java.awt.Dimension( 600 , 367 ) );
       updateData();
       //setContentPane(chart);
       
