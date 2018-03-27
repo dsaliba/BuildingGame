@@ -194,6 +194,21 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			stats.width++;
 			stats.height++;
 			expasionCount++;
+			for(ArrayList<Building> list: stats.buildings) {
+				list.add(new EmpteyPlot());
+			}
+			int count = 0;
+			for(ArrayList<JButton> list: grid) {
+				list.add(new JButton("e0"));
+				list.get(stats.height -1).setBackground(Color.WHITE);
+				// panel2.add(grid.get(stats.width-1).get(i));
+				list.get(stats.height -1).addActionListener(parent);
+				list.get(stats.height -1).setActionCommand("tile" + count + "|" + (stats.height -1));
+				list.get(stats.height -1).setIcon(
+						new ImageIcon("Images//" + stats.buildings.get(count).get(stats.height -1).toString() + ".png"));
+				count ++;
+			}
+			
 			grid.add(new ArrayList<JButton>());
 			stats.buildings.add(new ArrayList<Building>());
 			for (int i = 0; i < stats.height; i++) {
