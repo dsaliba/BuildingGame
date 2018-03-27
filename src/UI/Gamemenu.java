@@ -45,7 +45,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JSlider taxSlider;
 	private JButton addGrid;
 	public Histogram histogram;
-	private int expasionCount = 0;
+	private int expasionCount;
 	private String[] queue;
 
 	public ArrayList<ArrayList<JButton>> grid;
@@ -55,6 +55,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
+		expasionCount = 6;
 		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
