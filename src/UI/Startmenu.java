@@ -25,7 +25,7 @@ public class Startmenu extends JFrame {
 		System.out.println("isrunning");
 		setSize(2000,1000);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(600, 400, 2000, 1000);
+		setBounds(0, 0, 1920, 1080);
 		setLayout(new BorderLayout());
 		createBackground();
 		createButtons();
