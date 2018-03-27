@@ -353,7 +353,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		a.gridy = 4;
 		a.weightx = 0;
 		a.gridwidth = 2;
-	    panel1.add(histogram.chart,a);
+	    panel1.add(histogram.chart, a);
 	}
 
 	public void updateDayButton(String text) {
