@@ -106,15 +106,14 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		c.gridx = 0;
 		c.gridy = 0;
 		c.gridheight = 2;
-		
+		c.weightx = 0.5;
 
-		c.weighty = 1;
 		GridBagConstraints d = new GridBagConstraints();
 		d.fill = GridBagConstraints.BOTH;
 		d.gridx = 2;
 		d.gridy = 0;
 		d.gridheight = 2;
-		d.weighty = 1;
+		d.weightx = 0.5;
 
 		pauseButton = new JButton("Pause");// pause button
 		
@@ -231,7 +230,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		a.fill = GridBagConstraints.BOTH;
 		a.gridx = 0;
 		a.gridy = 3;
-		a.gridwidth = 2;
+		//a.gridwidth = 1;
 		a.weightx = 0;
 		
 		
@@ -287,7 +286,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	    histogram.updateData();
 	    GridBagConstraints t = new GridBagConstraints();
 		t.fill = GridBagConstraints.BOTH;
-		t.gridx = 2;
+		t.gridx = 1;
 		t.gridy = 3;
 		t.gridheight = 1;
 		t.gridwidth = 2;
