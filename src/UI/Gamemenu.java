@@ -225,8 +225,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				//
 				// });
 			}
-			for (int row = 0; row < stats.width + expasionCount; row++) {
-				for (int col = 0; col < stats.height + expasionCount; col++) {
+			for (int row = 0; row < stats.width -1 + expasionCount; row++) {
+				for (int col = 0; col < stats.height - 1 + expasionCount; col++) {
+					System.out.println(row + " | " + col);
 					if (col == row) {
 						panel2.add(grid.get(row).get(col));
 					}
