@@ -28,6 +28,7 @@ import javax.swing.SwingConstants;
 import org.jfree.ui.RefineryUtilities;
 
 import BuildingTypes.Building;
+import BuildingTypes.EmpteyPlot;
 import Game.Stats;
 
 public class Gamemenu extends JFrame implements ComponentListener {
@@ -149,22 +150,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(row).get(col).addActionListener(parent);
 				grid.get(row).get(col).setActionCommand("tile" + row + "|" + col);
 				grid.get(row).get(col).setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
-				// grid[row][col].setActionCommand(row + "|" + col);
-				grid.get(row).get(col).addActionListener(new ActionListener() {
-
-					// methodbuild(row, col);
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-
-						// TODO Auto-generated method stub
-						// String id = e.getActionCommand();
-						// int pipe = id.indexOf("|");
-						// int r = Integer.parseInt(id.substring(0, pipe));
-						// int c = Integer.parseInt(id.substring(pipe+1, id.length()));
-
-					}
-				});
+				
 				grid.get(row).get(col).addComponentListener(new ComponentAdapter() {
 				
 			      @Override
@@ -190,6 +176,47 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 	}
 
+	public int buyTiles() {
+		if (stats.coins > stats.width *  400) {
+			stats.width ++;
+			stats.hieght ++;
+			grid.add(new ArrayList<JButton>());
+			stats.buildings.add(new ArrayList<Building>());
+			for (int i = 0; i < stats.width; i++) {
+				stats.buildings.get(stats.width).set(i, new EmpteyPlot());
+				
+				grid.get(stats.width).add(new JButton("e0"));
+				grid.get(stats.width).get(i).setBackground(Color.WHITE);
+				panel2.add(grid.get(stats.width).get(i));
+				grid.get(stats.width).get(i).addActionListener(parent);
+				grid.get(stats.width).get(i).setActionCommand("tile" + stats.width + "|" + i);
+				grid.get(stats.width).get(i).setIcon(new ImageIcon("Images//" + stats.buildings.get(stats.width).get(i).toString() + ".png"));
+				grid.get(stats.width).get(i).addComponentListener(new ComponentAdapter() {
+				
+			      @Override
+                  public void componentResized(ComponentEvent e) {
+                      JButton btn = (JButton) e.getComponent();
+                      Dimension size = btn.getSize();
+                      Insets insets = btn.getInsets();
+                      size.width -= insets.left + insets.right;
+                      size.height -= insets.top + insets.bottom;
+                      if (size.width > size.height) {
+                          size.width = -1;
+                      } else {
+                          size.height = -1;
+                      }
+			}
+				
+		});
+			}
+			return stats.width *  400;
+			
+		}else {
+			return -1;
+		}
+	}
+	
+	
 	public void createPanels() {
 		panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(stats.width, stats.hieght));
