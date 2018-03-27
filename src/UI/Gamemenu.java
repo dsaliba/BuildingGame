@@ -206,19 +206,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(stats.width - 1).get(i).setActionCommand("tile" + stats.width + "|" + i);
 				grid.get(stats.width - 1).get(i).setIcon(
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
-				for (int row = 0; row < stats.width + expasionCount; row++) {
-					for (int col = 0; col < stats.height + expasionCount; col++) {
-						if (col == row) {
-							panel2.add(grid.get(row).get(col));
-						}
-						if (col == expasionCount) {
-							panel2.add(grid.get(row).get(col));
-						}
-						if (row == expasionCount) {
-							panel2.add(grid.get(row).get(col));
-						}
-					}
-				}
 
 				// grid.get(stats.width-1).get(i).addComponentListener(new ComponentAdapter() {
 				//
@@ -237,6 +224,19 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				// }
 				//
 				// });
+			}
+			for (int row = 0; row < stats.width + expasionCount; row++) {
+				for (int col = 0; col < stats.height + expasionCount; col++) {
+					if (col == row) {
+						panel2.add(grid.get(row).get(col));
+					}
+					if (col == expasionCount + col) {
+						panel2.add(grid.get(row).get(col));
+					}
+					if (row == expasionCount + row) {
+						panel2.add(grid.get(row).get(col));
+					}
+				}
 			}
 			// add(panel2);
 			addGrid.setText("Buy Land: [" + 200 * stats.width + "]");
