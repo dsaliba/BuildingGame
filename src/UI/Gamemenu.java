@@ -250,10 +250,14 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	
 	public void createGrid() {
 		panel2 = new JPanel();
-		panel2.setLayout(new GridLayout(stats.width, stats.hieght));
+		panel2.setLayout(new GridBagLayout());
 		for(int row = 0; row < stats.width-1; row++) {
 			for(int col = 0; col < stats.hieght-1; col++) {
-				panel2.add(grid.get(row).get(col));
+				GridBagConstraints t = new GridBagConstraints();
+				t.fill = GridBagConstraints.BOTH;
+				t.gridx = row;
+				t.gridy = col;
+				panel2.add(grid.get(row).get(col), t);
 			}
 		}
 	}
