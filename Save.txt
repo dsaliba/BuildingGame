@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 1950
+=======
+590
+>>>>>>> branch 'master' of https://github.com/dsaliba/BuildingGame.git
 50
 0
 0
+<<<<<<< HEAD
 10
 10
+=======
+7
+7
+>>>>>>> branch 'master' of https://github.com/dsaliba/BuildingGame.git
 e0
 e0
 e0
@@ -44,3 +53,16 @@ e0
 e0
 e0
 e0
+e0
+e0
+e0
+e0
+e0
+e0
+e0
+e0
+e0
+e0
+e0
+e0
+r1
