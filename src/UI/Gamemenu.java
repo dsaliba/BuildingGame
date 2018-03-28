@@ -280,8 +280,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public void createPanels() {
 
 		panel2 = new JPanel();
-//		panel2.setLayout(new GridLayout(stats.width, stats.height));
-		panel2.setLayout(new FlowLayout());
+		panel2.setLayout(new GridLayout(stats.width, stats.height));
+		
 		panel1 = new JPanel(); // Section 1
 
 		panel1.setLayout(new GridBagLayout());
