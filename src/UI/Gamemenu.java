@@ -164,7 +164,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(row).get(col)
 						.setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
 
-		
 			}
 		}
 
@@ -205,37 +204,32 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(stats.width - 1).get(i).setIcon(
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
 
-
+	
 			}
+			int count1 = 0; 
+			
 			for (int row = 0; row < stats.width - 1 + expansionCount; row++) {
 				for (int col = 0; col < stats.height - 1 + expansionCount; col++) {
 
+					while(count < 13) {
+						panel2.add(grid.get(row).get(col));
+						grid.get(row).add(new JButton("e0"));
+						grid.get(row).get(col).setBackground(Color.WHITE);
+						count++;
+					}
 					// System.out.print("test" + grid.get(row).get(col));
 					System.out.println(row + " | " + col + "| Expansion: " + expansionCount);
-					if (col == row) {
-						panel2.add(grid.get(row).get(col));
-						grid.get(row).add(new JButton("e0"));
-						grid.get(row).get(col).setBackground(Color.WHITE);
-					}
-					if (col == expansionCount + col) {
-						panel2.add(grid.get(row).get(col));
-						grid.get(row).add(new JButton("e0"));
-						grid.get(row).get(col).setBackground(Color.WHITE);
-					}
-					if (row == expansionCount + row) {
-						panel2.add(grid.get(row).get(col));
-						grid.get(row).add(new JButton("e0"));
-						grid.get(row).get(col).setBackground(Color.WHITE);
-					}
+					
 					grid.get(row).get(col).setVisible(true);
 				}
 			}
+			
+			
 			// add(panel2);
 			addGrid.setText("Buy Land: [" + 200 * stats.width + "]");
 			return stats.width * 200;
 
-		}
-		return -3;
+		}return-3;
 
 	}
 
