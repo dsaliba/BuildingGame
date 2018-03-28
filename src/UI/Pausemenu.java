@@ -5,7 +5,9 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 public class Pausemenu extends JFrame{
@@ -20,7 +22,7 @@ public class Pausemenu extends JFrame{
 		this.parent = parent;
 		System.out.println("isrunning");
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		setBounds(1350, 500, 500, 700);
+		setBounds(1350, 500, 500, 750);
 		setLayout(null);
 		setResizable(false);
 		setUndecorated(true);
@@ -62,12 +64,12 @@ public class Pausemenu extends JFrame{
 	
 	public void createText() {
 
-		String gameIsPaused = "Game is Paused"; // <------ Text
-		JTextArea pauseText = new JTextArea(gameIsPaused);
-
+		String textPaused = "Game is Paused"; // <------ Text
+		JLabel pauseText = new JLabel(textPaused);
+		pauseText.setHorizontalAlignment(SwingConstants.CENTER);
+		pauseText.setVerticalAlignment(SwingConstants.CENTER);
 		pauseText.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseText.setBounds(0, 0, 500, 100);
-		pauseText.setEditable(false);
 		add(pauseText);
 
 	}
