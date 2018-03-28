@@ -1,31 +1,29 @@
 package UI;
-
 import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
-public class Pausemenu extends JFrame {
+public class Pausemenu extends JFrame{
 
 	private Frame parent;
 	private JButton pauseResume;
 	private JButton pauseExitMainMenu;
 	private JButton pauseExitGame;
-
+	
+	
 	public Pausemenu(Frame parent) {
 		this.parent = parent;
 		System.out.println("isrunning");
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		setBounds(1350, 500, 500, 800);
+		setBounds(1350, 500, 500, 700);
 		setLayout(null);
-		setUndecorated(false);
 		setResizable(false);
+		setUndecorated(true);
 		getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
 		createButtons();
 		createText();
@@ -34,6 +32,7 @@ public class Pausemenu extends JFrame {
 		add(pauseExitMainMenu);
 		setVisible(false);
 	}
+	
 
 	public void createButtons() {
 
@@ -44,31 +43,31 @@ public class Pausemenu extends JFrame {
 		pauseExitMainMenu.addActionListener(parent);
 		pauseExitMainMenu.setActionCommand("exitMainMenu");
 		pauseExitMainMenu.setBackground(Color.WHITE);
-
+		
 		pauseExitGame = new JButton("Save and Exit");
 		pauseExitGame.setBounds(12, 600, 462, 75);
 		pauseExitGame.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseExitGame.addActionListener(parent);
 		pauseExitGame.setActionCommand("exit");
 		pauseExitGame.setBackground(Color.WHITE);
-
+		
 		pauseResume = new JButton("Resume");
 		pauseResume.setBounds(12, 380, 462, 75);
 		pauseResume.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseResume.addActionListener(parent);
 		pauseResume.setActionCommand("resume");
 		pauseResume.setBackground(Color.WHITE);
-
+		
 	}
-
+	
 	public void createText() {
 
-		String textPaused = "Game is Paused"; // <------ Text
-		JLabel pauseText = new JLabel(textPaused);
-		pauseText.setHorizontalAlignment(SwingConstants.CENTER);
-		pauseText.setVerticalAlignment(SwingConstants.CENTER);
+		String gameIsPaused = "Game is Paused"; // <------ Text
+		JTextArea pauseText = new JTextArea(gameIsPaused);
+
 		pauseText.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseText.setBounds(0, 0, 500, 100);
+		pauseText.setEditable(false);
 		add(pauseText);
 
 	}
