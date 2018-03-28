@@ -56,7 +56,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
-		expansionCount = 0;
+	
 		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
@@ -206,20 +206,28 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 	
 			}
-			int count1 = 0; 
 			
+			expansionCount = 0;
 			for (int row = 0; row < stats.width - 1 + expansionCount; row++) {
 				for (int col = 0; col < stats.height - 1 + expansionCount; col++) {
 
-					while(count < 13) {
+					// System.out.print("test" + grid.get(row).get(col));
+					System.out.println(row + " | " + col + "| Expansion: " + expansionCount);
+					if (col == row) {
 						panel2.add(grid.get(row).get(col));
 						grid.get(row).add(new JButton("e0"));
 						grid.get(row).get(col).setBackground(Color.WHITE);
-						count++;
 					}
-					// System.out.print("test" + grid.get(row).get(col));
-					System.out.println(row + " | " + col + "| Expansion: " + expansionCount);
-					
+					if (col == expansionCount + row) {
+						panel2.add(grid.get(row + expansionCount).get(col));
+						grid.get(row + expansionCount).add(new JButton("e0"));
+						grid.get(row).get(col).setBackground(Color.WHITE);
+					}
+					if (row == expansionCount + col) {
+						panel2.add(grid.get(row).get(col + expansionCount));
+						grid.get(row).add(new JButton("e0"));
+						grid.get(row).get(col).setBackground(Color.WHITE);
+					}
 					grid.get(row).get(col).setVisible(true);
 				}
 			}
