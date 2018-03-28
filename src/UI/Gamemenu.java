@@ -56,7 +56,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
-		
+		expansionCount = 0;
 		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
@@ -164,7 +164,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(row).get(col)
 						.setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
 
-		
+				
 
 			}
 		}
@@ -176,21 +176,21 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			stats.width++;
 			stats.height++;
 			expansionCount++;
-			for (ArrayList<Building> list : stats.buildings) {
+			for(ArrayList<Building> list: stats.buildings) {
 				list.add(new EmpteyPlot());
 			}
 			int count = 0;
-			for (ArrayList<JButton> list : grid) {
+			for(ArrayList<JButton> list: grid) {
 				list.add(new JButton("e0"));
-				list.get(stats.height - 1).setBackground(Color.WHITE);
+				list.get(stats.height -1).setBackground(Color.WHITE);
 				// panel2.add(grid.get(stats.width-1).get(i));
-				list.get(stats.height - 1).addActionListener(parent);
-				list.get(stats.height - 1).setActionCommand("tile" + count + "|" + (stats.height - 1));
-				list.get(stats.height - 1).setIcon(new ImageIcon(
-						"Images//" + stats.buildings.get(count).get(stats.height - 1).toString() + ".png"));
-				count++;
+				list.get(stats.height -1).addActionListener(parent);
+				list.get(stats.height -1).setActionCommand("tile" + count + "|" + (stats.height -1));
+				list.get(stats.height -1).setIcon(
+						new ImageIcon("Images//" + stats.buildings.get(count).get(stats.height -1).toString() + ".png"));
+				count ++;
 			}
-
+			
 			grid.add(new ArrayList<JButton>());
 			stats.buildings.add(new ArrayList<Building>());
 			for (int i = 0; i < stats.height; i++) {
@@ -200,25 +200,17 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				// panel2.add(grid.get(stats.width-1).get(i));
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
 				System.out.println("tile" + stats.width + "|" + i);
-
+				
 				grid.get(stats.width - 1).get(i).setActionCommand("tile" + stats.width + "|" + i);
 				grid.get(stats.width - 1).get(i).setIcon(
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
 
-	
+			
 			}
-			
-			
-			// --- Errors Here !!! - Expantion on UI
-			
-			
-			
-			
-			expansionCount = 0; 
-			for (int row = 0; row < stats.width - 1 + expansionCount; row++) {
+			for (int row = 0; row < stats.width -1 + expansionCount; row++) {
 				for (int col = 0; col < stats.height - 1 + expansionCount; col++) {
-
-					// System.out.print("test" + grid.get(row).get(col));
+					
+				//	System.out.print("test" + grid.get(row).get(col));
 					System.out.println(row + " | " + col + "| Expansion: " + expansionCount);
 					if (col == row) {
 						panel2.add(grid.get(row).get(col));
@@ -240,6 +232,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			}
 			// add(panel2);
 			addGrid.setText("Buy Land: [" + 200 * stats.width + "]");
+
 			return stats.width * 200;
 
 		} else
@@ -253,12 +246,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		panel2 = new JPanel();
 		panel2.setLayout(new GridLayout(stats.width, stats.height));
-
+		
 		panel1 = new JPanel(); // Section 1
 
 		panel1.setLayout(new GridBagLayout());
 
 	}
+
 
 	public void createSlider() {
 
