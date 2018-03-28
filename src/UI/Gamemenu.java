@@ -268,7 +268,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			}
 			// add(panel2);
 			addGrid.setText("Buy Land: [" + 200 * stats.width + "]");
-			createGrid();
+		//	createGrid();
 			return stats.width * 200;
 
 		} else
@@ -289,19 +289,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 	}
 
-	public void createGrid() {
-		panel2 = new JPanel();
-		panel2.setLayout(new GridBagLayout());
-		for (int row = 0; row < stats.width - 1; row++) {
-			for (int col = 0; col < stats.height - 1; col++) {
-				GridBagConstraints t = new GridBagConstraints();
-				t.fill = GridBagConstraints.BOTH;
-				t.gridx = row;
-				t.gridy = col;
-				panel2.add(grid.get(row).get(col), t);
-			}
-		}
-	}
+
 
 	public void createSlider() {
 
