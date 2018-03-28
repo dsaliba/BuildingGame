@@ -205,6 +205,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				// panel2.add(grid.get(stats.width-1).get(i));
 				list.get(stats.height -1).addActionListener(parent);
 				list.get(stats.height -1).setActionCommand("tile" + count + "|" + (stats.height -1));
+				System.out.println("New tile name: " + "tile" + count + "|" + (stats.height -1));
 				list.get(stats.height -1).setIcon(
 						new ImageIcon("Images//" + stats.buildings.get(count).get(stats.height -1).toString() + ".png"));
 				count ++;
@@ -218,9 +219,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(stats.width - 1).get(i).setBackground(Color.WHITE);
 				// panel2.add(grid.get(stats.width-1).get(i));
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
-				System.out.println("tile" + stats.width + "|" + i);
+				System.out.println("tile" + (stats.width-1) + "|" + i);
 				
-				grid.get(stats.width - 1).get(i).setActionCommand("tile" + stats.width + "|" + i);
+				grid.get(stats.width - 1).get(i).setActionCommand("tile" + (stats.width-1) + "|" + i);
 				grid.get(stats.width - 1).get(i).setIcon(
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
 
