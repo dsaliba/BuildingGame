@@ -32,6 +32,7 @@ public class Stats implements Serializable{
 	public static int day;
 	public static int width;
 	public static int height;
+	public static int happinessIncome;
 	
 	public static ArrayList<ArrayList<Building>> buildings;
 	
@@ -47,7 +48,7 @@ public class Stats implements Serializable{
 		}
 		coins = 2000;
 		food = 0;
-		happiness = 0;
+		happiness = 50;
 		defense = 0;
 		coinsIncome = 5;
 		foodIncome = 0;
@@ -58,7 +59,7 @@ public class Stats implements Serializable{
 		numBuildings = 0;
 		taxHap = 0;
 		day = 0;
-		
+		happinessIncome = 0;
 	}
 	
 	
@@ -66,11 +67,8 @@ public class Stats implements Serializable{
 	public String runDay() {
 		day++;
 		updateRescources();
-		if (tax.equals("Low")) {
-			taxHap += 5;
-		}else if(tax.equals("High")) {
-			taxHap -= 5;
-		}
+		happiness += happinessIncome;
+		System.out.println(happiness + "   " + happinessIncome);
 		coins += coinsIncome;
 		food += foodIncome;
 		if(happiness > 30) {
@@ -167,18 +165,18 @@ public class Stats implements Serializable{
 	@Override
 	public String toString() {
 		updateRescources();
-		return "Gold: " + coins + " \nPeople: " + population + "/" + maxPopuulation  + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
+		return "Gold: " + coins + "\nPopulation: " + population + "/" + maxPopuulation  + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
 				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Income: "
-				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome;
+				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome + "\nMood: " + happinessIncome;
 	}
 
 	
 	public void updateRescources() {
 		defense = 0;
-		happiness = 50;
 		maxPopuulation = 0;
 		foodIncome = 0;
 		coinsIncome = 0;
+		happinessIncome = 0;
 		for (ArrayList<Building> buildingList: buildings) {
 			for (Building building: buildingList) {
 				String id = building.toString();
@@ -196,7 +194,7 @@ public class Stats implements Serializable{
 					maxPopuulation += Integer.parseInt(id.substring(1));
 					break;
 				case 'r':
-					happiness += Integer.parseInt(id.substring(1));
+					happinessIncome += Integer.parseInt(id.substring(1));
 					break;
 					
 				}
@@ -206,16 +204,22 @@ public class Stats implements Serializable{
 		switch(tax) {
 		case "Low":
 			taxNum = 2.3;
+			taxHap = 1;
 			break;
 		case "Medium":
 			taxNum = 2.5;
+			taxHap = 0;
 			break;
 		case "High":
 			taxNum = 2.7;
+			taxHap = -1;
 			break;
 		}
 		coinTax = population*taxNum;
-		happiness += taxHap;
+		happinessIncome += taxHap*population;
+		
+		
+		
 		if(happiness >= 100) {
 			happiness = 100;
 		}
