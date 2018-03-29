@@ -177,8 +177,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	}
 
 	public int buyTiles() {
-		remove(panel2);
+		
 		if (stats.coins > stats.width * 200) {
+			remove(panel2);
 			stats.width++;
 			stats.height++;
 			for (ArrayList<Building> list : stats.buildings) {
