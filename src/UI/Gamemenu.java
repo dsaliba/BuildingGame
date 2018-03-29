@@ -17,6 +17,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
+import javax.net.ssl.SSLEngineResult.HandshakeStatus;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,6 +34,7 @@ import com.sun.rowset.internal.Row;
 import BuildingTypes.Building;
 import BuildingTypes.EmpteyPlot;
 import Game.Stats;
+import jdk.internal.org.objectweb.asm.tree.FrameNode;
 
 public class Gamemenu extends JFrame implements ComponentListener {
 
@@ -46,7 +48,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JSlider taxSlider;
 	private JButton addGrid;
 	public Histogram histogram;
-	private int expansionCount;
 	private String[] queue;
 	private GridBagConstraints button;
 
@@ -57,7 +58,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) {
-		expansionCount = 0;
 		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
@@ -76,7 +76,14 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		add(panel2);
 		addComponentListener(this);
 		histogram.updateData();
-
+		if (stats.width > 22) {
+			System.out.println("test");
+			panel1.remove(addGrid);
+			remove(panel1);
+			remove(panel2);
+			add(panel1);
+			add(panel2);
+		}
 	}
 
 	@Override
@@ -154,36 +161,27 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1.add(pauseButton, c);
 		panel1.add(nextDay, d);
 		
-		button = new GridBagConstraints();
-		button.fill = GridBagConstraints.BOTH;
-		button.gridwidth = 1;
-        button.gridheight = 1;
-		button.anchor = GridBagConstraints.NORTHWEST;
+		
 				
 
 		for (int row = 0; row < stats.width; row++) {
 			grid.add(new ArrayList<JButton>());
 			for (int col = 0; col < stats.height; col++) {
 				grid.get(row).add(new JButton(""));
-				grid.get(row).get(col).setBackground(Color.GREEN);
-				button.gridx = row;
-				button.gridy = col;
-				button.gridheight = 1;
-				panel2.add(grid.get(row).get(col), button);
+				panel2.add(grid.get(row).get(col));
 				grid.get(row).get(col).addActionListener(parent);
 				grid.get(row).get(col).setActionCommand("tile" + row + "|" + col);
 				grid.get(row).get(col).setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
-
 			}
 		}
 
 	}
 
 	public int buyTiles() {
+		remove(panel2);
 		if (stats.coins > stats.width * 200) {
 			stats.width++;
 			stats.height++;
-			expansionCount++;
 			for (ArrayList<Building> list : stats.buildings) {
 				list.add(new EmpteyPlot());
 			}
@@ -199,6 +197,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				count++;
 			}
 
+			
 			grid.add(new ArrayList<JButton>());
 			stats.buildings.add(new ArrayList<Building>());
 			for (int i = 0; i < stats.height; i++) {
@@ -209,53 +208,34 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
 				System.out.println("tile" + stats.width + "|" + i);
 
-				grid.get(stats.width - 1).get(i).setActionCommand("tile" + stats.width + "|" + i);
+				grid.get(stats.width - 1).get(i).setActionCommand("tile" + (stats.width-1) + "|" + i);
 				grid.get(stats.width - 1).get(i).setIcon(
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
 
 			}
 			
 	
-			
-			button.anchor = GridBagConstraints.NORTHWEST;
-			for (int row = 0; row < stats.width - 1 + expansionCount; row++) {
-				for (int col = 0; col < stats.height - 1 + expansionCount; col++) {
-
-					// System.out.print("test" + grid.get(row).get(col));
-					System.out.println(row + " | " + col + "| Expansion: " + expansionCount);
-					if (col == row) {
-						panel2.add(grid.get(row).get(col));
-						System.out.println(row + " | " + col);
-						grid.get(row).add(new JButton("e0"));
-						grid.get(row).get(col).setBackground(Color.WHITE);
-						button.gridx = row;
-						button.gridy = col;
-						button.gridheight = 1;
-					
-					}
-					if (col == expansionCount + 5) {
-						panel2.add(grid.get(row).get(col));
-						grid.get(row).add(new JButton("e0"));
-						grid.get(row).get(col).setBackground(Color.WHITE);
-						button.gridx = row;
-						button.gridy = col;
-						button.gridheight = 1;
-					}
-					if (row == expansionCount + 5) {
-						panel2.add(grid.get(row).get(col));
-						grid.get(row).add(new JButton("e0"));
-						grid.get(row).get(col).setBackground(Color.WHITE);
-						button.gridx = row;
-						button.gridy = col;
-						button.gridheight = 1;
-					}
+			System.out.println(stats.width + "[]" + stats.height);
+			panel2 = new JPanel();
+			panel2.setLayout(new GridLayout(stats.width, stats.height));
+			for (int row = 0; row < stats.width; row++) {
+				for (int col = 0; col < stats.height; col++) {
+					System.out.println(row + "||" + col);
+					panel2.add(grid.get(row).get(col));
 					grid.get(row).get(col).setVisible(true);
 				}
 			}
-
-			// add(panel2);
+			
+			add(panel2);
 			addGrid.setText("Buy Land: [" + 200 * stats.width + "]");
-
+			if (stats.width > 22) {
+				System.out.println("test");
+				panel1.remove(addGrid);
+				remove(panel1);
+				remove(panel2);
+				add(panel1);
+				add(panel2);
+			}
 			return stats.width * 200;
 
 		} else
@@ -268,7 +248,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public void createPanels() {
 
 		panel2 = new JPanel();
-		panel2.setLayout(new GridBagLayout());
+		panel2.setLayout(new GridLayout(stats.width, stats.height));
 
 		panel1 = new JPanel(); // Section 1
 

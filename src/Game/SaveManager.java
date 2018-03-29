@@ -39,9 +39,13 @@ public class SaveManager {
 		stats.population = Integer.parseInt(reader.nextLine());
 		stats.width = Integer.parseInt(reader.nextLine());
 		stats.height = Integer.parseInt(reader.nextLine());
+		stats.buildings = new ArrayList<ArrayList<Building>>();
+		
 		for (int r = 0; r < stats.width; r++) {
+			stats.buildings.add(new ArrayList<Building>());
 			for (int c = 0; c < stats.height; c++) {
 				String id = reader.nextLine();
+				stats.buildings.get(r).add(new EmpteyPlot());
 				switch(id.charAt(0)) {
 				case 'f':
 					Stats.buildings.get(r).set(c, new Agriculture(id.charAt(1)-48));
