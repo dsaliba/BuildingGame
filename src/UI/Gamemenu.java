@@ -1,23 +1,15 @@
 package UI;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Hashtable;
-
-import javax.net.ssl.SSLEngineResult.HandshakeStatus;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -26,19 +18,13 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
-
-import org.jfree.ui.RefineryUtilities;
-
-import com.sun.rowset.internal.Row;
-
 import BuildingTypes.Building;
 import BuildingTypes.EmpteyPlot;
 import Game.Stats;
-import jdk.internal.org.objectweb.asm.tree.FrameNode;
 
 public class Gamemenu extends JFrame implements ComponentListener {
 
-	private Frame parent;
+	private Frame parent; // Frames, Buttons, Slider, Labels, Textareas, Histograms, Images, Ect
 	private JButton nextDay;
 	private JButton pauseButton;
 	private JPanel panel1;
@@ -50,14 +36,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public Histogram histogram;
 	private String[] queue;
 	private GridBagConstraints button;
-
 	public ArrayList<ArrayList<JButton>> grid;
 	private JLabel farmImage;
 	private BufferedImage picture = null;
 
 	Stats stats;
 
-	public Gamemenu(Frame parent, Stats stats) {
+	public Gamemenu(Frame parent, Stats stats) { // Constructor
 		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
@@ -72,8 +57,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		createSlider();
 		createText();
 		creatHistogram();
-		add(panel1);
-		add(panel2);
 		addComponentListener(this);
 		histogram.updateData();
 		if (stats.width > 22) {
@@ -85,32 +68,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		}
 	}
 
-	@Override
-	public void componentHidden(ComponentEvent e) {
-		// TODO Auto-generated method stub
 
-	}
-
-	@Override
-	public void componentMoved(ComponentEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void componentResized(ComponentEvent arg0) {
-		// int W = 2;
-		// int H = 1;
-		// Rectangle b = arg0.getComponent().getBounds();
-		// arg0.getComponent().setBounds(b.x, b.y, b.width, b.width * H / W);
-	}
-
-	@Override
-	public void componentShown(ComponentEvent e) {
-		// TODO Auto-generated method stub
-
-	}
-
+	/*
+	 * This Method creates the GridBagConstraints for all of the buttons on the Game Frame.
+	 * The Buttons this method creates are:
+	 * Pause, Nextday, BuyLand, and the 6x6 grid.
+	 */
+	
 	public void createButtons() {
 
 		GridBagConstraints c = new GridBagConstraints();
@@ -149,44 +113,47 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		nextDay.setBackground(Color.WHITE);
 		nextDay.setVisible(true);
 
-		addGrid = new JButton("Buy Land: [" + 200 * stats.width + "]");
+		addGrid = new JButton("Buy Land: [" + 200 * stats.width + "]"); //Add Grid Button
 		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
 		addGrid.setBackground(Color.WHITE);
 		addGrid.addActionListener(parent);
 		addGrid.setActionCommand("buy land");
 		addGrid.setVisible(true);
 
-		panel1.add(addGrid, g);
+		panel1.add(addGrid, g); //Panel Button Adding
 		panel1.add(pauseButton, c);
 		panel1.add(nextDay, d);
-		
-		
-				
 
-		for (int row = 0; row < stats.width; row++) {
+		for (int row = 0; row < stats.width; row++) { //This loop creates the initial 6 x 6 Grid of Buttons
 			grid.add(new ArrayList<JButton>());
 			for (int col = 0; col < stats.height; col++) {
 				grid.get(row).add(new JButton(""));
 				panel2.add(grid.get(row).get(col));
 				grid.get(row).get(col).addActionListener(parent);
 				grid.get(row).get(col).setActionCommand("tile" + row + "|" + col);
-				grid.get(row).get(col).setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
+				grid.get(row).get(col)
+						.setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
 			}
 		}
 
 	}
-
+	
+/*
+ * This method handles buying more land tiles for expansion.
+ */
 	public int buyTiles() {
-		
+
 		if (stats.coins > stats.width * 200) {
 			remove(panel2);
 			stats.width++;
 			stats.height++;
-			for (ArrayList<Building> list : stats.buildings) {
+			
+			for (ArrayList<Building> list : stats.buildings) { //This forloop adds the new buttons to the arraylist
 				list.add(new EmpteyPlot());
 			}
+			
 			int count = 0;
-			for (ArrayList<JButton> list : grid) {
+			for (ArrayList<JButton> list : grid) { //This forloop creates the buttons on the forloop
 				list.add(new JButton("e0"));
 				list.get(stats.height - 1).setBackground(Color.WHITE);
 				// panel2.add(grid.get(stats.width-1).get(i));
@@ -197,7 +164,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				count++;
 			}
 
-			
 			grid.add(new ArrayList<JButton>());
 			stats.buildings.add(new ArrayList<Building>());
 			for (int i = 0; i < stats.height; i++) {
@@ -206,13 +172,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(stats.width - 1).get(i).setBackground(Color.WHITE);
 				// panel2.add(grid.get(stats.width-1).get(i));
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
-				grid.get(stats.width - 1).get(i).setActionCommand("tile" + (stats.width-1) + "|" + i);
+				grid.get(stats.width - 1).get(i).setActionCommand("tile" + (stats.width - 1) + "|" + i);
 				grid.get(stats.width - 1).get(i).setIcon(
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
 
 			}
-			
-	
+
+			//These for loops add the newly created buttons 
 			panel2 = new JPanel();
 			panel2.setLayout(new GridLayout(stats.width, stats.height));
 			for (int row = 0; row < stats.width; row++) {
@@ -221,7 +187,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 					grid.get(row).get(col).setVisible(true);
 				}
 			}
-			
+
 			add(panel2);
 			addGrid.setText("Buy Land: [" + 200 * stats.width + "]");
 			if (stats.width > 22) {
@@ -239,74 +205,78 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			return -3;
 		}
 	}
+	
+	
+	/*
+	 * This method divides the Game Frame into 2 sections. One section will contain
+	 * the game's grid The other section will contain the game's stats, Histogram,
+	 * Console, Slider, and Buttons
+	 */
 
 	public void createPanels() {
-
-		panel2 = new JPanel();
+		panel2 = new JPanel(); // Grid Section
 		panel2.setLayout(new GridLayout(stats.width, stats.height));
-
-		panel1 = new JPanel(); // Section 1
-
+		panel1 = new JPanel(); // Stats Section
 		panel1.setLayout(new GridBagLayout());
-
+		add(panel1);
+		add(panel2);
 	}
 
+	/*
+	 * This method creates the slider and the respective Grid Bag Constraints.
+	 */
 	public void createSlider() {
-
-		GridBagConstraints t = new GridBagConstraints();
+		GridBagConstraints t = new GridBagConstraints(); // Grid Bag Constraints
 		t.fill = GridBagConstraints.BOTH;
 		t.gridx = 1;
 		t.gridy = 1;
 		t.gridheight = 1;
 
-		taxSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 2, 1);
-
+		taxSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 2, 1); // Tax Slider
 		taxSlider.addChangeListener(parent);
 
-		Hashtable<Integer, JLabel> labelTable = new Hashtable();
+		Hashtable<Integer, JLabel> labelTable = new Hashtable(); // Tax Slider Labels and Ticks
 		labelTable.put(new Integer(0), new JLabel("Low"));
 		labelTable.put(new Integer(1), new JLabel("Medium"));
 		labelTable.put(new Integer(2), new JLabel("High"));
 		taxSlider.setLabelTable(labelTable);
 		taxSlider.setPaintLabels(true);
-
 		panel1.add(taxSlider, t);
 	}
 
+	// This method handles the Text Area for the Status, Console, and the Header for
+	// Tax Slider
 	public void createText() {
 		// --------------------------------------------
-		GridBagConstraints a = new GridBagConstraints();
+		GridBagConstraints a = new GridBagConstraints(); // Grid Bag Constraints for Status
 		a.fill = GridBagConstraints.BOTH;
 		a.gridx = 0;
 		a.gridy = 4;
 		a.weightx = 0;
 
 		String text = stats.toString();
-
 		// text area
-		status = new JTextArea(text);
+		status = new JTextArea(text); // Status Text Area
 		status.setLineWrap(true);
 		status.setWrapStyleWord(true);
 		status.setFont(new Font("Monospaced", Font.PLAIN, 30));
-		// status.setLineWrap(true);
 		status.setEditable(false);
 		status.setVisible(true);
 		panel1.add(status, a);
 
-		GridBagConstraints t = new GridBagConstraints();
+		GridBagConstraints t = new GridBagConstraints(); // Tax Slider Grid Bag Constraint
 		t.fill = GridBagConstraints.BOTH;
 		t.gridx = 1;
 		t.gridy = 0;
 		t.gridheight = 1;
 
-		JTextArea header = new JTextArea("Tax Amount");
-
+		JTextArea header = new JTextArea("Tax Amount"); // Tax Slider Header
 		header.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		header.setVisible(true);
 		header.setEditable(false);
 		panel1.add(header, t);
 
-		GridBagConstraints b = new GridBagConstraints();
+		GridBagConstraints b = new GridBagConstraints(); // Consle Grid Bag Constraint
 		b.fill = GridBagConstraints.BOTH;
 		b.gridx = 0;
 		b.gridy = 6;
@@ -314,22 +284,26 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		b.gridheight = 0;
 		b.weighty = 0;
 		b.weightx = 0;
-
+		
+		// Console
 		console = new JTextArea(
 				queue[5] + "\n" + queue[4] + "\n" + queue[3] + "\n" + queue[2] + "\n" + queue[1] + "\n" + queue[0]);
 		console.setLineWrap(true);
 		console.setWrapStyleWord(true);
-
 		console.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		console.setEditable(false);
 		console.setVisible(true);
 		panel1.add(console, b);
 	}
 
+	/* 
+	 * This Method Creates the Histogram.
+	 * It also contains the Hisogram's gridbag Constraints
+	 */
 	public void creatHistogram() {
-		histogram = new Histogram(stats);
+		histogram = new Histogram(stats); //Hisogram
 		histogram.updateData();
-		GridBagConstraints a = new GridBagConstraints();
+		GridBagConstraints a = new GridBagConstraints(); //Grid Bag Constraints
 		a.fill = GridBagConstraints.BOTH;
 		a.gridx = 1;
 		a.gridy = 4;
@@ -338,10 +312,24 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1.add(histogram.chart, a);
 	}
 
+	/*
+	 * This method updates the nextday button's text
+	 */
 	public void updateDayButton(String text) {
-		nextDay.setText(text);
+		nextDay.setText(text); 
 	}
 
+	
+	/*
+	 * This method updates the text on the status text area.
+	 */
+	public void updateStatus() {
+		status.setText(stats.toString());
+
+	}
+	/*
+	 *  What does this method do? <----------------------------- EDIT EDIT EDIT EDIT EDIT
+	 */
 	public void updateQueue(String phrase) {
 		if (phrase.equals(""))
 			return;
@@ -354,10 +342,37 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		console.setText(
 				queue[5] + "\n" + queue[4] + "\n" + queue[3] + "\n" + queue[2] + "\n" + queue[1] + "\n" + queue[0]);
 	}
+	
+	
+	//Unused Implemented Methods --------------------------------------------------------------------
 
-	public void updateStatus() {
-		status.setText(stats.toString());
-
+	@Override
+	public void componentResized(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
+
+
+	@Override
+	public void componentMoved(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void componentShown(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void componentHidden(ComponentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }
