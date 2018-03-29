@@ -22,7 +22,7 @@ public class Upgrademenu extends JFrame{
 	public Upgrademenu(Frame parent) {
 		
 		this.parent = parent;
-		setLayout(new GridLayout(1, 3));
+		setLayout(new GridLayout(2, 3));
 		setBounds(500, 400, 540, 180);
 		//setVisible(true);
 		createButtons();
@@ -66,7 +66,11 @@ public class Upgrademenu extends JFrame{
 	
 	public void toggleUpgrade(boolean showUpgrade) {
 		if(showUpgrade == true) {
-			
+			upgrade.setActionCommand("upgradeOff");
+			upgrade.setIcon(new ImageIcon("Images\\upgradeOff.png"));
+		} else if (showUpgrade == false) {
+			upgrade.setActionCommand("upgrade");
+			upgrade.setIcon(new ImageIcon("Images\\upgrade.png"));
 		}
 	}
 	

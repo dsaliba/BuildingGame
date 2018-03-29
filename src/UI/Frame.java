@@ -131,6 +131,10 @@ public class Frame implements ActionListener, ChangeListener{
 			game.updateStatus();
 			upgrade.dispose();
 			break;
+			
+		case "upgradeOff":
+			game.updateQueue("The building is fully upgraded");
+			break;
 
 		case "buy land":
 			error = game.buyTiles();
