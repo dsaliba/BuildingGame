@@ -77,7 +77,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		addComponentListener(this);
 		histogram.updateData();
 		if (stats.width > 22) {
-			System.out.println("test");
 			panel1.remove(addGrid);
 			remove(panel1);
 			remove(panel2);
@@ -206,8 +205,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(stats.width - 1).get(i).setBackground(Color.WHITE);
 				// panel2.add(grid.get(stats.width-1).get(i));
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
-				System.out.println("tile" + stats.width + "|" + i);
-
 				grid.get(stats.width - 1).get(i).setActionCommand("tile" + (stats.width-1) + "|" + i);
 				grid.get(stats.width - 1).get(i).setIcon(
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
@@ -229,7 +226,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			add(panel2);
 			addGrid.setText("Buy Land: [" + 200 * stats.width + "]");
 			if (stats.width > 22) {
-				System.out.println("test");
 				panel1.remove(addGrid);
 				remove(panel1);
 				remove(panel2);
