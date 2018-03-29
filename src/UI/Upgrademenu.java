@@ -7,7 +7,9 @@ import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.SwingConstants;
 
 
 public class Upgrademenu extends JFrame{
@@ -18,14 +20,23 @@ public class Upgrademenu extends JFrame{
 	private JButton remove;
 	private JTextArea info;
 	private JButton closeButton;
+	private JLabel closeLabel; 
+	private JLabel upgradeLabel;
+	private JLabel removeLabel;
+	
+	private String closeText ="Close";
+	private String removeText = "Remove";
+	private String upgradeText = "Upgrade";
+	
+	
 	
 	public Upgrademenu(Frame parent) {
 		
 		this.parent = parent;
 		setLayout(new GridLayout(2, 3));
-		setBounds(500, 400, 540, 180);
-		//setVisible(true);
+		setBounds(500, 500, 540, 360);
 		createButtons();
+		createTextLabels();
 	}
 
 	
@@ -63,6 +74,38 @@ public class Upgrademenu extends JFrame{
 		
 		
 		}
+	
+	public void createTextLabels() {
+		
+		
+		closeLabel = new JLabel(closeText);
+		closeLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
+		closeLabel.setVisible(true);
+		closeLabel.setBackground(Color.WHITE);
+		closeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		closeLabel.setVerticalAlignment(SwingConstants.TOP);
+		closeLabel.setSize(180, 90);
+		add(closeLabel);
+		
+		removeLabel = new JLabel(removeText);
+		removeLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
+		removeLabel.setVisible(true);
+		removeLabel.setBackground(Color.WHITE);
+		removeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		removeLabel.setVerticalAlignment(SwingConstants.TOP);
+		removeLabel.setSize(180, 90);
+		add(removeLabel);
+		
+		upgradeLabel = new JLabel(upgradeText);
+		upgradeLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
+		upgradeLabel.setVisible(true);
+		upgradeLabel.setBackground(Color.WHITE);
+		upgradeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		upgradeLabel.setVerticalAlignment(SwingConstants.TOP);
+		upgradeLabel.setSize(180, 90);
+		add(upgradeLabel);
+		
+	}
 	
 	public void toggleUpgrade(boolean showUpgrade) {
 		if(showUpgrade == true) {
