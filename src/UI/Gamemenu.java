@@ -212,12 +212,10 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			}
 			
 	
-			System.out.println(stats.width + "[]" + stats.height);
 			panel2 = new JPanel();
 			panel2.setLayout(new GridLayout(stats.width, stats.height));
 			for (int row = 0; row < stats.width; row++) {
 				for (int col = 0; col < stats.height; col++) {
-					System.out.println(row + "||" + col);
 					panel2.add(grid.get(row).get(col));
 					grid.get(row).get(col).setVisible(true);
 				}
