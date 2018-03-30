@@ -148,7 +148,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	 */
 	public int buyTiles() {
 
-		if (stats.coins > stats.width * 200) {
+		if (stats.coins > stats.width * 500) {
 			remove(panel2);
 			stats.width++;
 			stats.height++;
@@ -194,7 +194,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			}
 
 			add(panel2);
-			addGrid.setText("Buy Land: [" + 200 * stats.width + "]");
+			addGrid.setText("Buy Land: [" + 500 * stats.width + "]");
 			if (stats.width > 22) {
 				addGrid.addActionListener(parent);
 				addGrid.setActionCommand("fullLand");

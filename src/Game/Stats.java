@@ -25,13 +25,13 @@ public class Stats implements Serializable{
 	public static int foodIncome;
 	public static int population;
 	public static int maxPopuulation;
-	public static String tax;
-	public static double coinTax;
-	public static int numBuildings;
-	public static int taxHap;
-	public static int day;
-	public static int width;
-	public static int height;
+		public static String tax;
+		public static double coinTax;
+		public static int numBuildings;
+		public static int taxHap;
+		public static int day;
+		public static int width;
+		public static int height;
 	public static int happinessIncome;
 	
 	public static ArrayList<ArrayList<Building>> buildings;
@@ -46,7 +46,7 @@ public class Stats implements Serializable{
 				buildings.get(r).add(new EmpteyPlot());
 			}
 		}
-		coins = 2000;
+		coins = 200;
 		food = 0;
 		happiness = 50;
 		defense = 0;
