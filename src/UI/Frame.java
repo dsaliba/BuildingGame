@@ -77,6 +77,7 @@ public class Frame implements ActionListener, ChangeListener{
 			game = new Gamemenu(this, stats);
 			game.setVisible(true);
 			break;
+			
 		case "continue":
 			start.setVisible(false);
 			stats = saveManager.readSave();
@@ -109,8 +110,6 @@ public class Frame implements ActionListener, ChangeListener{
 
 		case "nextDay":
 			game.updateDayButton("Next Day (" + Stats.day + ")"); // Sets text of button to match day
-			// Other method calling:
-
 			game.updateQueue(stats.runDay());
 			game.histogram.updateData();
 			game.updateQueue(ep.runEvent());
@@ -133,7 +132,7 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 			
 		case "upgradeOff":
-			game.updateQueue("The building is fully upgraded");
+			game.updateQueue("The building is fully upgraded.");
 			break;
 
 		case "buy land":
@@ -144,6 +143,11 @@ public class Frame implements ActionListener, ChangeListener{
 			stats.updateRescources();
 			game.updateStatus();
 			break;
+			
+		case "fullLand":
+			game.updateQueue("You have reached the maximum amount of land.");
+			break;
+			
 			
 		case "close":
 			upgrade.dispose();

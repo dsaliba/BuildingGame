@@ -45,7 +45,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 	Stats stats;
 
-		public Gamemenu(Frame parent, Stats stats) { // Constructor
+	public Gamemenu(Frame parent, Stats stats) { // Constructor
 		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
@@ -92,11 +92,12 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		d.gridy = 0;
 		d.gridheight = 2;
 		d.gridwidth = 2;
+		d.weightx = 0.5;
 
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.HORIZONTAL;
 		g.gridx = 0;
-		g.gridy = 2;
+		g.gridy = 3;
 		g.gridheight = 1;
 		g.gridwidth = 6;
 
@@ -116,7 +117,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		nextDay.setBackground(Color.WHITE);
 		nextDay.setVisible(true);
 
-		addGrid = new JButton("Buy Land: [" + 200 * stats.width + "]"); //Add Grid Button
+		addGrid = new JButton("Buy Land: [" + 200 * stats.width + "]"); // Add Grid Button
 		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
 		addGrid.setBackground(Color.WHITE);
 		addGrid.addActionListener(parent);
@@ -128,6 +129,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1.add(nextDay, d);
 
 		for (int row = 0; row < stats.width; row++) { // This loop creates the initial 6 x 6 Grid of Buttons
+
 			grid.add(new ArrayList<JButton>());
 			for (int col = 0; col < stats.height; col++) {
 				grid.get(row).add(new JButton(""));
@@ -150,13 +152,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			remove(panel2);
 			stats.width++;
 			stats.height++;
-			
-			for (ArrayList<Building> list : stats.buildings) { //This forloop adds the new buttons to the arraylist
+
+			for (ArrayList<Building> list : stats.buildings) { // This forloop adds the new buttons to the arraylist
 				list.add(new EmpteyPlot());
 			}
-			
+
 			int count = 0;
-			for (ArrayList<JButton> list : grid) { //This forloop creates the buttons on the forloop
+			for (ArrayList<JButton> list : grid) { // This forloop creates the buttons on the forloop
 				list.add(new JButton("e0"));
 				list.get(stats.height - 1).setBackground(Color.WHITE);
 				// panel2.add(grid.get(stats.width-1).get(i));
@@ -181,7 +183,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 			}
 
-			//These for loops add the newly created buttons 
+			// These for loops add the newly created buttons
 			panel2 = new JPanel();
 			panel2.setLayout(new GridLayout(stats.width, stats.height));
 			for (int row = 0; row < stats.width; row++) {
@@ -194,7 +196,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			add(panel2);
 			addGrid.setText("Buy Land: [" + 200 * stats.width + "]");
 			if (stats.width > 22) {
-				panel1.remove(addGrid);
+				addGrid.addActionListener(parent);
+				addGrid.setActionCommand("fullLand");
+				addGrid.setForeground(Color.RED);
 				remove(panel1);
 				remove(panel2);
 				add(panel1);
@@ -220,10 +224,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel2.setLayout(new GridLayout(stats.width, stats.height));
 		panel1 = new JPanel(); // Stats Section
 		panel1.setLayout(new GridBagLayout());
-
-
 		add(panel1);
-
 		add(panel2);
 
 	}
@@ -259,7 +260,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.BOTH;
 		g.gridx = 0;
-		g.gridy = 3;
+		g.gridy = 4;
 		g.gridheight = 1;
 		g.gridwidth = 3;
 		g.weightx = 0.25;
@@ -272,28 +273,31 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		status.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		status.setEditable(false);
 		status.setVisible(true);
+		status.setBackground(new Color(239, 211, 135, 255));
 		panel1.add(status, g);
 
 		GridBagConstraints t = new GridBagConstraints(); // Tax Slider Grid Bag Constraint
-		t.fill = GridBagConstraints.BOTH;
+		// t.fill = GridBagConstraints.BOTH;
 		t.gridx = 2;
 		t.gridy = 0;
 		t.gridheight = 1;
 		t.gridwidth = 2;
 
 		JTextArea header = new JTextArea("Tax Amount"); // Tax Slider Header
-		header.setFont(new Font("Monospaced", Font.PLAIN, 30));
+		header.setFont(new Font("Monospaced", Font.BOLD, 30));
 		header.setVisible(true);
 		header.setEditable(false);
 		panel1.add(header, t);
 
-		GridBagConstraints b = new GridBagConstraints(); // Consle Grid Bag Constraint
-		 b.fill = GridBagConstraints.HORIZONTAL;
+		GridBagConstraints b = new GridBagConstraints(); // Console Grid Bag Constraint
+		b.fill = GridBagConstraints.HORIZONTAL;
 		b.gridx = 0;
-		b.gridy = 4;
+		b.gridy = 5;
 		b.gridwidth = 6;
 		b.gridheight = 1;
-		
+		b.weighty = 1;
+		b.gridy++;
+
 		// Console
 		console = new JTextArea(
 				queue[5] + "\n" + queue[4] + "\n" + queue[3] + "\n" + queue[2] + "\n" + queue[1] + "\n" + queue[0]);
@@ -316,7 +320,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.BOTH;
 		g.gridx = 3;
-		g.gridy = 3;
+		g.gridy = 4;
 		g.gridheight = 1;
 		g.gridwidth = 3;
 		g.weightx = 0.25;
