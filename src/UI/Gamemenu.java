@@ -1,6 +1,7 @@
 package UI;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -239,6 +240,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		t.gridheight = 2;
 		t.gridwidth = 2;
 		t.weightx = 0.5;
+		
 
 		taxSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 2, 1); // Tax Slider
 		taxSlider.addChangeListener(parent);
@@ -247,6 +249,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		labelTable.put(new Integer(0), new JLabel("L"));
 		labelTable.put(new Integer(1), new JLabel("M"));
 		labelTable.put(new Integer(2), new JLabel("H"));
+	
 		taxSlider.setLabelTable(labelTable);
 		taxSlider.setPaintLabels(true);
 		panel1.add(taxSlider, t);
