@@ -80,20 +80,19 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public void createButtons() {
 
 		GridBagConstraints p = new GridBagConstraints();
-		p.fill = GridBagConstraints.VERTICAL;
+		p.fill = GridBagConstraints.BOTH;
 		p.gridx = 0;
 		p.gridy = 0;
 		p.gridheight = 2;
-		p.gridwidth = 2;
-
+		p.gridwidth = 1;
+	
 		GridBagConstraints d = new GridBagConstraints();
-		d.fill = GridBagConstraints.VERTICAL;
+		d.fill = GridBagConstraints.BOTH;
 		d.gridx = 4;
 		d.gridy = 0;
 		d.gridheight = 2;
 		d.gridwidth = 2;
-		d.weightx = 0.5;
-
+	
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.HORIZONTAL;
 		g.gridx = 0;
@@ -234,19 +233,20 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	 */
 	public void createSlider() {
 		GridBagConstraints t = new GridBagConstraints(); // Grid Bag Constraints
-		t.fill = GridBagConstraints.BOTH;
+		t.fill = GridBagConstraints.HORIZONTAL;
 		t.gridx = 2;
 		t.gridy = 1;
-		t.gridheight = 1;
+		t.gridheight = 2;
 		t.gridwidth = 2;
+		t.weightx = 0.5;
 
 		taxSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 2, 1); // Tax Slider
 		taxSlider.addChangeListener(parent);
 
 		Hashtable<Integer, JLabel> labelTable = new Hashtable(); // Tax Slider Labels and Ticks
-		labelTable.put(new Integer(0), new JLabel("Low"));
-		labelTable.put(new Integer(1), new JLabel("Medium"));
-		labelTable.put(new Integer(2), new JLabel("High"));
+		labelTable.put(new Integer(0), new JLabel("L"));
+		labelTable.put(new Integer(1), new JLabel("M"));
+		labelTable.put(new Integer(2), new JLabel("H"));
 		taxSlider.setLabelTable(labelTable);
 		taxSlider.setPaintLabels(true);
 		panel1.add(taxSlider, t);
