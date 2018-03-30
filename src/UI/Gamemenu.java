@@ -117,7 +117,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		nextDay.setBackground(Color.WHITE);
 		nextDay.setVisible(true);
 
-		addGrid = new JButton("Buy Land: [" + 200 * stats.width + "]"); // Add Grid Button
+		addGrid = new JButton("Buy Land: [" + 500 * stats.width + "]"); // Add Grid Button
 		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
 		addGrid.setBackground(Color.WHITE);
 		addGrid.addActionListener(parent);
