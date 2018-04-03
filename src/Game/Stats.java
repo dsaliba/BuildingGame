@@ -178,7 +178,11 @@ public class Stats implements Serializable{
 		foodIncome = 0;
 		coinsIncome = 0;
 		happinessIncome = 0;
+		int tempPop = population;
+		int rCount = 0;
+		
 		for (ArrayList<Building> buildingList: buildings) {
+			int cCount = 0;
 			for (Building building: buildingList) {
 				String id = building.toString();
 				switch (id.charAt(0)) {
@@ -195,11 +199,36 @@ public class Stats implements Serializable{
 					maxPopuulation += Integer.parseInt(id.substring(1));
 					break;
 				case 'r':
-					happinessIncome += Integer.parseInt(id.substring(1));
+					if (tempPop > 0) {
+						for (int r = -1; r < 3; r++) {
+							if(rCount + r < 0 || rCount + r > width-1) break;
+							//System.out.println("test1");
+							for (int c = -1; c < 3; c++) {
+								//System.out.println(cCount + " " + c);
+								if(cCount + c < 0 || cCount + c > height-1) break;
+								//System.out.println("test 2");
+								String next = buildings.get(r+rCount).get(c+cCount).toString();
+								if (next.charAt(0) == 'p') {
+									for (int i = 0; i < Integer.parseInt(next.substring(1)); i++) {
+										if (tempPop < 1) break;
+										happinessIncome++;
+										tempPop --;
+									}
+								}
+							}
+						}
+					}
+					
+					
+					
+					
+					//happinessIncome += Integer.parseInt(id.substring(1));
 					break;
 					
 				}
+				cCount++;
 			}
+			rCount++;
 		}
 		double taxNum = 0;
 		switch(tax) {
