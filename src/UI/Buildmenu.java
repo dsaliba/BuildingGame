@@ -33,7 +33,7 @@ public class Buildmenu extends JFrame {
 		this.parent = parent;
 		setLayout(new GridBagLayout());
 		setResizable(true);
-		setBounds(500, 400, 1100, 360);
+		setBounds(500, 400, 1300, 360);
 
 		// setVisible(true);
 		createButtons();
@@ -42,22 +42,27 @@ public class Buildmenu extends JFrame {
 	}
 
 	public void createButtons() {
-
+		GridBagConstraints top = new GridBagConstraints();
+		top.gridheight = 2;
+		top.gridx = 0;
+		top.gridy = 0;
 		closeButton = new JButton("");
-		closeButton.setBounds(0, 1, 200, 100);
+		closeButton.setBounds(0, 1, 100, 100);
 		closeButton.setIcon(new ImageIcon("Images\\close.png"));
 		closeButton.addActionListener(parent);
 		closeButton.setActionCommand("close");
 		closeButton.setBackground(Color.WHITE);
 		closeButton.setVisible(true);
-		add(closeButton);
+		add(closeButton, top);
 
 		for (int i = 0; i < buildingLabels.length; i++) {
-			GridBagConstraints top = new GridBagConstraints();
+			System.out.println(i + "  " + buildingLabels[i]);
+			top = new GridBagConstraints();
 			top.gridheight = 2;
-			top.gridx = i;
+			top.gridx = i+1;
 			top.gridy = 0;
 			bl = new JButton("");
+			bl.setBounds(0, 1, 100, 100);
 			bl.setIcon(new ImageIcon("Images\\" + buildingLabels[i] + ".png"));
 			bl.addActionListener(parent);
 			bl.setActionCommand("" + i);
@@ -117,7 +122,7 @@ public class Buildmenu extends JFrame {
 		recreationLabel.setVerticalAlignment(SwingConstants.TOP);
 		add(recreationLabel, label);
 		
-		label.weightx++;
+		label.gridx++;
 		JLabel housingLabel = new JLabel("Tent");
 		housingLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
 		housingLabel.setVisible(true);
