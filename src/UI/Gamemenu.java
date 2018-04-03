@@ -204,7 +204,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				add(panel1);
 				add(panel2);
 			}
-			return stats.width * 200;
+			return stats.width * 500;
 
 		} else
 
