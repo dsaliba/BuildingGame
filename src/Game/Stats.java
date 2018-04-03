@@ -208,7 +208,7 @@ public class Stats implements Serializable{
 								if (next.charAt(0) == 'p') {
 									for (int i = 0; i < Integer.parseInt(next.substring(1)); i++) {
 										if (tempPop < 1) break;
-										happinessIncome++;
+										happinessIncome =+ Integer.parseInt(id.substring(1));
 										tempPop --;
 									}
 								}
