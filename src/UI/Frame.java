@@ -62,7 +62,6 @@ public class Frame implements ActionListener, ChangeListener{
 				lastX = r;
 				lastY = c;
 				if(Stats.buildings.get(r).get(c).toString().equals("e0")) {
-					System.out.println(r + "|" + c);
 					build.setVisible(true); ///buildshit
 				}
 				else {
@@ -198,7 +197,6 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 		case "5": // E
 		case "remove":
-			System.out.println("rem");
 			error = stats.setBuilding('e', lastX, lastY);
 			
 			

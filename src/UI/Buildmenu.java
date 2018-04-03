@@ -56,7 +56,6 @@ public class Buildmenu extends JFrame {
 		add(closeButton, top);
 
 		for (int i = 0; i < buildingLabels.length; i++) {
-			System.out.println(i + "  " + buildingLabels[i]);
 			top = new GridBagConstraints();
 			top.gridheight = 2;
 			top.gridx = i+1;
