@@ -21,12 +21,12 @@ public class Stats implements Serializable{
 	public static int food;
 	public static int happiness;
 	public static int defense;
-	public static double coinsIncome;
+	public static int coinsIncome;
 	public static int foodIncome;
 	public static int population;
 	public static int maxPopuulation;
 		public static String tax;
-		public static double coinTax;
+		public static int coinTax;
 		public static int numBuildings;
 		public static int taxHap;
 		public static int day;
@@ -168,7 +168,7 @@ public class Stats implements Serializable{
 		updateRescources();
 		return "Gold: " + coins + "\nPopulation: " + population + "/" + maxPopuulation  + "\nHappiness: " + happiness + "%" + "\nTax: " + tax
 				+ "\nFood: " + food + "\nBuildings: " + numBuildings + "\nDefense: " + defense + "\nTax Income: "
-				+ coinTax + "\nIncome: " + coinsIncome + "\nFood Yield: " + foodIncome + "\nMood: " + happinessIncome;
+				+ coinTax + "\nIncome: " + (coinsIncome + coinTax) + "\nFood Yield: " + foodIncome + "\nMood: " + happinessIncome;
 	}
 
 	
@@ -244,7 +244,7 @@ public class Stats implements Serializable{
 			taxHap = -1;
 			break;
 		}
-		coinTax = population*taxNum;
+		coinTax = (int) (population*taxNum);
 		happinessIncome += taxHap*population;
 		
 		
