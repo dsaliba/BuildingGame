@@ -94,6 +94,7 @@ public class Stats implements Serializable{
 			food = 0;
 			leftover = (-leftover);
 			population -= leftover;
+			happiness -= 5;
 			updateRescources();
 			if (leftover > 1) {
 				return leftover + " people died of starvation";
