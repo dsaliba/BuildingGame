@@ -201,12 +201,9 @@ public class Stats implements Serializable{
 				case 'r':
 					if (tempPop > 0) {
 						for (int r = -1; r < 3; r++) {
-							if(rCount + r < 0 || rCount + r > width-1) break;
-							//System.out.println("test1");
+							if(!(rCount + r < 0 || rCount + r > width-1)) {
 							for (int c = -1; c < 3; c++) {
-								//System.out.println(cCount + " " + c);
-								if(cCount + c < 0 || cCount + c > height-1) break;
-								//System.out.println("test 2");
+								if(!(cCount + c < 0 || cCount + c > height-1)) { 
 								String next = buildings.get(r+rCount).get(c+cCount).toString();
 								if (next.charAt(0) == 'p') {
 									for (int i = 0; i < Integer.parseInt(next.substring(1)); i++) {
@@ -215,6 +212,8 @@ public class Stats implements Serializable{
 										tempPop --;
 									}
 								}
+								}
+							}
 							}
 						}
 					}
