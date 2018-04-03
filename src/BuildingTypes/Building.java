@@ -27,4 +27,6 @@ public abstract class Building {
 	 * @return Whether or not the building could be successfully upgraded
 	 */
 	public abstract int upgrade(double money);
+	
+	public abstract String getName();
 }

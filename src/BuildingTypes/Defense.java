@@ -53,5 +53,11 @@ public class Defense extends Building {
 		}
 		return -1;
 	}
+
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return "tower";
+	}
 	
 }
