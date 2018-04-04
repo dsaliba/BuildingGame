@@ -256,6 +256,14 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1.add(taxSlider, t);
 
 	}
+	
+	public void updateImages() {
+		for (int row = 0; row < grid.size(); row++) {
+			for (int col = 0; col < grid.get(row).size(); col++) {
+				grid.get(row).get(col).setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
+			}
+		}
+	}
 
 	// This method handles the Text Area for the Status, Console, and the Header for
 	// Tax Slider

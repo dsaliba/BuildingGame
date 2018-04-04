@@ -113,6 +113,7 @@ public class Frame implements ActionListener, ChangeListener{
 			game.histogram.updateData();
 			game.updateQueue(ep.runEvent());
 			game.updateStatus();
+			game.updateImages();
 			break;
 
 
