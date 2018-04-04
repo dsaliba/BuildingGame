@@ -6,7 +6,7 @@ public class Murder extends Event{
 
 	public Murder() {
 		super();
-		probability = 1;
+		probability = 3;
 		dayAvailable = 5;
 		buffer = 3;
 	}
