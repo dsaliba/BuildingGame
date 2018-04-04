@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javax.naming.InsufficientResourcesException;
 
+import Events.Empty;
 import Events.Event;
 import Events.Murder;
 import Events.Ransack;
@@ -16,6 +17,7 @@ public class EventPlanner {
 		events = new ArrayList<Event>();
 		events.add(new Murder());
 		events.add(new Ransack());
+		events.add(new Empty());
 		stats = s;
 	}
 	
