@@ -25,13 +25,13 @@ public class Shelter extends Building {
 		String out = "p";
 		switch(level) {
 		case 1:
-			out += 2;
+			out += 1;
 			break;
 		case 2:
-			out += 5;
+			out += 3;
 			break;
 		case 3:
-			out += 10;
+			out += 6;
 			break;
 		}
 		return out;

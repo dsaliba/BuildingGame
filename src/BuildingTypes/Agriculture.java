@@ -25,10 +25,10 @@ public class Agriculture extends Building {
 		String out = "f";
 		switch(level) {
 		case 1:
-			out += 5;
+			out += 2;
 			break;
 		case 2:
-			out += 10;
+			out += 5;
 			break;
 		}
 		return out;

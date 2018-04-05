@@ -25,10 +25,10 @@ public class Commerce extends Building {
 		String out = "c";
 		switch(level) {
 		case 1:
-			out += 5;
+			out += 2;
 			break;
 		case 2:
-			out += 25;
+			out += 5;
 			break;
 		}
 		return out;
