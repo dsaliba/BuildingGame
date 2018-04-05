@@ -56,7 +56,7 @@ public class SaveManager {
 				case 'd':
 					Stats.buildings.get(r).set(c, new Defense(id.charAt(1)-48));
 					break;
-				case 'h':
+				case 'r':
 					Stats.buildings.get(r).set(c, new Recreation(id.charAt(1)-48));
 					break;
 				case 'p':
