@@ -24,10 +24,10 @@ public class Defense extends Building {
 		String out = "d";
 		switch(level) {
 		case 1:
-			out += 1;
+			out += 5;
 			break;
 		case 2:
-			out += 5;
+			out += 10;
 			break;
 		}
 		return out;
