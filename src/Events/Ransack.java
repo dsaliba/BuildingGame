@@ -26,7 +26,7 @@ public class Ransack extends Event{
 
 	@Override
 	public boolean specialConditions(Stats stats) {
-		return (stats.defense <= (stats.numBuildings / 5));
+		return (stats.defense <= (stats.numBuildings / 2));
 	}
 
 }
