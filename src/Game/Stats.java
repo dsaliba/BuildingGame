@@ -68,7 +68,6 @@ public class Stats implements Serializable{
 		day++;
 		updateRescources();
 		happiness += happinessIncome;
-		System.out.println(happiness + "   " + happinessIncome);
 		coins += coinsIncome;
 		food += foodIncome;
 		if(happiness > 30) {
@@ -179,15 +178,33 @@ public class Stats implements Serializable{
 		coinsIncome = 0;
 		happinessIncome = 0;
 		int tempPop = population;
+		int tempPop2 = population;
 		int rCount = 0;
 		
 		for (ArrayList<Building> buildingList: buildings) {
 			int cCount = 0;
 			for (Building building: buildingList) {
-				String id = building.toString();
+				String id = building.newDay();
 				switch (id.charAt(0)) {
 				case 'c':
-					coinsIncome += Double.parseDouble(id.substring(1));
+					if (tempPop2 > 0) {
+						for (int r = -1; r < 3; r++) {
+							if(!(rCount + r < 0 || rCount + r > width-1)) {
+							for (int c = -1; c < 3; c++) {
+								if(!(cCount + c < 0 || cCount + c > height-1)) { 
+								String next = buildings.get(r+rCount).get(c+cCount).toString();
+								if (next.charAt(0) == 'p') {
+									for (int i = 0; i < Integer.parseInt(next.substring(1)); i++) {
+										if (tempPop < 1) break;
+										coinsIncome += Integer.parseInt(id.substring(1));
+										tempPop2 --;
+									}
+								}
+								}
+							}
+							}
+						}
+					}
 					break;
 				case 'd':
 					defense += Integer.parseInt(id.substring(1));

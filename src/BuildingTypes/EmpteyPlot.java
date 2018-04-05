@@ -14,7 +14,7 @@ public class EmpteyPlot extends Building {
 	@Override
 	public String newDay() {
 		// TODO Auto-generated method stub
-		return null;
+		return "  ";
 	}
 
 	@Override
