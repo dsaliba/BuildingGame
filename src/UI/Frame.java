@@ -24,7 +24,7 @@ public class Frame implements ActionListener, ChangeListener{
 	private Gamemenu game;
 	private JFrame start; // start screen
 	private JFrame pause;
-	private JFrame upgrade;
+	private Upgrademenu upgrade;
 	private JFrame build;
 	private int lastX = 0;
 	private int lastY = 0;
@@ -65,6 +65,7 @@ public class Frame implements ActionListener, ChangeListener{
 					build.setVisible(true); ///buildshit
 				}
 				else {
+					upgrade.setPrice(Stats.buildings.get(r).get(c));
 					upgrade.setVisible(true);
 				}
 		}

@@ -60,4 +60,15 @@ public class Defense extends Building {
 		return "tower";
 	}
 	
+	@Override
+	public String getPrice() {
+		switch (level) {
+		case 1:
+			return "500";
+		case 2:
+			return "Max";
+		}
+		return "";
+	}
+	
 }

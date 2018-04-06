@@ -86,8 +86,8 @@ public class Buildmenu extends JFrame {
 		add(closeLabel, label);
 		
 		label.gridx++;
-		JLabel farmLabel = new JLabel("Farm");
-		farmLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
+		JLabel farmLabel = new JLabel("Farm [20]");
+		farmLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
 		farmLabel.setVisible(true);
 		farmLabel.setBackground(Color.WHITE);
 		farmLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -95,8 +95,8 @@ public class Buildmenu extends JFrame {
 		add(farmLabel, label);
 		
 		label.gridx++;
-		JLabel merchantLabel = new JLabel("Shop");
-		merchantLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
+		JLabel merchantLabel = new JLabel("Shop [50]");
+		merchantLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
 		merchantLabel.setVisible(true);
 		merchantLabel.setBackground(Color.WHITE);
 		merchantLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -104,8 +104,8 @@ public class Buildmenu extends JFrame {
 		add(merchantLabel, label);
 		
 		label.gridx++;
-		JLabel defenseLabel = new JLabel("Tower");
-		defenseLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
+		JLabel defenseLabel = new JLabel("Tower [100]");
+		defenseLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
 		defenseLabel.setVisible(true);
 		defenseLabel.setBackground(Color.WHITE);
 		defenseLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -113,8 +113,8 @@ public class Buildmenu extends JFrame {
 		add(defenseLabel, label);
 		
 		label.gridx++;
-		JLabel recreationLabel = new JLabel("Tree");
-		recreationLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
+		JLabel recreationLabel = new JLabel("Tree [10]");
+		recreationLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
 		recreationLabel.setVisible(true);
 		recreationLabel.setBackground(Color.WHITE);
 		recreationLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -122,8 +122,8 @@ public class Buildmenu extends JFrame {
 		add(recreationLabel, label);
 		
 		label.gridx++;
-		JLabel housingLabel = new JLabel("Tent");
-		housingLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
+		JLabel housingLabel = new JLabel("Tent [25]");
+		housingLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
 		housingLabel.setVisible(true);
 		housingLabel.setBackground(Color.WHITE);
 		housingLabel.setHorizontalAlignment(SwingConstants.CENTER);

@@ -34,4 +34,9 @@ public class EmpteyPlot extends Building {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public String getPrice() {
+		return "";
+	}
 }

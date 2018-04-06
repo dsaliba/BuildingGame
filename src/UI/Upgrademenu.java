@@ -11,6 +11,9 @@ import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
+import BuildingTypes.Building;
+import Game.Stats;
+
 
 public class Upgrademenu extends JFrame{
 	
@@ -97,7 +100,7 @@ public class Upgrademenu extends JFrame{
 		add(removeLabel);
 		
 		upgradeLabel = new JLabel(upgradeText);
-		upgradeLabel.setFont(new Font("Monospaced", Font.BOLD, 40));
+		upgradeLabel.setFont(new Font("Monospaced", Font.BOLD, 20));
 		upgradeLabel.setVisible(true);
 		upgradeLabel.setBackground(Color.WHITE);
 		upgradeLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -105,6 +108,17 @@ public class Upgrademenu extends JFrame{
 		upgradeLabel.setSize(180, 90);
 		add(upgradeLabel);
 		
+	}
+	
+	public void setPrice(Building building) {
+		if (Stats.coins < Integer.parseInt(building.getPrice())) {
+			upgrade.setForeground( Color.RED);
+			upgrade.setEnabled(false);
+		}else {
+			upgrade.setForeground( Color.BLACK);
+			upgrade.setEnabled(true);
+		}
+		upgradeLabel.setText("Upgrade [" + building.getPrice() + "]");
 	}
 	
 	public void toggleUpgrade(boolean showUpgrade) {

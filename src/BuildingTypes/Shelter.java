@@ -70,4 +70,16 @@ public class Shelter extends Building {
 		return "shelter";
 	}
 	
+	@Override
+	public String getPrice() {
+		switch (level) {
+		case 1:
+			return "100";
+		case 2:
+			return "500";
+		case 3:
+			return "Max";
+		}
+		return "";
+	}
 }

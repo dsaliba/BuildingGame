@@ -59,4 +59,15 @@ public class Recreation extends Building {
 		// TODO Auto-generated method stub
 		return "tree";
 	}
+	
+	@Override
+	public String getPrice() {
+		switch (level) {
+		case 1:
+			return "150";
+		case 2:
+			return "Max";
+		}
+		return "";
+	}
 }

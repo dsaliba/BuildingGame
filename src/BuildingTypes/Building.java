@@ -29,4 +29,6 @@ public abstract class Building {
 	public abstract int upgrade(double money);
 	
 	public abstract String getName();
+	
+	public abstract String getPrice();
 }

@@ -46,9 +46,9 @@ public class Agriculture extends Building {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 300) {
+				if (money >= 150) {
 					level++;
-					return 300;
+					return 150;
 				}
 				break;
 			}
@@ -60,6 +60,17 @@ public class Agriculture extends Building {
 	public String getName() {
 		// TODO Auto-generated method stub
 		return "farm";
+	}
+
+	@Override
+	public String getPrice() {
+		switch (level) {
+		case 1:
+			return "150";
+		case 2:
+			return "Max";
+		}
+		return "";
 	}
 	
 }

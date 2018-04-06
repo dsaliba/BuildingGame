@@ -60,4 +60,15 @@ public class Commerce extends Building {
 		// TODO Auto-generated method stub
 		return "shop";
 	}
+	
+	@Override
+	public String getPrice() {
+		switch (level) {
+		case 1:
+			return "250";
+		case 2:
+			return "Max";
+		}
+		return "";
+	}
 }
