@@ -118,7 +118,7 @@ public class Upgrademenu extends JFrame{
 			upgrade.setForeground( Color.BLACK);
 			upgrade.setEnabled(true);
 		}
-		upgradeLabel.setText("<HTML>Upgrade<br/>[" + building.getPrice() + "]</HTML>");
+		upgradeLabel.setText("<HTML>Upgrade<br/><center>[" + building.getPrice() + "]</center></HTML>");
 	}
 	
 	public void toggleUpgrade(boolean showUpgrade) {
