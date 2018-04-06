@@ -19,7 +19,7 @@ public class Murder extends Event{
 
 	@Override
 	public boolean specialConditions(Stats stats) {
-		return (Stats.population > 1 && Stats.defense > Stats.population/3);
+		return (Stats.population > 1 && Stats.defense <= Stats.population/3);
 	}
 
 }
