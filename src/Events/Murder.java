@@ -14,12 +14,12 @@ public class Murder extends Event{
 	@Override
 	public String execute(Stats stats) {
 		Stats.population --;
-		return "A town member has been killed";
+		return "A town member has been murdered";
 	}
 
 	@Override
 	public boolean specialConditions(Stats stats) {
-		return (Stats.population > 1);
+		return (Stats.population > 1 && Stats.defense > Stats.population/3);
 	}
 
 }
