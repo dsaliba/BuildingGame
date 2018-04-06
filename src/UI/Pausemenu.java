@@ -22,10 +22,10 @@ public class Pausemenu extends JFrame{
 		this.parent = parent;
 		System.out.println("isrunning");
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		setBounds(1350, 500, 500, 750);
+		setBounds(850, 250, 500, 750);
 		setLayout(null);
 		setResizable(false);
-		setUndecorated(true);
+		setUndecorated(false);
 		getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, Color.BLACK));
 		createButtons();
 		createText();

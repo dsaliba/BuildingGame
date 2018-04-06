@@ -34,15 +34,17 @@ public class Upgrademenu extends JFrame{
 	
 	
 	public Upgrademenu(Frame parent) {
-		
+		setResizable(false);
+		setUndecorated(false);
 		this.parent = parent;
 		setLayout(new GridLayout(2, 3));
-		setBounds(500, 500, 540, 360);
+		setBounds(850, 400, 545, 360);
 		createButtons();
 		createTextLabels();
 	}
 
-	
+
+
 	public void createButtons() {
 		
 		closeButton = new JButton("");

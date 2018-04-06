@@ -33,9 +33,9 @@ public class Buildmenu extends JFrame {
 		this.parent = parent;
 		setLayout(new GridBagLayout());
 		setResizable(true);
-		setBounds(500, 400, 1300, 360);
-
-		// setVisible(true);
+		setBounds(470, 400, 1300, 360);
+		setResizable(false);
+		setUndecorated(false);
 		createButtons();
 		createImages();
 		createTextLabels();
@@ -58,7 +58,7 @@ public class Buildmenu extends JFrame {
 		for (int i = 0; i < buildingLabels.length; i++) {
 			top = new GridBagConstraints();
 			top.gridheight = 2;
-			top.gridx = i+1;
+			top.gridx = i + 1;
 			top.gridy = 0;
 			bl = new JButton("");
 			bl.setBounds(0, 1, 100, 100);
@@ -84,7 +84,7 @@ public class Buildmenu extends JFrame {
 		closeLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		closeLabel.setVerticalAlignment(SwingConstants.TOP);
 		add(closeLabel, label);
-		
+
 		label.gridx++;
 		JLabel farmLabel = new JLabel("Farm [20]");
 		farmLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
@@ -93,7 +93,7 @@ public class Buildmenu extends JFrame {
 		farmLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		farmLabel.setVerticalAlignment(SwingConstants.TOP);
 		add(farmLabel, label);
-		
+
 		label.gridx++;
 		JLabel merchantLabel = new JLabel("Shop [50]");
 		merchantLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
@@ -102,7 +102,7 @@ public class Buildmenu extends JFrame {
 		merchantLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		merchantLabel.setVerticalAlignment(SwingConstants.TOP);
 		add(merchantLabel, label);
-		
+
 		label.gridx++;
 		JLabel defenseLabel = new JLabel("Tower [100]");
 		defenseLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
@@ -111,7 +111,7 @@ public class Buildmenu extends JFrame {
 		defenseLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		defenseLabel.setVerticalAlignment(SwingConstants.TOP);
 		add(defenseLabel, label);
-		
+
 		label.gridx++;
 		JLabel recreationLabel = new JLabel("Tree [10]");
 		recreationLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
@@ -120,7 +120,7 @@ public class Buildmenu extends JFrame {
 		recreationLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		recreationLabel.setVerticalAlignment(SwingConstants.TOP);
 		add(recreationLabel, label);
-		
+
 		label.gridx++;
 		JLabel housingLabel = new JLabel("Tent [25]");
 		housingLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
@@ -129,7 +129,7 @@ public class Buildmenu extends JFrame {
 		housingLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		housingLabel.setVerticalAlignment(SwingConstants.TOP);
 		add(housingLabel, label);
-		
+
 	}
 
 	public void createImages() {
