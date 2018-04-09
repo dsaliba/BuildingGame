@@ -2,6 +2,8 @@ package UI;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
@@ -11,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-public class Startmenu extends JFrame {
+public class Startmenu extends JFrame implements ActionListener{
 
 	private Frame parent;
 	private JButton exitButton;
@@ -73,6 +75,7 @@ public class Startmenu extends JFrame {
 		startButton.setVisible(true);
 		startButton.addActionListener(parent);
 		startButton.setActionCommand("new game");
+		startButton.setPressedIcon(new ImageIcon("Images\\startpressed.png"));
 		startButton.setOpaque(false);
 		startButton.setContentAreaFilled(false);
 		startButton.setBorderPainted(false);
@@ -84,6 +87,7 @@ public class Startmenu extends JFrame {
 		continueButton.setVisible(true);
 		continueButton.addActionListener(parent);
 		continueButton.setActionCommand("continue");
+		continueButton.setPressedIcon(new ImageIcon("Images\\continuepressed.png"));
 		continueButton.setOpaque(false);
 		continueButton.setContentAreaFilled(false);
 		continueButton.setBorderPainted(false);
@@ -95,9 +99,19 @@ public class Startmenu extends JFrame {
 		exitButton.setVisible(true);
 		exitButton.addActionListener(parent); //----------------------------------------action listener stuff (v)
 		exitButton.setActionCommand("exit");
+		exitButton.setPressedIcon(new ImageIcon("Images\\exitpressed.png"));
 		exitButton.setOpaque(false);
 		exitButton.setContentAreaFilled(false);
 		exitButton.setBorderPainted(false);
 
+	}
+
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
