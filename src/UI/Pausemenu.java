@@ -22,7 +22,7 @@ public class Pausemenu extends JFrame {
 
 	public Pausemenu(Frame parent) {
 		this.parent = parent;
-		System.out.println("isrunning");
+		System.out.println("pause menu ready");
 		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		setBounds(850, 250, 500, 750);
 		setLayout(null);
@@ -48,6 +48,7 @@ public class Pausemenu extends JFrame {
 		resize.setVisible(true);
 		resize.addActionListener(parent);
 		resize.setActionCommand("resize");
+		resize.setPressedIcon(new ImageIcon("Images\\resizepressed.png"));
 		resize.setOpaque(false);
 		resize.setContentAreaFilled(false);
 		resize.setBorderPainted(false);
@@ -59,6 +60,7 @@ public class Pausemenu extends JFrame {
 		pauseExitMainMenu.setVisible(true);
 		pauseExitMainMenu.addActionListener(parent);
 		pauseExitMainMenu.setActionCommand("exitMainMenu");
+		pauseExitMainMenu.setPressedIcon(new ImageIcon("Images\\exitmainpressed.png"));
 		pauseExitMainMenu.setOpaque(false);
 		pauseExitMainMenu.setContentAreaFilled(false);
 		pauseExitMainMenu.setBorderPainted(false);
@@ -69,6 +71,7 @@ public class Pausemenu extends JFrame {
 		pauseExitGame.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseExitGame.addActionListener(parent);
 		pauseExitGame.setActionCommand("exitpause");
+		pauseExitGame.setPressedIcon(new ImageIcon("Images\\exitpausepressed.png"));
 		pauseExitGame.setOpaque(false);
 		pauseExitGame.setContentAreaFilled(false);
 		pauseExitGame.setBorderPainted(false);
@@ -79,6 +82,7 @@ public class Pausemenu extends JFrame {
 		pauseResume.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseResume.addActionListener(parent);
 		pauseResume.setActionCommand("resume");
+		pauseResume.setPressedIcon(new ImageIcon("Images\\resumepressed.png"));
 		pauseResume.setOpaque(false);
 		pauseResume.setContentAreaFilled(false);
 		pauseResume.setBorderPainted(false);
