@@ -84,7 +84,7 @@ public class Frame implements ActionListener, ChangeListener{
 			stats = saveManager.readSave();
 			game = new Gamemenu(this, stats);
 			game.setVisible(true);
-			game.updateDayButton("Next Day (" + Stats.day + ")"); // Sets text of button to match day
+			game.updateDayButton("(" + Stats.day + ")"); // Sets text of button to match day
 			
 			break;
 		case "exit":
