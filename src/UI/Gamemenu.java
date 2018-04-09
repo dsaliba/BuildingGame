@@ -129,6 +129,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		addGrid = new JButton("Buy Land: [" + 500 * stats.width + "]"); // Add Grid Button
 		addGrid.setIcon(new ImageIcon("Images\\buyland.png"));
+		addGrid.setOpaque(false);
 		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
 		addGrid.setBackground(Color.WHITE);
 		addGrid.addActionListener(parent);
@@ -260,7 +261,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		taxSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 2, 1); // Tax Slider
 		taxSlider.addChangeListener(parent);
-
+		taxSlider.setOpaque(false);
 		Hashtable<Integer, JLabel> labelTable = new Hashtable(); // Tax Slider Labels and Ticks
 		labelTable.put(new Integer(0), new JLabel("L"));
 		labelTable.put(new Integer(1), new JLabel("M"));
@@ -314,6 +315,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		JTextArea header = new JTextArea("Tax"); // Tax Slider Header
 		header.setFont(new Font("Monospaced", Font.BOLD, 30));
 		header.setBackground(new Color(239, 211, 135, 255));
+		header.setOpaque(false);
 		header.setVisible(true);
 		header.setEditable(false);
 		panel1.add(header, t);
