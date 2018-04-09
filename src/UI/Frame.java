@@ -30,6 +30,7 @@ public class Frame implements ActionListener, ChangeListener{
 	private int lastY = 0;
 	private EventPlanner ep;
 	private SaveManager saveManager;
+	private int error;
 	
 	
 	
@@ -69,7 +70,7 @@ public class Frame implements ActionListener, ChangeListener{
 					upgrade.setVisible(true);
 				}
 		}
-		int error = 0;
+		error = 0;
 		switch (e.getActionCommand()) {
 		case "new game":
 			start.setVisible(false);
