@@ -258,7 +258,7 @@ public class Stats implements Serializable{
 			break;
 		case "High":
 			taxNum = 2.7;
-			taxHap = -1;
+			taxHap = -3;
 			break;
 		}
 		coinTax = (int) (population*taxNum);
