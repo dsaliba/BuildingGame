@@ -234,6 +234,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel2.setLayout(new GridLayout(stats.width, stats.height));
 		panel1 = new JPanel(); // Stats Section
 		panel1.setLayout(new GridBagLayout());
+		panel1.setBackground(new Color(239, 211, 135, 255));
 		add(panel1);
 		add(panel2);
 
