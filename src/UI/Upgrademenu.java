@@ -113,13 +113,7 @@ public class Upgrademenu extends JFrame{
 	}
 	
 	public void setPrice(Building building) {
-		if (Stats.coins < Integer.parseInt(building.getPrice())) {
-			upgrade.setForeground( Color.RED);
-			upgrade.setEnabled(false);
-		}else {
-			upgrade.setForeground( Color.BLACK);
-			upgrade.setEnabled(true);
-		}
+		
 		upgradeLabel.setText("<HTML>Upgrade<br/><center>[" + building.getPrice() + "]</center></HTML>");
 	}
 	
