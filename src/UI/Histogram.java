@@ -2,6 +2,8 @@ package UI;
 
 
 
+import java.awt.Color;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -26,11 +28,12 @@ public class Histogram{
          dataset,
          PlotOrientation.VERTICAL,
          true,true,false);
-         
+      lineChart.setBackgroundPaint(new Color(239, 211, 135, 255));
       
       chart = new ChartPanel(lineChart);
       chart.setPreferredSize( new java.awt.Dimension( 1000 , 367 ) );
       updateData();
+      chart.setBackground(new Color(239, 211, 135, 255));
       //setContentPane(chart);
       
    }
