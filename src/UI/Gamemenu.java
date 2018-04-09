@@ -87,14 +87,14 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		p.gridy = 0;
 		p.gridheight = 2;
 		p.gridwidth = 1;
-	
+
 		GridBagConstraints d = new GridBagConstraints();
 		d.fill = GridBagConstraints.BOTH;
 		d.gridx = 4;
 		d.gridy = 0;
 		d.gridheight = 2;
 		d.gridwidth = 2;
-	
+
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.HORIZONTAL;
 		g.gridx = 0;
@@ -103,35 +103,41 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		g.gridwidth = 6;
 
 		pauseButton = new JButton("");// pause button
-		pauseButton.setIcon(new ImageIcon("Images\\start.png"));
+		pauseButton.setIcon(new ImageIcon("Images\\pause.png"));
 		pauseButton.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseButton.setBackground(Color.WHITE);
 		pauseButton.addActionListener(parent);
 		pauseButton.setActionCommand("pause");
 		pauseButton.setVisible(true);
-		pauseButton.setPressedIcon(new ImageIcon("Images\\start.png"));
+		pauseButton.setPressedIcon(new ImageIcon("Images\\pausepressed.png"));
 		pauseButton.setOpaque(false);
 		pauseButton.setContentAreaFilled(false);
 		pauseButton.setBorderPainted(false);
 
 		String nextDayText = "(" + stats.day + ")";
 		nextDay = new JButton(nextDayText); // next day button (Not implemented yet)
-		nextDay.setIcon(new ImageIcon("Images\\start.png"));
+		nextDay.setIcon(new ImageIcon("Images\\nextday.png"));
 		nextDay.setFont(new Font("Monospaced", Font.BOLD, 40));
 		nextDay.addActionListener(parent);
 		nextDay.setActionCommand("nextDay");
 		nextDay.setBackground(Color.WHITE);
 		nextDay.setVisible(true);
+		nextDay.setPressedIcon(new ImageIcon("Images\\nextdaypressed.png"));
 		nextDay.setOpaque(false);
 		nextDay.setContentAreaFilled(false);
 		nextDay.setBorderPainted(false);
 
 		addGrid = new JButton("Buy Land: [" + 500 * stats.width + "]"); // Add Grid Button
+		addGrid.setIcon(new ImageIcon("Images\\buyland.png"));
 		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
 		addGrid.setBackground(Color.WHITE);
 		addGrid.addActionListener(parent);
 		addGrid.setActionCommand("buy land");
 		addGrid.setVisible(true);
+		addGrid.setPressedIcon(new ImageIcon("Images\\buylandpressed.png"));
+		addGrid.setOpaque(false);
+		addGrid.setContentAreaFilled(false);
+		addGrid.setBorderPainted(false);
 
 		panel1.add(addGrid, g); // Panel Button Adding
 		panel1.add(pauseButton, p);
@@ -251,7 +257,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		t.gridheight = 2;
 		t.gridwidth = 2;
 		t.weightx = 0.5;
-		
 
 		taxSlider = new JSlider(SwingConstants.HORIZONTAL, 0, 2, 1); // Tax Slider
 		taxSlider.addChangeListener(parent);
@@ -260,17 +265,18 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		labelTable.put(new Integer(0), new JLabel("L"));
 		labelTable.put(new Integer(1), new JLabel("M"));
 		labelTable.put(new Integer(2), new JLabel("H"));
-	
+
 		taxSlider.setLabelTable(labelTable);
 		taxSlider.setPaintLabels(true);
 		panel1.add(taxSlider, t);
 
 	}
-	
+
 	public void updateImages() {
 		for (int row = 0; row < grid.size(); row++) {
 			for (int col = 0; col < grid.get(row).size(); col++) {
-				grid.get(row).get(col).setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
+				grid.get(row).get(col)
+						.setIcon(new ImageIcon("Images//" + stats.buildings.get(row).get(col).toString() + ".png"));
 			}
 		}
 	}
@@ -305,8 +311,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		t.gridheight = 1;
 		t.gridwidth = 2;
 
-		JTextArea header = new JTextArea("Tax Amount"); // Tax Slider Header
+		JTextArea header = new JTextArea("Tax"); // Tax Slider Header
 		header.setFont(new Font("Monospaced", Font.BOLD, 30));
+		header.setBackground(new Color(239, 211, 135, 255));
 		header.setVisible(true);
 		header.setEditable(false);
 		panel1.add(header, t);
