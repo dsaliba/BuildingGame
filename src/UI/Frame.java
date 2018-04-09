@@ -95,6 +95,13 @@ public class Frame implements ActionListener, ChangeListener{
 			pause.dispose();
 			saveManager.writeSave(stats);
 			return;
+			
+		case "exitpause":
+			game.dispose();
+			pause.dispose();
+			start.dispose();
+			saveManager.writeSave(stats);
+			break;
 
 		case "exitMainMenu":
 			game.setVisible(false);
@@ -103,6 +110,11 @@ public class Frame implements ActionListener, ChangeListener{
 			saveManager.writeSave(stats);
 			return;
 
+		case "resize":
+			game.setSize(1920, 1080);
+			start.setSize(1920, 1080);
+			break;
+			
 		case "resume":
 			pause.setVisible(false);
 			return;

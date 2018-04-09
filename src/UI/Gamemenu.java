@@ -61,7 +61,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		createButtons();
 		createSlider();
 		createText();
-		createHistogram();
+		creatHistogram();
 		addComponentListener(this);
 		histogram.updateData();
 		if (stats.width > 22) {
@@ -327,7 +327,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	 * This Method Creates the Histogram. It also contains the Hisogram's gridbag
 	 * Constraints
 	 */
-	public void createHistogram() {
+	public void creatHistogram() {
 		histogram = new Histogram(stats); // Hisogram
 		histogram.updateData();
 		// --------------------------------------------

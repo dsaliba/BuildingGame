@@ -1,8 +1,10 @@
 package UI;
+
 import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -10,14 +12,14 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
-public class Pausemenu extends JFrame{
+public class Pausemenu extends JFrame {
 
 	private Frame parent;
 	private JButton pauseResume;
 	private JButton pauseExitMainMenu;
 	private JButton pauseExitGame;
-	
-	
+	private JButton resize;
+
 	public Pausemenu(Frame parent) {
 		this.parent = parent;
 		System.out.println("isrunning");
@@ -32,36 +34,56 @@ public class Pausemenu extends JFrame{
 		add(pauseExitGame);
 		add(pauseResume);
 		add(pauseExitMainMenu);
+		add(resize);
 		setVisible(false);
 	}
-	
 
 	public void createButtons() {
 
-		pauseExitMainMenu = new JButton("Main Menu");
-		pauseExitMainMenu.setBounds(12, 490, 462, 75);
+		resize = new JButton("");
+		resize.setBounds(12, 280, 462, 100);
+		resize.setIcon(new ImageIcon("Images\\resize.png"));
+		resize.setFont(new Font("Monospaced", Font.BOLD, 40));
+		resize.setVisible(true);
+		resize.addActionListener(parent);
+		resize.setActionCommand("resize");
+		resize.setOpaque(false);
+		resize.setContentAreaFilled(false);
+		resize.setBorderPainted(false);
+
+		pauseExitMainMenu = new JButton("");
+		pauseExitMainMenu.setBounds(12, 380, 462, 100);
+		pauseExitMainMenu.setIcon(new ImageIcon("Images\\exitmain.png"));
 		pauseExitMainMenu.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseExitMainMenu.setVisible(true);
 		pauseExitMainMenu.addActionListener(parent);
 		pauseExitMainMenu.setActionCommand("exitMainMenu");
-		pauseExitMainMenu.setBackground(Color.WHITE);
-		
-		pauseExitGame = new JButton("Save and Exit");
-		pauseExitGame.setBounds(12, 600, 462, 75);
+		pauseExitMainMenu.setOpaque(false);
+		pauseExitMainMenu.setContentAreaFilled(false);
+		pauseExitMainMenu.setBorderPainted(false);
+
+		pauseExitGame = new JButton("");
+		pauseExitGame.setBounds(12, 480, 462, 100);
+		pauseExitGame.setIcon(new ImageIcon("Images\\exitpause.png"));
 		pauseExitGame.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseExitGame.addActionListener(parent);
-		pauseExitGame.setActionCommand("exit");
-		pauseExitGame.setBackground(Color.WHITE);
-		
-		pauseResume = new JButton("Resume");
-		pauseResume.setBounds(12, 380, 462, 75);
+		pauseExitGame.setActionCommand("exitpause");
+		pauseExitGame.setOpaque(false);
+		pauseExitGame.setContentAreaFilled(false);
+		pauseExitGame.setBorderPainted(false);
+
+		pauseResume = new JButton("");
+		pauseResume.setBounds(12, 180, 462, 100);
+		pauseResume.setIcon(new ImageIcon("Images\\resume.png"));
 		pauseResume.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseResume.addActionListener(parent);
 		pauseResume.setActionCommand("resume");
-		pauseResume.setBackground(Color.WHITE);
-		
+		pauseResume.setOpaque(false);
+		pauseResume.setContentAreaFilled(false);
+		pauseResume.setBorderPainted(false);
+
 	}
-	
+
 	public void createText() {
 
 		String textPaused = "Game is Paused"; // <------ Text
