@@ -19,6 +19,7 @@ public class Startmenu extends JFrame {
 	private JButton continueButton;
 	private JLabel background;
 	private BufferedImage titleScreen = null;
+	private JLabel title;
 
 	public Startmenu(Frame parent) {
 		this.parent = parent;
@@ -32,6 +33,7 @@ public class Startmenu extends JFrame {
 		background.add(startButton);
 		background.add(continueButton);
 		background.add(exitButton);
+		background.add(title);
 		setVisible(true);
 	}
 
@@ -54,12 +56,19 @@ public class Startmenu extends JFrame {
 		} catch (Exception exp) {
 			exp.printStackTrace();
 		}
+		
+		title = new JLabel("");
+		title.setIcon(new ImageIcon("Images\\title.png"));
+		title.setVisible(true);
+		title.setBounds(575, 250, 750, 500);
+		
+		
 	}
 
 	public void createButtons() {
 		startButton = new JButton(""); // play button
 		startButton.setIcon(new ImageIcon("Images\\start.png"));
-		startButton.setBounds(850, 600, 300, 100);
+		startButton.setBounds(800, 600, 300, 100);
 		startButton.setFont(new Font("Monospaced", Font.BOLD, 40));
 		startButton.setVisible(true);
 		startButton.addActionListener(parent);
@@ -70,7 +79,7 @@ public class Startmenu extends JFrame {
 		
 		continueButton = new JButton(""); // play button
 		continueButton.setIcon(new ImageIcon("Images\\continue.png"));
-		continueButton.setBounds(850, 700, 300, 100);
+		continueButton.setBounds(800, 700, 300, 100);
 		continueButton.setFont(new Font("Monospaced", Font.BOLD, 40));
 		continueButton.setVisible(true);
 		continueButton.addActionListener(parent);
@@ -81,7 +90,7 @@ public class Startmenu extends JFrame {
 
 		exitButton = new JButton(""); // exit button on pause screen
 		exitButton.setIcon(new ImageIcon("Images\\exit.png"));
-		exitButton.setBounds(850, 800, 300, 100);
+		exitButton.setBounds(800, 800, 300, 100);
 		exitButton.setFont(new Font("Monospaced", Font.BOLD, 40));
 		exitButton.setVisible(true);
 		exitButton.addActionListener(parent); //----------------------------------------action listener stuff (v)

@@ -56,6 +56,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.stats = stats;
+		getContentPane().setBackground(new Color(239, 211, 135, 255));
 		createPanels();
 		createButtons();
 		createSlider();
@@ -318,6 +319,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		console.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		console.setEditable(false);
 		console.setVisible(true);
+		console.setBackground(new Color(239, 211, 135, 255));
 		panel1.add(console, b);
 	}
 

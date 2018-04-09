@@ -87,6 +87,9 @@ public class Frame implements ActionListener, ChangeListener{
 			
 			break;
 		case "exit":
+			stats = new Stats();
+			game = new Gamemenu(this, stats);
+			game.setVisible(true);
 			game.dispose();
 			start.dispose();
 			pause.dispose();
