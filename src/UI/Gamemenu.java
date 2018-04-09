@@ -117,7 +117,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		String nextDayText = "(" + stats.day + ")";
 		nextDay = new JButton(nextDayText); // next day button (Not implemented yet)
 		nextDay.setIcon(new ImageIcon("Images\\start.png"));
-		nextDay.setFont(new Font("Monospaced", Font.BOLD, 20));
+		nextDay.setFont(new Font("Monospaced", Font.BOLD, 40));
 		nextDay.addActionListener(parent);
 		nextDay.setActionCommand("nextDay");
 		nextDay.setBackground(Color.WHITE);
