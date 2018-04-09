@@ -102,21 +102,29 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		g.gridheight = 1;
 		g.gridwidth = 6;
 
-		pauseButton = new JButton("Pause");// pause button
+		pauseButton = new JButton("");// pause button
+		pauseButton.setIcon(new ImageIcon("Images\\start.png"));
 		pauseButton.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseButton.setBackground(Color.WHITE);
 		pauseButton.addActionListener(parent);
 		pauseButton.setActionCommand("pause");
 		pauseButton.setVisible(true);
+		pauseButton.setPressedIcon(new ImageIcon("Images\\start.png"));
+		pauseButton.setOpaque(false);
+		pauseButton.setContentAreaFilled(false);
+		pauseButton.setBorderPainted(false);
 
-		String nextDayText = "Next Day (" + stats.day + ")";
+		String nextDayText = "(" + stats.day + ")";
 		nextDay = new JButton(nextDayText); // next day button (Not implemented yet)
-
+		nextDay.setIcon(new ImageIcon("Images\\start.png"));
 		nextDay.setFont(new Font("Monospaced", Font.BOLD, 20));
 		nextDay.addActionListener(parent);
 		nextDay.setActionCommand("nextDay");
 		nextDay.setBackground(Color.WHITE);
 		nextDay.setVisible(true);
+		nextDay.setOpaque(false);
+		nextDay.setContentAreaFilled(false);
+		nextDay.setBorderPainted(false);
 
 		addGrid = new JButton("Buy Land: [" + 500 * stats.width + "]"); // Add Grid Button
 		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
