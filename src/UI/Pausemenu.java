@@ -35,6 +35,7 @@ public class Pausemenu extends JFrame {
 		add(pauseResume);
 		add(pauseExitMainMenu);
 		add(resize);
+		setAlwaysOnTop (true);
 		setVisible(false);
 	}
 
