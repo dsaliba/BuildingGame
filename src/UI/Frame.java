@@ -136,9 +136,7 @@ public class Frame implements ActionListener, ChangeListener{
 
 		case "upgrade":
 			int cost = Stats.buildings.get(lastX).get(lastY).upgrade(Stats.coins);
-			if (cost == -1) {
-				game.updateQueue("You dont have enough money to upgrade that building");
-			}
+			
 			if (cost > 0) {
 				Stats.coins -= cost;
 				game.grid.get(lastX).get(lastY).setIcon(new ImageIcon("Images//" + Stats.buildings.get(lastX).get(lastY).toString() + ".png"));
@@ -149,7 +147,6 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 			
 		case "upgradeOff":
-			game.updateQueue("The building is fully upgraded.");
 			break;
 
 		case "buy land":
@@ -162,7 +159,6 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 			
 		case "fullLand":
-			game.updateQueue("You have reached the maximum amount of land.");
 			break;
 			
 			
@@ -226,16 +222,7 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 
 		}
-		switch (error) {
-		case -1:
-			game.updateQueue("You dont have enough money to build that");
-			break;
-		case -2:
-			game.updateQueue("You already have a building there, you need to remove it to do this");
-			break;
-		case -3:
-			game.updateQueue("You dont have enough money to buy land");
-		}
+		
 		game.grid.get(lastX).get(lastY).setIcon(new ImageIcon("Images//" + Stats.buildings.get(lastX).get(lastY).toString() + ".png"));
 //		for (int r = 0; r < Stats.width; r++) {
 //			for (int c = 0; c < Stats.hieght;  c++) {

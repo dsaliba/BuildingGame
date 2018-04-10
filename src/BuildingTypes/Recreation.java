@@ -64,7 +64,7 @@ public class Recreation extends Building {
 	public String getPrice() {
 		switch (level) {
 		case 1:
-			return "150";
+			return "200";
 		case 2:
 			return "Max";
 		}

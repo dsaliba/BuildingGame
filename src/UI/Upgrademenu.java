@@ -115,13 +115,20 @@ public class Upgrademenu extends JFrame{
 	public void setPrice(Building building) {
 		
 		upgradeLabel.setText("<HTML>Upgrade<br/><center>[" + building.getPrice() + "]</center></HTML>");
+		if(building.getPrice().equals("Max")) {
+			toggleUpgrade(true);
+		}else if (Integer.parseInt(building.getPrice()) > Stats.coins){
+			toggleUpgrade(true);
+		}else {
+			toggleUpgrade(false);
+		}
 	}
 	
 	public void toggleUpgrade(boolean showUpgrade) {
-		if(showUpgrade == true) {
+		if(showUpgrade) {
 			upgrade.setActionCommand("upgradeOff");
 			upgrade.setIcon(new ImageIcon("Images\\upgradeOff.png"));
-		} else if (showUpgrade == false) {
+		} else {
 			upgrade.setActionCommand("upgrade");
 			upgrade.setIcon(new ImageIcon("Images\\upgrade.png"));
 		}

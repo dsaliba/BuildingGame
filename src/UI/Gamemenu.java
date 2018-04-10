@@ -47,7 +47,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) { // Constructor
-		queue = new String[] { "\n", "\n", "\n", "\n", "\n", "\n" };
+		queue = new String[] { "", "", "", "", "", "" };
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
