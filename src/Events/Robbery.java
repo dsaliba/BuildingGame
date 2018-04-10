@@ -13,7 +13,7 @@ public class Robbery extends Event{
 	
 	@Override
 	public String execute(Stats stats) {
-		int num  = (int) (Stats.coins * ((Math.random() * 50) + 1));
+		int num  = (int) (Stats.coins * ((Math.random()/10)));
 		stats.coins -= num;
 		return "You have been robbed for " + num + " coins.";
 	}
