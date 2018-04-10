@@ -305,7 +305,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		status.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		status.setEditable(false);
 		status.setVisible(true);
-		status.setBackground(new Color(239, 211, 135, 255));
+		status.setOpaque(false);
 		panel1.add(status, g);
 
 		GridBagConstraints t = new GridBagConstraints(); // Tax Slider Grid Bag Constraint
@@ -340,7 +340,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		console.setFont(new Font("Monospaced", Font.PLAIN, 30));
 		console.setEditable(false);
 		console.setVisible(true);
-		console.setBackground(new Color(239, 211, 135, 255));
+		console.setOpaque(false);
 		panel1.add(console, b);
 	}
 
