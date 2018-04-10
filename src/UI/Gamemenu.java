@@ -213,7 +213,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			}
 
 			add(panel2);
-			addGrid.setText("Buy Land: [" + 500 * stats.width + "]");
+			addGrid.setText("[" + 500 * stats.width + "]");
 			if (stats.width > 22) {
 				addGrid.addActionListener(parent);
 				addGrid.setActionCommand("fullLand");
