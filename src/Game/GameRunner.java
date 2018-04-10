@@ -2,6 +2,7 @@ package Game;
 import java.io.IOException;
 
 import UI.Frame;
+import UI.Music;
 
 public class GameRunner {
 	
@@ -10,5 +11,8 @@ public class GameRunner {
 	
 		frame.createFrame();
 		
+		System.out.println("gamerunner");
+		Music m = new Music();
+		m.startBGMusic();
 	}
 }
