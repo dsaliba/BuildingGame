@@ -29,7 +29,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private Frame parent; // Frames, Buttons, Slider, Labels, Textareas, Histograms, Images, Ect
 	private JButton nextDay;
 	private JButton pauseButton;
-	private JPanel panel1;
+	private ImagePanel panel1;
 	private JPanel panel2;
 	private JPanel panel3;
 	private JPanel panel4;
@@ -242,7 +242,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		panel2 = new JPanel(); // Grid Section
 		panel2.setLayout(new GridLayout(stats.width, stats.height));
-		panel1 = new JPanel(); // Stats Section
+		panel1 = new ImagePanel("Images//gameback.jpg"); // Stats Section
 		panel1.setLayout(new GridBagLayout());
 		panel1.setBackground(new Color(239, 211, 135, 255));
 		add(panel1);
