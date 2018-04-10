@@ -49,8 +49,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) { // Constructor
-		queue = new String[] { "", "", "", "", "", "" };
-		queueLabel = new JTextArea[5];
+		queue = new String[] { "", "", "", "", "", "", "", "", "", ""};
+		queueLabel = new JTextArea[10];
 		textColor = Color.WHITE;
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
@@ -336,6 +336,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		b.gridwidth = 6;
 		b.gridheight = 1;
 		b.weighty = 1;
+		b.ipady = 0;
 		for (int i = 0; i<queueLabel.length; i ++) {
 			b.gridy++;
 			queueLabel[i] = new JTextArea("");
@@ -345,7 +346,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			queueLabel[i].setEditable(false);
 			queueLabel[i].setVisible(true);
 			queueLabel[i].setOpaque(false);
-			queueLabel[i].setForeground(new Color(255, 255, 255, ((38*i)+27)));
+			queueLabel[i].setForeground(new Color(255, 255, 255, ((27*i)+12)));
 			panel1.add(queueLabel[i], b);
 		}
 	}
@@ -390,6 +391,15 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	 */
 	public void updateQueue(String phrase) {
 		if (phrase.equals("")) return;
+		String next = "";
+		if (phrase.contains("\n")) {
+			next = phrase.substring(phrase.indexOf("\n") + 1);
+			phrase = phrase.substring(0, phrase.indexOf("\n"));
+		}
+		queue[9] = queue[8];
+		queue[8] = queue[7];
+		queue[7] = queue[6];
+		queue[6] = queue[5];
 		queue[5] = queue[4];
 		queue[4] = queue[3];
 		queue[3] = queue[2];
@@ -397,7 +407,10 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		queue[1] = queue[0];
 		queue[0] = phrase;
 		for (int i = 0; i < queueLabel.length; i++) {
-			queueLabel[i].setText(queue[5-i]);
+			queueLabel[i].setText(queue[9-i]);
+		}
+		if (!next.equals("")) {
+			updateQueue(next);
 		}
 	}
 
