@@ -72,11 +72,6 @@ public class Stats implements Serializable{
 		food += foodIncome;
 		if(happiness > 30) {
 			int people = (int) ((Math.random() * 5) * (population + 0.5));
-			if(people == 1) {
-				System.out.println(people + " person got sad and left.");
-			}else {
-				System.out.println(people + " people got sad and left.");
-			}
 		if (population < 70) {
 			if (people > 1) people = 1;
 		}
