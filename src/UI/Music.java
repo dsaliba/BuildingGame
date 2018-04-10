@@ -22,7 +22,7 @@ public class Music {
               AudioData myData = myBackgroundMusic.getData();
               myLoop = new ContinuousAudioDataStream(myData);
               }
-              catch(Exception error) {JOptionPane.showMessageDialog(null, "Invalid file!"); System.out.println("i exist");}
+              catch(Exception error) {System.out.println("invalid file");}
              
               // play background music.
               myBackgroundPlayer.start(myLoop);
