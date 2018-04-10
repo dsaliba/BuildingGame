@@ -43,11 +43,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public ArrayList<ArrayList<JButton>> grid;
 	private JLabel farmImage;
 	private BufferedImage picture = null;
+	private Color textColor;
 
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) { // Constructor
 		queue = new String[] { "", "", "", "", "", "" };
+		textColor = Color.WHITE;
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
@@ -56,7 +58,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.stats = stats;
-		getContentPane().setBackground(new Color(239, 211, 135, 255));
+		//getContentPane().setForeground(new Color(239, 211, 135, 255));
 		createPanels();
 		createButtons();
 		createSlider();
@@ -71,6 +73,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			add(panel1);
 			add(panel2);
 		}
+		
 	}
 
 	/*
@@ -105,7 +108,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		pauseButton = new JButton("");// pause button
 		pauseButton.setIcon(new ImageIcon("Images\\pause.png"));
 		pauseButton.setFont(new Font("Monospaced", Font.BOLD, 40));
-		pauseButton.setBackground(Color.WHITE);
+		pauseButton.setForeground(Color.WHITE);
 		pauseButton.addActionListener(parent);
 		pauseButton.setActionCommand("pause");
 		pauseButton.setVisible(true);
@@ -120,7 +123,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		nextDay.setFont(new Font("Monospaced", Font.BOLD, 40));
 		nextDay.addActionListener(parent);
 		nextDay.setActionCommand("nextDay");
-		nextDay.setBackground(Color.WHITE);
+		nextDay.setForeground(textColor);
 		nextDay.setVisible(true);
 		nextDay.setPressedIcon(new ImageIcon("Images\\nextdaypressed.png"));
 		nextDay.setOpaque(false);
@@ -131,7 +134,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		addGrid.setIcon(new ImageIcon("Images\\buyland.png"));
 		addGrid.setOpaque(false);
 		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
-		addGrid.setBackground(Color.WHITE);
+		addGrid.setForeground(textColor);
 		addGrid.addActionListener(parent);
 		addGrid.setActionCommand("buy land");
 		addGrid.setVisible(true);
@@ -176,7 +179,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			int count = 0;
 			for (ArrayList<JButton> list : grid) { // This forloop creates the buttons on the forloop
 				list.add(new JButton("e0"));
-				list.get(stats.height - 1).setBackground(Color.WHITE);
+				list.get(stats.height - 1).setForeground(textColor);
 				// panel2.add(grid.get(stats.width-1).get(i));
 				list.get(stats.height - 1).addActionListener(parent);
 				list.get(stats.height - 1).setActionCommand("tile" + count + "|" + (stats.height - 1));
@@ -192,7 +195,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				stats.buildings.get(stats.width - 1).add(new EmpteyPlot());
 				grid.get(stats.width - 1).add(new JButton("e0"));
 				System.out.println(grid.get(stats.width - 1).get(i).getWidth());
-				grid.get(stats.width - 1).get(i).setBackground(Color.WHITE);
+				grid.get(stats.width - 1).get(i).setForeground(Color.WHITE);
 				// panel2.add(grid.get(stats.width-1).get(i));
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
 				grid.get(stats.width - 1).get(i).setActionCommand("tile" + (stats.width - 1) + "|" + i);
@@ -242,9 +245,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		panel2 = new JPanel(); // Grid Section
 		panel2.setLayout(new GridLayout(stats.width, stats.height));
-		panel1 = new ImagePanel("Images//gameback.jpg"); // Stats Section
+		panel1 = new ImagePanel("Images//gameback.png"); // Stats Section
 		panel1.setLayout(new GridBagLayout());
-		panel1.setBackground(new Color(239, 211, 135, 255));
+		panel1.setForeground(new Color(239, 211, 135, 255));
 		add(panel1);
 		add(panel2);
 
@@ -302,9 +305,10 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		status = new JTextArea(text); // Status Text Area
 		status.setLineWrap(true);
 		status.setWrapStyleWord(true);
-		status.setFont(new Font("Monospaced", Font.PLAIN, 30));
+		status.setFont(new Font("Monospaced", Font.BOLD, 30));
 		status.setEditable(false);
 		status.setVisible(true);
+		status.setForeground(textColor);
 		status.setOpaque(false);
 		panel1.add(status, g);
 
@@ -317,7 +321,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		JTextArea header = new JTextArea("Tax"); // Tax Slider Header
 		header.setFont(new Font("Monospaced", Font.BOLD, 30));
-		header.setBackground(new Color(239, 211, 135, 255));
+		header.setForeground(textColor);
 		header.setOpaque(false);
 		header.setVisible(true);
 		header.setEditable(false);
@@ -337,7 +341,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				queue[5] + "\n" + queue[4] + "\n" + queue[3] + "\n" + queue[2] + "\n" + queue[1] + "\n" + queue[0]);
 		console.setLineWrap(true);
 		console.setWrapStyleWord(true);
-		console.setFont(new Font("Monospaced", Font.PLAIN, 30));
+		console.setFont(new Font("Monospaced", Font.BOLD, 30));
 		console.setEditable(false);
 		console.setVisible(true);
 		console.setOpaque(false);
