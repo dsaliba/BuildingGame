@@ -150,10 +150,7 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 
 		case "buy land":
-			error = game.buyTiles();
-			if (error > 0) {
-				stats.coins -=  error;
-			}
+			stats.coins -= game.buyTiles();
 			stats.updateRescources();
 			game.updateStatus();
 			break;

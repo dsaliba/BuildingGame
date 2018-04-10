@@ -29,9 +29,12 @@ public class Histogram{
          PlotOrientation.VERTICAL,
          true,true,false);
       lineChart.setBackgroundPaint(new Color(0xFF, 0xFF, 0xFF, 0));
-      
+      lineChart.getTitle().setPaint(Color.WHITE);
+      lineChart.setBorderPaint(Color.WHITE);
+      lineChart.getCategoryPlot().setOutlinePaint(Color.WHITE);
       chart = new ChartPanel(lineChart);
       chart.setPreferredSize( new java.awt.Dimension( 1000 , 367 ) );
+     
       updateData();
       chart.setOpaque(false);
       //setContentPane(chart);
