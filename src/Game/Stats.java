@@ -117,11 +117,11 @@ public class Stats implements Serializable{
 		numBuildings ++;
 		switch (building) {
 		case 'a':
-			if (coins >= 20) {
+			if (coins >= 30) {
 				buildings.get(x).set(y, new Agriculture());
-				coins -= 20;
+				coins -= 30;
 				updateRescources();
-				return 20;
+				return 30;
 			}
 			break;
 		case 'c':
