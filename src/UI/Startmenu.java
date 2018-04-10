@@ -37,6 +37,7 @@ public class Startmenu extends JFrame implements ActionListener{
 		background.add(exitButton);
 		background.add(title);
 		setVisible(true);
+		
 	}
 
 	
