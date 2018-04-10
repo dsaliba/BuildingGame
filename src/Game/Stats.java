@@ -72,6 +72,11 @@ public class Stats implements Serializable{
 		food += foodIncome;
 		if(happiness > 30) {
 			int people = (int) ((Math.random() * 5) * (population + 0.5));
+			if(people == 1) {
+				System.out.println(people + " person got sad and left.");
+			}else {
+				System.out.println(people + " people got sad and left.");
+			}
 		if (population < 70) {
 			if (people > 1) people = 1;
 		}
@@ -177,8 +182,6 @@ public class Stats implements Serializable{
 		foodIncome = 0;
 		coinsIncome = 0;
 		happinessIncome = 0;
-		int tempPop = population;
-		int tempPop2 = population;
 		int rCount = 0;
 		
 		for (ArrayList<Building> buildingList: buildings) {
@@ -187,6 +190,7 @@ public class Stats implements Serializable{
 				String id = building.newDay();
 				switch (id.charAt(0)) {
 				case 'c':
+					int tempPop2 = population;
 					if (tempPop2 > 0) {
 						for (int r = -1; r < 3; r++) {
 							if(!(rCount + r < 0 || rCount + r > width-1)) {
@@ -195,7 +199,7 @@ public class Stats implements Serializable{
 								String next = buildings.get(r+rCount).get(c+cCount).toString();
 								if (next.charAt(0) == 'p') {
 									for (int i = 0; i < Integer.parseInt(next.substring(1)); i++) {
-										if (tempPop < 1) break;
+										if (tempPop2 < 1) break;
 										coinsIncome += Integer.parseInt(id.substring(1));
 										tempPop2 --;
 									}
@@ -216,6 +220,7 @@ public class Stats implements Serializable{
 					maxPopuulation += Integer.parseInt(id.substring(1));
 					break;
 				case 'r':
+					int tempPop = population;
 					if (tempPop > 0) {
 						for (int r = -1; r < 3; r++) {
 							if(!(rCount + r < 0 || rCount + r > width-1)) {
