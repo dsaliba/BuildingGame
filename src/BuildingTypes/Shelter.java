@@ -28,10 +28,10 @@ public class Shelter extends Building {
 			out += 1;
 			break;
 		case 2:
-			out += 3;
+			out += 5;
 			break;
 		case 3:
-			out += 6;
+			out += 15;
 			break;
 		}
 		return out;
@@ -48,15 +48,15 @@ public class Shelter extends Building {
 		if (level < 4) {
 			switch (level){
 			case 1:
-				if (money >= 100.0) {
+				if (money >= 100) {
 					level++;
 					return 100;
 				}
 				break;
 			case 2: 
-				if (money >= 500.0) {
+				if (money >= 250) {
 					level++;
-					return 500;
+					return 250;
 				}
 				break;
 			}
@@ -76,7 +76,7 @@ public class Shelter extends Building {
 		case 1:
 			return "100";
 		case 2:
-			return "500";
+			return "250";
 		case 3:
 			return "Max";
 		}

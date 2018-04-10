@@ -44,9 +44,9 @@ public class Recreation extends Building {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 150) {
+				if (money >= 200) {
 					level++;
-					return 150;
+					return 200;
 				}
 				break;
 			}

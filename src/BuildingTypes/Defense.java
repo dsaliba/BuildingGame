@@ -24,10 +24,10 @@ public class Defense extends Building {
 		String out = "d";
 		switch(level) {
 		case 1:
-			out += 5;
+			out += 7;
 			break;
 		case 2:
-			out += 10;
+			out += 21;
 			break;
 		}
 		return out;
@@ -44,9 +44,9 @@ public class Defense extends Building {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 500) {
+				if (money >= 200) {
 					level++;
-					return 500;
+					return 200;
 				}
 				break;
 			}
@@ -64,7 +64,7 @@ public class Defense extends Building {
 	public String getPrice() {
 		switch (level) {
 		case 1:
-			return "500";
+			return "200";
 		case 2:
 			return "Max";
 		}

@@ -25,7 +25,7 @@ public class Agriculture extends Building {
 		String out = "f";
 		switch(level) {
 		case 1:
-			out += 2;
+			out += 1;
 			break;
 		case 2:
 			out += 5;
@@ -46,9 +46,9 @@ public class Agriculture extends Building {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 150) {
+				if (money >= 120) {
 					level++;
-					return 150;
+					return 120;
 				}
 				break;
 			}
@@ -66,7 +66,7 @@ public class Agriculture extends Building {
 	public String getPrice() {
 		switch (level) {
 		case 1:
-			return "150";
+			return "120";
 		case 2:
 			return "Max";
 		}

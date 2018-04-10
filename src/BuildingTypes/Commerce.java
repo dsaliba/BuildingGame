@@ -45,9 +45,9 @@ public class Commerce extends Building {
 		if (level < 3) {
 			switch (level){
 			case 1:
-				if (money >= 250) {
+				if (money >= 300) {
 					level++;
-					return 250;
+					return 300;
 				}
 				break;
 			}
@@ -65,7 +65,7 @@ public class Commerce extends Building {
 	public String getPrice() {
 		switch (level) {
 		case 1:
-			return "250";
+			return "300";
 		case 2:
 			return "Max";
 		}
