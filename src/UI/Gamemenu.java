@@ -164,7 +164,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	 */
 	public int buyTiles() {
 
-		if (stats.coins > stats.width * 500) {
+		if (stats.coins >= stats.width * 500) {
 			remove(panel2);
 			stats.width++;
 			stats.height++;
@@ -224,12 +224,12 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				add(panel1);
 				add(panel2);
 			}
-			return stats.width * 500;
+			return stats.width-1 * 500;
 
 		} else
 
 		{
-			return -3;
+			return 0;
 		}
 	}
 	/*
