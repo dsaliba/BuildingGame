@@ -86,7 +86,7 @@ public class Buildmenu extends JFrame {
 		add(closeLabel, label);
 
 		label.gridx++;
-		JLabel farmLabel = new JLabel("Farm [20]");
+		JLabel farmLabel = new JLabel("Farm [30]");
 		farmLabel.setFont(new Font("Monospaced", Font.BOLD, 30));
 		farmLabel.setVisible(true);
 		farmLabel.setBackground(Color.WHITE);
