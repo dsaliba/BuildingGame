@@ -127,7 +127,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		nextDay.setContentAreaFilled(false);
 		nextDay.setBorderPainted(false);
 
-		addGrid = new JButton("Buy Land: [" + 500 * stats.width + "]"); // Add Grid Button
+		addGrid = new JButton("[" + 500 * stats.width + "]"); // Add Grid Button
 		addGrid.setIcon(new ImageIcon("Images\\buyland.png"));
 		addGrid.setOpaque(false);
 		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
