@@ -188,13 +188,16 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			grid.add(new ArrayList<JButton>());
 			stats.buildings.add(new ArrayList<Building>());
 			for (int i = 0; i < stats.height; i++) {
+				
 				stats.buildings.get(stats.width - 1).add(new EmpteyPlot());
 				grid.get(stats.width - 1).add(new JButton("e0"));
+				System.out.println(grid.get(stats.width - 1).get(i).getWidth());
 				grid.get(stats.width - 1).get(i).setBackground(Color.WHITE);
 				// panel2.add(grid.get(stats.width-1).get(i));
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
 				grid.get(stats.width - 1).get(i).setActionCommand("tile" + (stats.width - 1) + "|" + i);
 				grid.get(stats.width - 1).get(i).setIcon(
+					
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
 
 			}
@@ -321,7 +324,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1.add(header, t);
 
 		GridBagConstraints b = new GridBagConstraints(); // Console Grid Bag Constraint
-		b.fill = GridBagConstraints.HORIZONTAL;
+		b.fill = GridBagConstraints.BOTH;
 		b.gridx = 0;
 		b.gridy = 5;
 		b.gridwidth = 6;
