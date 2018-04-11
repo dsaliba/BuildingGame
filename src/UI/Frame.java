@@ -70,6 +70,9 @@ public class Frame implements ActionListener, ChangeListener{
 					upgrade.setVisible(true);
 				}
 		}
+
+		Music m = new Music();
+		
 		error = 0;
 		switch (e.getActionCommand()) {
 		case "new game":
@@ -77,6 +80,7 @@ public class Frame implements ActionListener, ChangeListener{
 			stats = new Stats();
 			game = new Gamemenu(this, stats);
 			game.setVisible(true);
+			m.startBGMusic("click.mp3");
 			break;
 			
 		case "continue":
@@ -85,7 +89,7 @@ public class Frame implements ActionListener, ChangeListener{
 			game = new Gamemenu(this, stats);
 			game.setVisible(true);
 			game.updateDayButton("(" + Stats.day + ")"); // Sets text of button to match day
-			
+			m.startBGMusic("click.mp3");
 			break;
 		case "exit":
 			stats = new Stats();
@@ -95,6 +99,7 @@ public class Frame implements ActionListener, ChangeListener{
 			start.dispose();
 			pause.dispose();
 			saveManager.writeSave(stats);
+			m.startBGMusic("click.mp3");
 			return;
 			
 		case "exitpause":
@@ -102,6 +107,7 @@ public class Frame implements ActionListener, ChangeListener{
 			pause.dispose();
 			start.dispose();
 			saveManager.writeSave(stats);
+			m.startBGMusic("click.mp3");
 			break;
 
 		case "exitMainMenu":
@@ -109,22 +115,27 @@ public class Frame implements ActionListener, ChangeListener{
 			pause.setVisible(false);
 			start.setVisible(true);
 			saveManager.writeSave(stats);
+			m.startBGMusic("click.mp3");
 			return;
 
 		case "resize":
-			game.setSize(1920, 1080);
+			game.setSize(1936, 1145);
 			start.setSize(1920, 1080);
+			m.startBGMusic("click.mp3");
 			break;
 			
 		case "resume":
 			pause.setVisible(false);
+			m.startBGMusic("click.mp3");
 			return;
 
 		case "pause":
 			pause.setVisible(true);
+			m.startBGMusic("click.mp3");
 			return;
 
 		case "nextDay":
+			m.startBGMusic("click.mp3");
 			game.updateDayButton("(" + Stats.day + ")"); // Sets text of button to match day
 			game.updateQueue(stats.runDay());
 			game.histogram.updateData();
@@ -135,6 +146,7 @@ public class Frame implements ActionListener, ChangeListener{
 
 
 		case "upgrade":
+			m.startBGMusic("build.mp3");
 			int cost = Stats.buildings.get(lastX).get(lastY).upgrade(Stats.coins);
 			
 			if (cost > 0) {
@@ -146,10 +158,10 @@ public class Frame implements ActionListener, ChangeListener{
 			upgrade.dispose();
 			break;
 			
-		case "upgradeOff":
-			break;
+	
 
 		case "buy land":
+			m.startBGMusic("click.mp3");
 			stats.coins -= game.buyTiles();
 			stats.updateRescources();
 			game.updateStatus();
@@ -160,11 +172,13 @@ public class Frame implements ActionListener, ChangeListener{
 			
 			
 		case "close":
+			m.startBGMusic("click.mp3");
 			upgrade.dispose();
 			build.dispose();
 			return;
 
 		case "0": // A
+			m.startBGMusic("build.mp3");
 			error = stats.setBuilding('a', lastX, lastY);
 			stats.updateRescources();
 			game.updateStatus();
@@ -172,7 +186,7 @@ public class Frame implements ActionListener, ChangeListener{
 
 			break;
 		case "1": // C
-			
+			m.startBGMusic("build.mp3");
 			error = stats.setBuilding('c', lastX, lastY);
 			
 			stats.updateRescources();
@@ -181,7 +195,7 @@ public class Frame implements ActionListener, ChangeListener{
 
 			break;
 		case "2": // D
-			
+			m.startBGMusic("build.mp3");
 			error = stats.setBuilding('d', lastX, lastY);
 			
 			stats.updateRescources();
@@ -189,7 +203,8 @@ public class Frame implements ActionListener, ChangeListener{
 			build.setVisible(false);
 
 			break;
-		case "3": // R		
+		case "3": // R	
+			m.startBGMusic("build.mp3");
 			error = stats.setBuilding('r', lastX, lastY);
 			stats.updateRescources();
 			game.updateStatus();
@@ -200,12 +215,13 @@ public class Frame implements ActionListener, ChangeListener{
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
+			m.startBGMusic("build.mp3");
 
 			break;
 		case "5": // E
 		case "remove":
 			error = stats.setBuilding('e', lastX, lastY);
-			
+			m.startBGMusic("build.mp3");
 			
 			stats.updateRescources();
 			

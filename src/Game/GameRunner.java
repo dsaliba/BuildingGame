@@ -13,6 +13,6 @@ public class GameRunner {
 		
 		System.out.println("gamerunner");
 		Music m = new Music();
-		m.startBGMusic();
+	//	m.startBGMusic("click.mp3");
 	}
 }

@@ -21,14 +21,13 @@ import sun.audio.ContinuousAudioDataStream;
 public class Music {
 	Player playMP3;
 
-	public void startBGMusic() { // Plays the background music
+	public void startBGMusic(String file) { // Plays the background music
 		new Thread(new Runnable() {
 				@Override
 				public void run() {
 					try{
-					FileInputStream fis = new FileInputStream("Sounds/belltest.mp3");
+					FileInputStream fis = new FileInputStream("Sounds/" + file);
 				    playMP3 = new Player(fis);
-
 				    playMP3.play();
 
 				    }catch(Exception e){System.out.println(e);}
