@@ -19,6 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+
+import com.sun.org.apache.bcel.internal.generic.LASTORE;
+
 import BuildingTypes.Building;
 import BuildingTypes.EmpteyPlot;
 import Game.Stats;
@@ -396,8 +399,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		if (phrase.equals("")) return;
 		String next = "";
 		if (phrase.length() >= 50) {
-			next = phrase.substring(51);
-			phrase = phrase.substring(0, 50);
+			int lastSpace = phrase.substring(0, 51).lastIndexOf(" ");
+			next = phrase.substring(lastSpace-1);
+			phrase = phrase.substring(0, lastSpace);
 		}
 		queue[9] = queue[8];
 		queue[8] = queue[7];
