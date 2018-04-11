@@ -19,10 +19,7 @@ import sun.audio.AudioStream;
 import sun.audio.ContinuousAudioDataStream;
 
 public class Music {
-	InputStream is;
-	AudioStream as;
-	AudioData ad;
-	ContinuousAudioDataStream cas;
+	Player playMP3;
 
 	public void startBGMusic() { // Plays the background music
 		new Thread(new Runnable() {
@@ -30,7 +27,7 @@ public class Music {
 				public void run() {
 					try{
 					FileInputStream fis = new FileInputStream("Sounds/belltest.mp3");
-				    Player playMP3 = new Player(fis);
+				    playMP3 = new Player(fis);
 
 				    playMP3.play();
 
