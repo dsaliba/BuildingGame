@@ -19,12 +19,14 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 import com.sun.org.apache.bcel.internal.generic.LASTORE;
 
 import BuildingTypes.Building;
 import BuildingTypes.EmpteyPlot;
 import Game.Stats;
+import javafx.scene.layout.Border;
 import jdk.internal.org.objectweb.asm.tree.FrameNode;
 
 public class Gamemenu extends JFrame implements ComponentListener {
@@ -157,6 +159,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			grid.add(new ArrayList<JButton>());
 			for (int col = 0; col < stats.height; col++) {
 				grid.get(row).add(new JButton(""));
+				grid.get(row).get(col).setBorder(new LineBorder(Color.BLACK));
 				panel2.add(grid.get(row).get(col));
 				grid.get(row).get(col).addActionListener(parent);
 				grid.get(row).get(col).setActionCommand("tile" + row + "|" + col);
@@ -184,6 +187,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			int count = 0;
 			for (ArrayList<JButton> list : grid) { // This forloop creates the buttons on the forloop
 				list.add(new JButton("e0"));
+				list.get(count).setBorder(new LineBorder(Color.BLACK));
 				list.get(stats.height - 1).setForeground(textColor);
 				// panel2.add(grid.get(stats.width-1).get(i));
 				list.get(stats.height - 1).addActionListener(parent);
