@@ -205,6 +205,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(stats.width - 1).add(new JButton("e0"));
 				System.out.println(grid.get(stats.width - 1).get(i).getWidth());
 				grid.get(stats.width - 1).get(i).setForeground(Color.WHITE);
+				grid.get(stats.width - 1).get(i).setBorder(new LineBorder(Color.BLACK));
 				// panel2.add(grid.get(stats.width-1).get(i));
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
 				grid.get(stats.width - 1).get(i).setActionCommand("tile" + (stats.width - 1) + "|" + i);
