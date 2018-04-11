@@ -405,7 +405,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		if (phrase.length() >= 50) {
 			int lastSpace = phrase.substring(0, 51).lastIndexOf(" ");
 			next = phrase.substring(lastSpace-1);
-			phrase = phrase.substring(0, lastSpace);
+			phrase = phrase.substring(0, lastSpace-1);
 		}
 		queue[9] = queue[8];
 		queue[8] = queue[7];
