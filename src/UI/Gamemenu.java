@@ -274,6 +274,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		labelTable.put(new Integer(0), new JLabel("L"));
 		labelTable.put(new Integer(1), new JLabel("M"));
 		labelTable.put(new Integer(2), new JLabel("H"));
+		for (int i = 0; i < 3; i++) {
+			labelTable.get(new Integer(i)).setForeground(textColor);
+		}
 
 		taxSlider.setLabelTable(labelTable);
 		taxSlider.setPaintLabels(true);
