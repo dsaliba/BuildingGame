@@ -39,6 +39,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JButton addGrid;
 	public Histogram histogram;
 	private String[] queue;
+	private JTextArea[] queueLabel;
 	private GridBagConstraints button;
 	public ArrayList<ArrayList<JButton>> grid;
 	private JLabel farmImage;
@@ -48,7 +49,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) { // Constructor
-		queue = new String[] { "", "", "", "", "", "" };
+		queue = new String[] { "", "", "", "", "", "", "", "", "", ""};
+		queueLabel = new JTextArea[10];
 		textColor = Color.WHITE;
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
@@ -272,6 +274,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		labelTable.put(new Integer(0), new JLabel("L"));
 		labelTable.put(new Integer(1), new JLabel("M"));
 		labelTable.put(new Integer(2), new JLabel("H"));
+		for (int i = 0; i < 3; i++) {
+			labelTable.get(new Integer(i)).setForeground(textColor);
+		}
 
 		taxSlider.setLabelTable(labelTable);
 		taxSlider.setPaintLabels(true);
@@ -334,18 +339,19 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		b.gridwidth = 6;
 		b.gridheight = 1;
 		b.weighty = 1;
-		b.gridy++;
-
-		// Console
-		console = new JTextArea(
-				queue[5] + "\n" + queue[4] + "\n" + queue[3] + "\n" + queue[2] + "\n" + queue[1] + "\n" + queue[0]);
-		console.setLineWrap(true);
-		console.setWrapStyleWord(true);
-		console.setFont(new Font("Monospaced", Font.BOLD, 30));
-		console.setEditable(false);
-		console.setVisible(true);
-		console.setOpaque(false);
-		panel1.add(console, b);
+		b.ipady = 0;
+		for (int i = 0; i<queueLabel.length; i ++) {
+			b.gridy++;
+			queueLabel[i] = new JTextArea("");
+			queueLabel[i].setLineWrap(true);
+			queueLabel[i].setWrapStyleWord(true);
+			queueLabel[i].setFont(new Font("Monospaced", Font.BOLD, 30));
+			queueLabel[i].setEditable(false);
+			queueLabel[i].setVisible(true);
+			queueLabel[i].setOpaque(false);
+			queueLabel[i].setForeground(new Color(255, 255, 255, ((27*i)+12)));
+			panel1.add(queueLabel[i], b);
+		}
 	}
 
 	/*
@@ -387,16 +393,28 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	 * EDIT
 	 */
 	public void updateQueue(String phrase) {
-		if (phrase.equals(""))
-			return;
+		if (phrase.equals("")) return;
+		String next = "";
+		if (phrase.contains("\n")) {
+			next = phrase.substring(phrase.indexOf("\n") + 1);
+			phrase = phrase.substring(0, phrase.indexOf("\n"));
+		}
+		queue[9] = queue[8];
+		queue[8] = queue[7];
+		queue[7] = queue[6];
+		queue[6] = queue[5];
 		queue[5] = queue[4];
 		queue[4] = queue[3];
 		queue[3] = queue[2];
 		queue[2] = queue[1];
 		queue[1] = queue[0];
 		queue[0] = phrase;
-		console.setText(
-				queue[5] + "\n" + queue[4] + "\n" + queue[3] + "\n" + queue[2] + "\n" + queue[1] + "\n" + queue[0]);
+		for (int i = 0; i < queueLabel.length; i++) {
+			queueLabel[i].setText(queue[9-i]);
+		}
+		if (!next.equals("")) {
+			updateQueue(next);
+		}
 	}
 
 	// Unused Implemented Methods
