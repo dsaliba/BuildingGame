@@ -395,9 +395,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public void updateQueue(String phrase) {
 		if (phrase.equals("")) return;
 		String next = "";
-		if (phrase.contains("\n")) {
-			next = phrase.substring(phrase.indexOf("\n") + 1);
-			phrase = phrase.substring(0, phrase.indexOf("\n"));
+		if (phrase.length() >= 50) {
+			next = phrase.substring(51);
+			phrase = phrase.substring(0, 50);
 		}
 		queue[9] = queue[8];
 		queue[8] = queue[7];
