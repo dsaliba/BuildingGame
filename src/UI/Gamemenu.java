@@ -230,7 +230,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				addGrid.addActionListener(parent);
 				addGrid.setActionCommand("fullLand");
 				addGrid.setForeground(Color.RED);
-				addGrid.setText("Max Size Reached");
+				addGrid.setText("Max Size");
 				remove(panel1);
 				remove(panel2);
 				add(panel1);
