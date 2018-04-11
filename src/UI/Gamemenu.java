@@ -137,7 +137,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		nextDay.setContentAreaFilled(false);
 		nextDay.setBorderPainted(false);
 
-		addGrid = new JButton("[" + 500 * stats.width + "]"); // Add Grid Button
+		addGrid = new JButton("[" + 1000 * stats.width + "]"); // Add Grid Button
 		addGrid.setIcon(new ImageIcon("Images\\buyland.png"));
 		addGrid.setOpaque(false);
 		addGrid.setFont(new Font("Monospaced", Font.BOLD, 40));
@@ -175,7 +175,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	 */
 	public int buyTiles() {
 
-		if (stats.coins >= stats.width * 500) {
+		if (stats.coins >= stats.width * 1000) {
 			remove(panel2);
 			stats.width++;
 			stats.height++;
@@ -187,7 +187,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			int count = 0;
 			for (ArrayList<JButton> list : grid) { // This forloop creates the buttons on the forloop
 				list.add(new JButton("e0"));
-				list.get(count).setBorder(new LineBorder(Color.BLACK));
+				list.get(stats.height - 1).setBorder(new LineBorder(Color.BLACK));
 				list.get(stats.height - 1).setForeground(textColor);
 				// panel2.add(grid.get(stats.width-1).get(i));
 				list.get(stats.height - 1).addActionListener(parent);
@@ -225,7 +225,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			}
 
 			add(panel2);
-			addGrid.setText("[" + 500 * stats.width + "]");
+			addGrid.setText("[" + 1000 * stats.width + "]");
 			if (stats.width > 22) {
 				addGrid.addActionListener(parent);
 				addGrid.setActionCommand("fullLand");
@@ -236,7 +236,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				add(panel1);
 				add(panel2);
 			}
-			return (stats.width-1) * 500;
+			return (stats.width-1) * 1000;
 
 		} else
 
@@ -254,6 +254,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		panel2 = new JPanel(); // Grid Section
 		panel2.setLayout(new GridLayout(stats.width, stats.height));
+		panel2.setBackground(Color.BLACK);
 		panel1 = new ImagePanel("Images//gameback.png"); // Stats Section
 		panel1.setLayout(new GridBagLayout());
 		panel1.setForeground(new Color(239, 211, 135, 255));
