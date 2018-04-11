@@ -1,5 +1,6 @@
 package UI;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -8,6 +9,9 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.swing.JOptionPane;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javazoom.jl.player.Player;
 import sun.applet.Main;
 import sun.audio.*;
 import sun.audio.AudioPlayer;
@@ -22,22 +26,19 @@ public class Music {
 
 	public void startBGMusic() { // Plays the background music
 		new Thread(new Runnable() {
-			// The wrapper thread is unnecessary, unless it blocks on the
-			// Clip finishing; see comments.
-			public void run() {
-				try {
-					Clip clip = AudioSystem.getClip();
-					AudioInputStream inputStream = AudioSystem
-							.getAudioInputStream(Main.class.getResourceAsStream("\\Sounds\\belltest.mp3"));
-					clip.open(inputStream);
-					clip.start();
-					System.out.println("works");
-				} catch (Exception e) {
-					System.err.println("Music Doesn't Work");
-				//	System.out.println("Die");
-					
+				@Override
+				public void run() {
+					try{
+					FileInputStream fis = new FileInputStream("Sounds/belltest.mp3");
+				    Player playMP3 = new Player(fis);
+
+				    playMP3.play();
+
+				    }catch(Exception e){System.out.println(e);}
 				}
-			}
+				
+				
+			
 		}).start();
 	}
 }
