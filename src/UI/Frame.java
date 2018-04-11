@@ -189,18 +189,14 @@ public class Frame implements ActionListener, ChangeListener{
 			build.setVisible(false);
 
 			break;
-		case "3": // R
-		
+		case "3": // R		
 			error = stats.setBuilding('r', lastX, lastY);
-			
 			stats.updateRescources();
-
 			game.updateStatus();
 			build.setVisible(false);
 			break;
 		case "4": // S
 			error = stats.setBuilding('s', lastX, lastY);
-			
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
