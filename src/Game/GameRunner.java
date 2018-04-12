@@ -18,6 +18,7 @@ For Extra Credit We Added:
 - Histogram
 - Custom Events
 - Save Features
+- Fading Console
 
 */
 
