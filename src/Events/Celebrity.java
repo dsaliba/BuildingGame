@@ -23,12 +23,19 @@ public class Celebrity extends Event{
 		switch(celebrityIndex) {
 			case 0:
 				celebrity = "Johnny Depp";
+				Stats.coins -= 250;
+				return celebrity + " might be a bad pirate, but at least you've heard of him! He steals some of your money!";
+				
 		break;
 		case 1:
 			celebrity = "Jennifer Lawrence";
+			Stats.defense += 10;
+			Stats.coins += 100;
+			return celebrity + " shoots a movie in your town, and her security guards increase your defense!";
 		break;
 		case 2:
-			celebrity = "Keanu Reeves";
+			celebrity = "Keanu "
+					+ "Reeves";
 			Stats.happiness =+ 100;
 			int r = (int) (Math.random() * stats.width);
 			int c = (int) (Math.random() * stats.height);
@@ -47,6 +54,8 @@ public class Celebrity extends Event{
 			break;
 		case 4:
 			celebrity = "Danil \"Dendi\" Ishutin";
+			Stats.coins += 250;
+			return celebrity + " wins a TI and gives you his prize money!";
 			break;
 		case 5:
 			celebrity = "Tom Cruise";
