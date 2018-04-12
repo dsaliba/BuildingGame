@@ -30,6 +30,7 @@ public class Histogram{
          true,true,false);
       lineChart.setBackgroundPaint(new Color(0xFF, 0xFF, 0xFF, 0));
       lineChart.getTitle().setPaint(Color.WHITE);
+      lineChart.getTitle().setVisible(false);
       lineChart.getCategoryPlot().getRangeAxis().setVisible(false);;
       lineChart.getCategoryPlot().getDomainAxis().setVisible(false);;
       lineChart.setBorderPaint(Color.WHITE);
