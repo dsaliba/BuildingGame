@@ -45,7 +45,6 @@ public class Startmenu extends JFrame {
 	
 	
 	public void createBackground() {
-
 		//BufferedImage titleScreen = null; // Images
 		try {
 			titleScreen = ImageIO.read(
