@@ -1,0 +1,18 @@
+/*
+Michael Chang
+Dimitri Saliba
+Luke Souter
+
+Project 2 ExtraCredit
+
+For Extra Credit We Added:
+
+- Sound Effects
+- Button Animations
+- Histogram
+- Custom Events
+- Save Features
+- Fading Console
+
+
+*/
