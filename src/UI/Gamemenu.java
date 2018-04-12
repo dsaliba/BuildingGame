@@ -309,7 +309,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.BOTH;
 		g.gridx = 1;
-		g.gridy = 4;
+		g.gridy = 5;
 		g.gridheight = 1;
 		g.gridwidth = 3;
 		g.weightx = 0.25;
@@ -344,7 +344,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		GridBagConstraints b = new GridBagConstraints(); // Console Grid Bag Constraint
 		b.fill = GridBagConstraints.HORIZONTAL;
 		b.gridx = 1;
-		b.gridy = 5;
+		b.gridy = 6;
 		b.gridwidth = 6;
 		b.gridheight = 1;
 		b.weighty = 1;
@@ -375,7 +375,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.BOTH;
 		g.gridx = 4;
-		g.gridy = 4;
+		g.gridy = 5;
 		g.gridheight = 1;
 		g.gridwidth = 3;
 		g.weightx = 0.25;
@@ -395,11 +395,11 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		//s.ipady = 0;
 		
 		GridBagConstraints s2 = new GridBagConstraints(); // Console Grid Bag Constraint
-		s2.fill = GridBagConstraints.HORIZONTAL;
+		s2.fill = GridBagConstraints.VERTICAL;
 		s2.gridx = 0;
-		s2.gridy = 0;
-		s2.gridwidth = 1;
-		s2.gridheight = 6;
+		s2.gridy = 4;
+		s2.gridwidth = 6;
+		s2.gridheight = 1;
 		s2.weighty = 1;
 		
 		
