@@ -59,29 +59,28 @@ public class Celebrity extends Event{
 			break;
 		case 5:
 			celebrity = "Tom Cruise";
-			int r = (int) (Math.random() * stats.width);
-			int c = (int) (Math.random() * stats.height);
-			String name = Stats.buildings.get(r).get(c).getName();
-			Stats.buildings.get(r).set(c, new EmpteyPlot());
-			if (name == null) {
+			int rr = (int) (Math.random() * stats.width);
+			int rc = (int) (Math.random() * stats.height);
+			String bName = Stats.buildings.get(rr).get(rc).getName();
+			Stats.buildings.get(rr).set(rc, new EmpteyPlot());
+			if (bName == null) {
 				return celebrity + " sets off explosions in an abandoned part of town.";
 			}
-			return celebrity + " blows up a " + name + " and runs away!";
+			return celebrity + " blows up a " + bName + " and runs away!";
 		case 6:
 			celebrity = "Artour \"Arteezy\" Babaev";
 			Stats.population =- 3;
 			Stats.happiness += 20;
-			return celebrity + " rages really hard and kills multiple people, but makes people laugh!";
+			return celebrity + " rages really hard and murders multiple people, but makes people laugh!";
 		case 7:
 			celebrity = "Dimitri Saliba";
-			//DIMITRI PUT YOUR STUFF HERE
-			//MAKE SURE YOU RETURN
-			break;
+			Stats.coins += 500;
+			return celebrity + " codes a program to cheat your money supply!";
 		case 8:
 			celebrity = "Michael Chang";
-			//MICHAEL PUT YOUR STUFF HERE
-			//MAKE SURE YOU RETURN
-			break;
+			Stats.happiness += 20;
+			Stats.coins += 100;
+			return celebrity + " makes your town look super pretty!";
 		case 9:
 			celebrity = "Luke Souter";
 			Stats.population = 1;
