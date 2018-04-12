@@ -352,7 +352,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			queueLabel[i] = new JTextArea("");
 			queueLabel[i].setLineWrap(true);
 			queueLabel[i].setWrapStyleWord(true);
-			queueLabel[i].setFont(new Font("Monospaced", Font.BOLD, 25));
+			queueLabel[i].setFont(new Font("Monospaced", Font.BOLD, 28));
 			queueLabel[i].setEditable(false);
 			queueLabel[i].setVisible(true);
 			queueLabel[i].setOpaque(false);
@@ -383,7 +383,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	
 	public void createSpacer() {
 		//creates spaces inbetween border and textareas
-		GridBagConstraints s = new GridBagConstraints(); // Console Grid Bag Constraint
+		GridBagConstraints s = new GridBagConstraints(); // Spacer Grid Bag Constraint
 		s.fill = GridBagConstraints.VERTICAL;
 		s.gridx = 0;
 		s.gridy = 17;
@@ -433,8 +433,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		String next = "";
 		if (phrase.length() >= 50) {
 			int lastSpace = phrase.substring(0, 51).lastIndexOf(" ");
-			next = phrase.substring(lastSpace + 1);
-			phrase = phrase.substring(0, lastSpace);
+			next = phrase.substring(lastSpace + 6);
+			phrase = phrase.substring(0, lastSpace + 6);
 		}
 		queue[9] = queue[8];
 		queue[8] = queue[7];

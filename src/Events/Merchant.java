@@ -15,7 +15,7 @@ public class Merchant extends Event{
 	public String execute(Stats stats) {
 		int num  = (int) (Stats.population * ((Math.random() * 6) + 1));
 		stats.coins += num;
-		return " A traveling merchant has arived, you gained " + num + " coins.";
+		return " A traveling merchant has arived, you gained " + num + " coins";
 	}
 
 	@Override
