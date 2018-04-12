@@ -35,7 +35,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private Frame parent; // Frames, Buttons, Slider, Labels, Textareas, Histograms, Images, Ect
 	private JButton nextDay;
 	private JButton pauseButton;
-	private ImagePanel panel1;
+	public ImagePanel panel1;
 	private JPanel panel2;
 	private JTextArea status;
 	private JTextArea console;
@@ -61,8 +61,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		setBounds(0, 0, 1936, 1145);
 		setResizable(true);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-		setDefaultLookAndFeelDecorated(true);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setBackground(Color.BLACK);
 		this.stats = stats;
 		// getContentPane().setForeground(new Color(239, 211, 135, 255));
 		createPanels();
@@ -231,10 +231,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				addGrid.setActionCommand("fullLand");
 				addGrid.setForeground(Color.RED);
 				addGrid.setText("Max Size");
-				remove(panel1);
-				remove(panel2);
-				add(panel1);
-				add(panel2);
+				
 			}
 			return (stats.width - 1) * 1000;
 
@@ -257,7 +254,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel2.setBackground(Color.BLACK);
 		panel1 = new ImagePanel("Images//gameback.png"); // Stats Section
 		panel1.setLayout(new GridBagLayout());
-		panel1.setForeground(new Color(239, 211, 135, 255));
+		panel1.setForeground(Color.BLACK);
+		
+		
 		add(panel1);
 		add(panel2);
 

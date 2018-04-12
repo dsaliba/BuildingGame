@@ -35,6 +35,7 @@ public class Frame implements ActionListener, ChangeListener{
 	
 	
 	
+	
 
 
 	public Frame() throws IOException { //Save Manager Instance
