@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.WindowConstants;
 
 public class Helpmenu extends JFrame implements ActionListener {
@@ -70,6 +71,15 @@ public class Helpmenu extends JFrame implements ActionListener {
 		tent.setVisible(true);
 		tent.setBounds(0, 0, 180, 180);
 		back.add(tent);
+	}
+	
+	public void createTextArea() {
+		JTextArea info = new JTextArea("text text text");
+		info.setEditable(false);
+		//info.setBorder(Color.BLACK));
+		info.setVisible(true);
+		back.add(info);
+		
 	}
 
 	@Override
