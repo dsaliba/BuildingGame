@@ -23,14 +23,13 @@ public class Histogram{
       this.stats = stats;
       dataset = new DefaultCategoryDataset();
       JFreeChart lineChart = ChartFactory.createLineChart(
-         "Histogram",
+         " ",
          "Days", "Stats",
          dataset,
          PlotOrientation.VERTICAL,
          true,true,false);
       lineChart.setBackgroundPaint(new Color(0xFF, 0xFF, 0xFF, 0));
       lineChart.getTitle().setPaint(Color.WHITE);
-      lineChart.getTitle().setVisible(false);
       lineChart.getCategoryPlot().getRangeAxis().setVisible(false);;
       lineChart.getCategoryPlot().getDomainAxis().setVisible(false);;
       lineChart.setBorderPaint(Color.WHITE);
