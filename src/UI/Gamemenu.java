@@ -367,7 +367,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	 * Constraints
 	 */
 	public void creatHistogram() {
-		histogram = new Histogram(stats); // Hisogram
+		histogram = new Histogram(stats); // Histogram
 		histogram.updateData();
 		// --------------------------------------------
 		GridBagConstraints g = new GridBagConstraints();
