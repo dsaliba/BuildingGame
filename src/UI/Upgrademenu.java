@@ -138,9 +138,11 @@ public class Upgrademenu extends JFrame{
 		if(showUpgrade) {
 			upgrade.setActionCommand("upgradeOff");
 			upgrade.setIcon(new ImageIcon("Images\\upgradeOff.png"));
+			upgrade.setPressedIcon(new ImageIcon("Images\\upgradeoffdown.png"));
 		} else {
 			upgrade.setActionCommand("upgrade");
 			upgrade.setIcon(new ImageIcon("Images\\upgradeup.png"));
+			upgrade.setPressedIcon(new ImageIcon("Images\\upgradepressed.png"));
 		}
 	}
 	
