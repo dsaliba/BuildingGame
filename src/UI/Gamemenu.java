@@ -343,7 +343,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		b.fill = GridBagConstraints.HORIZONTAL;
 		b.gridx = 1;
 		b.gridy = 6;
-		b.gridwidth = 6;
+		b.gridwidth = 8;
 		b.gridheight = 1;
 		b.weighty = 1;
 		b.ipady = 0;
@@ -352,7 +352,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			queueLabel[i] = new JTextArea("");
 			queueLabel[i].setLineWrap(true);
 			queueLabel[i].setWrapStyleWord(true);
-			queueLabel[i].setFont(new Font("Monospaced", Font.BOLD, 30));
+			queueLabel[i].setFont(new Font("Monospaced", Font.BOLD, 25));
 			queueLabel[i].setEditable(false);
 			queueLabel[i].setVisible(true);
 			queueLabel[i].setOpaque(false);
@@ -386,19 +386,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		GridBagConstraints s = new GridBagConstraints(); // Console Grid Bag Constraint
 		s.fill = GridBagConstraints.VERTICAL;
 		s.gridx = 0;
-		s.gridy = 16;
+		s.gridy = 17;
 		s.gridwidth = 6;
 		s.gridheight = 1;
 		s.weighty = 1;
 		//s.ipady = 0;
 		
-		GridBagConstraints s2 = new GridBagConstraints(); // Console Grid Bag Constraint
-		s2.fill = GridBagConstraints.VERTICAL;
-		s2.gridx = 0;
-		s2.gridy = 4;
-		s2.gridwidth = 6;
-		s2.gridheight = 1;
-		s2.weighty = 1;
+
 		
 		
 		JTextArea spacer = new JTextArea(""); // Tax Slider Header
@@ -409,13 +403,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		spacer.setEditable(true);
 		panel1.add(spacer, s);
 		
-		JTextArea spacer2 = new JTextArea(""); // Tax Slider Header
-		spacer.setFont(new Font("Monospaced", Font.BOLD, 30));
-		spacer.setForeground(textColor);
-		spacer.setOpaque(false);
-		spacer.setVisible(true);
-		spacer.setEditable(true);
-		panel1.add(spacer2, s2);
 		
 		
 		
