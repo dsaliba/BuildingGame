@@ -48,31 +48,41 @@ public class Upgrademenu extends JFrame{
 	public void createButtons() {
 		
 		closeButton = new JButton("");
-		closeButton.setIcon(new ImageIcon("Images\\close.png"));
+		closeButton.setIcon(new ImageIcon("Images\\closeup.png"));
 		closeButton.addActionListener(parent);
 		closeButton.setActionCommand("close");
 		closeButton.setVisible(true);
-		closeButton.setBackground(Color.WHITE);
+	//	closeButton.setBackground(Color.WHITE);
+		closeButton.setPressedIcon(new ImageIcon("Images\\closedown.png"));
+		closeButton.setOpaque(false);
+		closeButton.setContentAreaFilled(false);
+		closeButton.setBorderPainted(false);
 		add(closeButton);
 		
 		remove = new JButton("");
-		remove.setIcon(new ImageIcon("Images\\remove.png"));
+		remove.setIcon(new ImageIcon("Images\\destroyup.png"));
 		remove.addActionListener(parent);
 		remove.setActionCommand("remove");
 		remove.setVisible(true);
 		remove.setBackground(Color.WHITE);
+		remove.setPressedIcon(new ImageIcon("Images\\destroydown.png"));
+		remove.setOpaque(false);
+		remove.setContentAreaFilled(false);
+		remove.setBorderPainted(false);
 		add(remove);
 		
 		
-		upgrade = new JButton("Upgrade");
-		upgrade.setBackground(Color.WHITE);
-		upgrade.setFont(new Font("Monospaced", Font.BOLD, 40));
+	
 		upgrade = new JButton("");
-		upgrade.setIcon(new ImageIcon("Images\\upgrade.png"));
+		upgrade.setIcon(new ImageIcon("Images\\upgradeup.png"));
 		upgrade.addActionListener(parent);
 		upgrade.setActionCommand("upgrade");
 		upgrade.setVisible(true);
 		upgrade.setBackground(Color.WHITE);
+		upgrade.setPressedIcon(new ImageIcon("Images\\upgradedown.png"));
+		upgrade.setOpaque(false);
+		upgrade.setContentAreaFilled(false);
+		upgrade.setBorderPainted(false);
 		add(upgrade);
 		
 													
@@ -130,7 +140,7 @@ public class Upgrademenu extends JFrame{
 			upgrade.setIcon(new ImageIcon("Images\\upgradeOff.png"));
 		} else {
 			upgrade.setActionCommand("upgrade");
-			upgrade.setIcon(new ImageIcon("Images\\upgrade.png"));
+			upgrade.setIcon(new ImageIcon("Images\\upgradeup.png"));
 		}
 	}
 	

@@ -16,7 +16,7 @@ import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 
 public class Buildmenu extends JFrame {
-	private final String[] buildingLabels = { "f1", "c1", "d1", "r1", "p1" };
+	private final String[] buildingLabels = { "farmup", "marketup", "towerup", "treeup", "tentup" };
 	private Frame parent;
 	private JButton close;
 	private JButton upgrade;
@@ -48,10 +48,13 @@ public class Buildmenu extends JFrame {
 		top.gridy = 0;
 		closeButton = new JButton("");
 		closeButton.setBounds(0, 1, 100, 100);
-		closeButton.setIcon(new ImageIcon("Images\\close.png"));
+		closeButton.setIcon(new ImageIcon("Images\\closeup.png"));
 		closeButton.addActionListener(parent);
 		closeButton.setActionCommand("close");
 		closeButton.setBackground(Color.WHITE);
+		closeButton.setOpaque(false);
+		closeButton.setContentAreaFilled(false);
+		closeButton.setBorderPainted(false);
 		closeButton.setVisible(true);
 		add(closeButton, top);
 
@@ -66,6 +69,9 @@ public class Buildmenu extends JFrame {
 			bl.addActionListener(parent);
 			bl.setActionCommand("" + i);
 			bl.setFont(new Font("Monospaced", Font.BOLD, 40));
+			bl.setOpaque(false);
+			bl.setContentAreaFilled(false);
+			bl.setBorderPainted(false);
 			bl.setBackground(Color.WHITE);
 			add(bl, top);
 		}
