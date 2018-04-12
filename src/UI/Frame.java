@@ -24,7 +24,7 @@ public class Frame implements ActionListener, ChangeListener{
 	private Gamemenu game;
 	private JFrame start; // start screen
 	private JFrame pause;
-	
+	private JFrame help;
 	private Upgrademenu upgrade;
 	private JFrame build;
 	private int lastX = 0;
@@ -117,6 +117,21 @@ public class Frame implements ActionListener, ChangeListener{
 			m.startBGMusic("click.mp3");
 			return;
 
+		case "help":
+			game.setVisible(false);
+			pause.setVisible(false);
+			help.setVisible(true);
+			m.startBGMusic("click.mp3");
+			break;
+			
+		case "helpoff":
+			game.setVisible(true);
+			pause.setVisible(true);
+			help.setVisible(false);
+			m.startBGMusic("click.mp3");
+			break;
+			
+			
 		case "resize":
 			game.setSize(1936, 1145);
 			start.setSize(1920, 1080);
@@ -258,7 +273,7 @@ public class Frame implements ActionListener, ChangeListener{
 		// --------------Frame Setup-----------------
 		//game = new Gamemenu(this, stats); // JFrame
 		start = new Startmenu(this); // start screen
-		
+		help = new Helpmenu(this);
 		pause = new Pausemenu(this); // pause screen
 		upgrade = new Upgrademenu(this);
 		build = new Buildmenu(this);
