@@ -24,6 +24,7 @@ public class Frame implements ActionListener, ChangeListener{
 	private Gamemenu game;
 	private JFrame start; // start screen
 	private JFrame pause;
+	private JFrame help;
 	private Upgrademenu upgrade;
 	private JFrame build;
 	private int lastX = 0;
@@ -36,20 +37,17 @@ public class Frame implements ActionListener, ChangeListener{
 	
 
 
-	public Frame() throws IOException {
+	public Frame() throws IOException { //Save Manager Instance
 		saveManager = new SaveManager();
-        
 	}
 
-	public Frame(Stats stats) throws IOException {
+	public Frame(Stats stats) throws IOException { //Stats Instance
 		this.stats = stats;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-
-		JButton source;
-		String coordinate;
+	public void actionPerformed(ActionEvent e) { //Action Listening Switch Statement and Tiles
+		
 		int x;
 		int y;
 		
@@ -124,10 +122,22 @@ public class Frame implements ActionListener, ChangeListener{
 			m.startBGMusic("click.mp3");
 			break;
 			
+		case "help":
+			help.setVisible(true);
+			game.setVisible(false);
+			pause.setVisible(false);
+			break;
+			
+		case "closeHelp":
+			help.setVisible(false);
+			game.setVisible(true);
+			pause.setVisible(true);
+			
 		case "resume":
 			pause.setVisible(false);
 			m.startBGMusic("click.mp3");
 			return;
+		
 
 		case "pause":
 			pause.setVisible(true);
@@ -257,6 +267,7 @@ public class Frame implements ActionListener, ChangeListener{
 		// --------------Frame Setup-----------------
 		//game = new Gamemenu(this, stats); // JFrame
 		start = new Startmenu(this); // start screen
+		help = new Helpmenu(this); //Help Screen
 		pause = new Pausemenu(this); // pause screen
 		upgrade = new Upgrademenu(this);
 		build = new Buildmenu(this);

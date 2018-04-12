@@ -12,8 +12,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.WindowConstants;
 
-public class Startmenu extends JFrame implements ActionListener{
+public class Startmenu extends JFrame {
 
 	private Frame parent;
 	private JButton exitButton;
@@ -25,9 +26,9 @@ public class Startmenu extends JFrame implements ActionListener{
 
 	public Startmenu(Frame parent) {
 		this.parent = parent;
-		System.out.println("isrunning");
+		System.out.println("Start Menu Created");
 		setSize(1920,1080);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		setBounds(0, 0, 1920, 1080);
 		setLayout(new BorderLayout());
 		createBackground();
@@ -59,6 +60,8 @@ public class Startmenu extends JFrame implements ActionListener{
 		} catch (Exception exp) {
 			exp.printStackTrace();
 		}
+		
+		
 		
 		title = new JLabel("");
 		title.setIcon(new ImageIcon("Images\\title.png"));
@@ -110,9 +113,5 @@ public class Startmenu extends JFrame implements ActionListener{
 
 
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+
 }

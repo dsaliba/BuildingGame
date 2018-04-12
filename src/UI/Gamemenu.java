@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.LineBorder;
 
 import com.sun.org.apache.bcel.internal.generic.LASTORE;
@@ -36,8 +37,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JButton pauseButton;
 	private ImagePanel panel1;
 	private JPanel panel2;
-	private JPanel panel3;
-	private JPanel panel4;
 	private JTextArea status;
 	private JTextArea console;
 	private JSlider taxSlider;
@@ -50,7 +49,6 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	private JLabel farmImage;
 	private BufferedImage picture = null;
 	private Color textColor;
-
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) { // Constructor
@@ -63,7 +61,8 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		setBounds(0, 0, 1936, 1145);
 		setResizable(true);
 		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+		setDefaultLookAndFeelDecorated(true);
 		this.stats = stats;
 		// getContentPane().setForeground(new Color(239, 211, 135, 255));
 		createPanels();
