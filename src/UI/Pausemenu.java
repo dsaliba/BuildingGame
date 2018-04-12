@@ -18,7 +18,7 @@ public class Pausemenu extends JFrame {
 	private JButton pauseResume;
 	private JButton pauseExitMainMenu;
 	private JButton pauseExitGame;
-	private JButton help;
+	private JButton resize;
 	
 
 	public Pausemenu(Frame parent) {
@@ -35,24 +35,25 @@ public class Pausemenu extends JFrame {
 		add(pauseExitGame);
 		add(pauseResume);
 		add(pauseExitMainMenu);
-		add(help);
+		add(resize);
 		setAlwaysOnTop (true);
 		setVisible(false);
 	}
 
 	public void createButtons() {
 
-		help = new JButton("help");
-		help.setBounds(12, 280, 462, 100);
-		//help.setIcon(new ImageIcon("Images\\resize.png"));
-		help.setFont(new Font("Monospaced", Font.BOLD, 40));
-		help.setVisible(true);
-		help.addActionListener(parent);
-		help.setActionCommand("help");
-		//help.setPressedIcon(new ImageIcon("Images\\resizepressed.png"));
-		help.setOpaque(false);
-		help.setContentAreaFilled(false);
-		help.setBorderPainted(false);
+		resize = new JButton("");
+		resize.setBounds(12, 280, 462, 100);
+		resize.setIcon(new ImageIcon("Images\\resize.png"));
+		resize.setFont(new Font("Monospaced", Font.BOLD, 40));
+		resize.setVisible(true);
+		resize.addActionListener(parent);
+		resize.setActionCommand("resize");
+		resize.setPressedIcon(new ImageIcon("Images\\resizepressed.png"));
+		resize.setOpaque(false);
+		resize.setContentAreaFilled(false);
+		resize.setBorderPainted(false);
+		add(resize);
 
 		pauseExitMainMenu = new JButton("");
 		pauseExitMainMenu.setBounds(12, 380, 462, 100);
