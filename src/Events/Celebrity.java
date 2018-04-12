@@ -26,13 +26,11 @@ public class Celebrity extends Event{
 				Stats.coins -= 250;
 				return celebrity + " might be a bad pirate, but at least you've heard of him! He steals some of your money!";
 				
-		break;
 		case 1:
 			celebrity = "Jennifer Lawrence";
 			Stats.defense += 10;
 			Stats.coins += 100;
 			return celebrity + " shoots a movie in your town, and her security guards increase your defense!";
-		break;
 		case 2:
 			celebrity = "Keanu "
 					+ "Reeves";
@@ -45,18 +43,18 @@ public class Celebrity extends Event{
 				return "Keanu Reeves builds a homeless shelter in your town!";
 			}
 			return "Keanu Reeves destroys a " + name + " and replaces it with a homeless shelter!";
-			break;
+		
 		case 3:
 			celebrity = "Ewan McGregor";
 			Stats.defense += 10;
 			Stats.population =- 5;
 			return celebrity + " takes some of your children and trains Jedi, increasing your defense!";
-			break;
+	
 		case 4:
 			celebrity = "Danil \"Dendi\" Ishutin";
 			Stats.coins += 250;
 			return celebrity + " wins a TI and gives you his prize money!";
-			break;
+
 		case 5:
 			celebrity = "Tom Cruise";
 			int rr = (int) (Math.random() * stats.width);
