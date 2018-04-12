@@ -14,7 +14,7 @@ public class Murder extends Event{
 	@Override
 	public String execute(Stats stats) {
 		Stats.population --;
-		return "A town member has been murdered";
+		return " A town member has been murdered";
 	}
 
 	@Override

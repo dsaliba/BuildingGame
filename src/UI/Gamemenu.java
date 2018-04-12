@@ -54,23 +54,24 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	Stats stats;
 
 	public Gamemenu(Frame parent, Stats stats) { // Constructor
-		queue = new String[] { "", "", "", "", "", "", "", "", "", ""};
+		queue = new String[] { "", "", "", "", "", "", "", "", "", "" };
 		queueLabel = new JTextArea[10];
 		textColor = Color.WHITE;
 		grid = new ArrayList<ArrayList<JButton>>();
 		this.parent = parent;
 		setLayout(new GridLayout(1, 2));
-		setBounds(0, 0, 1920, 1080);
+		setBounds(0, 0, 1936, 1145);
 		setResizable(true);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.stats = stats;
-		//getContentPane().setForeground(new Color(239, 211, 135, 255));
+		// getContentPane().setForeground(new Color(239, 211, 135, 255));
 		createPanels();
 		createButtons();
 		createSlider();
 		createText();
 		creatHistogram();
+		createSpacer();
 		addComponentListener(this);
 		histogram.updateData();
 		if (stats.width > 22) {
@@ -80,7 +81,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			add(panel1);
 			add(panel2);
 		}
-		
+
 	}
 
 	/*
@@ -93,21 +94,21 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		GridBagConstraints p = new GridBagConstraints();
 		p.fill = GridBagConstraints.BOTH;
-		p.gridx = 0;
+		p.gridx = 1;
 		p.gridy = 0;
 		p.gridheight = 2;
 		p.gridwidth = 1;
 
 		GridBagConstraints d = new GridBagConstraints();
 		d.fill = GridBagConstraints.BOTH;
-		d.gridx = 4;
+		d.gridx = 5;
 		d.gridy = 0;
 		d.gridheight = 2;
 		d.gridwidth = 2;
 
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.HORIZONTAL;
-		g.gridx = 0;
+		g.gridx = 1;
 		g.gridy = 3;
 		g.gridheight = 1;
 		g.gridwidth = 6;
@@ -200,7 +201,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			grid.add(new ArrayList<JButton>());
 			stats.buildings.add(new ArrayList<Building>());
 			for (int i = 0; i < stats.height; i++) {
-				
+
 				stats.buildings.get(stats.width - 1).add(new EmpteyPlot());
 				grid.get(stats.width - 1).add(new JButton("e0"));
 				grid.get(stats.width - 1).get(i).setForeground(Color.WHITE);
@@ -209,7 +210,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				grid.get(stats.width - 1).get(i).addActionListener(parent);
 				grid.get(stats.width - 1).get(i).setActionCommand("tile" + (stats.width - 1) + "|" + i);
 				grid.get(stats.width - 1).get(i).setIcon(
-					
+
 						new ImageIcon("Images//" + stats.buildings.get(stats.width - 1).get(i).toString() + ".png"));
 
 			}
@@ -236,7 +237,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 				add(panel1);
 				add(panel2);
 			}
-			return (stats.width-1) * 1000;
+			return (stats.width - 1) * 1000;
 
 		} else
 
@@ -269,7 +270,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	public void createSlider() {
 		GridBagConstraints t = new GridBagConstraints(); // Grid Bag Constraints
 		t.fill = GridBagConstraints.HORIZONTAL;
-		t.gridx = 2;
+		t.gridx = 3;
 		t.gridy = 1;
 		t.gridheight = 2;
 		t.gridwidth = 2;
@@ -307,7 +308,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		// --------------------------------------------
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.BOTH;
-		g.gridx = 0;
+		g.gridx = 1;
 		g.gridy = 4;
 		g.gridheight = 1;
 		g.gridwidth = 3;
@@ -327,7 +328,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 
 		GridBagConstraints t = new GridBagConstraints(); // Tax Slider Grid Bag Constraint
 		// t.fill = GridBagConstraints.BOTH;
-		t.gridx = 2;
+		t.gridx = 3;
 		t.gridy = 0;
 		t.gridheight = 1;
 		t.gridwidth = 2;
@@ -341,14 +342,14 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		panel1.add(header, t);
 
 		GridBagConstraints b = new GridBagConstraints(); // Console Grid Bag Constraint
-		b.fill = GridBagConstraints.BOTH;
-		b.gridx = 0;
+		b.fill = GridBagConstraints.HORIZONTAL;
+		b.gridx = 1;
 		b.gridy = 5;
 		b.gridwidth = 6;
 		b.gridheight = 1;
 		b.weighty = 1;
 		b.ipady = 0;
-		for (int i = 0; i<queueLabel.length; i ++) {
+		for (int i = 0; i < queueLabel.length; i++) {
 			b.gridy++;
 			queueLabel[i] = new JTextArea("");
 			queueLabel[i].setLineWrap(true);
@@ -357,8 +358,9 @@ public class Gamemenu extends JFrame implements ComponentListener {
 			queueLabel[i].setEditable(false);
 			queueLabel[i].setVisible(true);
 			queueLabel[i].setOpaque(false);
-			queueLabel[i].setForeground(new Color(255, 255, 255, ((27*i)+12)));
+			queueLabel[i].setForeground(new Color(255, 255, 255, ((27 * i) + 12)));
 			panel1.add(queueLabel[i], b);
+			//System.out.println(i);
 		}
 	}
 
@@ -372,13 +374,53 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		// --------------------------------------------
 		GridBagConstraints g = new GridBagConstraints();
 		g.fill = GridBagConstraints.BOTH;
-		g.gridx = 3;
+		g.gridx = 4;
 		g.gridy = 4;
 		g.gridheight = 1;
 		g.gridwidth = 3;
 		g.weightx = 0.25;
 		panel1.add(histogram.chart, g);
 
+	}
+	
+	public void createSpacer() {
+		//creates spaces inbetween border and textareas
+		GridBagConstraints s = new GridBagConstraints(); // Console Grid Bag Constraint
+		s.fill = GridBagConstraints.VERTICAL;
+		s.gridx = 0;
+		s.gridy = 16;
+		s.gridwidth = 6;
+		s.gridheight = 1;
+		s.weighty = 1;
+		//s.ipady = 0;
+		
+		GridBagConstraints s2 = new GridBagConstraints(); // Console Grid Bag Constraint
+		s2.fill = GridBagConstraints.HORIZONTAL;
+		s2.gridx = 0;
+		s2.gridy = 0;
+		s2.gridwidth = 1;
+		s2.gridheight = 6;
+		s2.weighty = 1;
+		
+		
+		JTextArea spacer = new JTextArea(""); // Tax Slider Header
+		spacer.setFont(new Font("Monospaced", Font.BOLD, 30));
+		spacer.setForeground(textColor);
+		spacer.setOpaque(false);
+		spacer.setVisible(true);
+		spacer.setEditable(true);
+		panel1.add(spacer, s);
+		
+		JTextArea spacer2 = new JTextArea(""); // Tax Slider Header
+		spacer.setFont(new Font("Monospaced", Font.BOLD, 30));
+		spacer.setForeground(textColor);
+		spacer.setOpaque(false);
+		spacer.setVisible(true);
+		spacer.setEditable(true);
+		panel1.add(spacer2, s2);
+		
+		
+		
 	}
 
 	/*
@@ -401,12 +443,13 @@ public class Gamemenu extends JFrame implements ComponentListener {
 	 * EDIT
 	 */
 	public void updateQueue(String phrase) {
-		if (phrase.equals("")) return;
+		if (phrase.equals(""))
+			return;
 		String next = "";
 		if (phrase.length() >= 50) {
 			int lastSpace = phrase.substring(0, 51).lastIndexOf(" ");
-			next = phrase.substring(lastSpace-1);
-			phrase = phrase.substring(0, lastSpace-1);
+			next = phrase.substring(lastSpace - 1);
+			phrase = phrase.substring(0, lastSpace - 1);
 		}
 		queue[9] = queue[8];
 		queue[8] = queue[7];
@@ -419,7 +462,7 @@ public class Gamemenu extends JFrame implements ComponentListener {
 		queue[1] = queue[0];
 		queue[0] = phrase;
 		for (int i = 0; i < queueLabel.length; i++) {
-			queueLabel[i].setText(queue[9-i]);
+			queueLabel[i].setText(queue[9 - i]);
 		}
 		if (!next.equals("")) {
 			updateQueue(next);

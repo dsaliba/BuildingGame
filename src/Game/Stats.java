@@ -96,9 +96,9 @@ public class Stats implements Serializable{
 			happiness -= 5;
 			updateRescources();
 			if (leftover > 1) {
-				return leftover + " people died of starvation";
+				return " " + leftover + " people died of starvation";
 			}
-			return leftover + " person died of starvation";
+			return " " +  leftover + " person died of starvation";
 		}
 		updateRescources();
 		return "";

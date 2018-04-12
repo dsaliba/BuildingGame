@@ -19,9 +19,9 @@ public class Ransack extends Event{
 		String name = Stats.buildings.get(r).get(c).getName();
 		Stats.buildings.get(r).set(c, new EmpteyPlot());
 		if (name == null) {
-			return "The town was ransacked but nothing was destroyed";
+			return " The town was ransacked but nothing was destroyed";
 		}
-		return "The town was ransakced, a " + name + " was destroyed";
+		return " The town was ransakced, a " + name + " was destroyed";
 	}
 
 	@Override
