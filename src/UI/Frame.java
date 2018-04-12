@@ -22,7 +22,7 @@ public class Frame implements ActionListener, ChangeListener {
 	private Gamemenu game;
 	private JFrame start; // start screen
 	private JFrame pause;
-	private JFrame help;
+
 	private Upgrademenu upgrade;
 	private JFrame build;
 	private int lastX = 0;
@@ -88,7 +88,7 @@ public class Frame implements ActionListener, ChangeListener {
 			game.setVisible(true);
 			game.dispose();
 			start.dispose();
-			help.dispose();
+			
 			pause.dispose();
 			saveManager.writeSave(stats);
 			m.startBGMusic("click.mp3");
@@ -97,7 +97,7 @@ public class Frame implements ActionListener, ChangeListener {
 		case "exitpause":
 			game.dispose();
 			pause.dispose();
-			help.dispose();
+
 			start.dispose();
 			saveManager.writeSave(stats);
 			m.startBGMusic("click.mp3");
@@ -106,25 +106,13 @@ public class Frame implements ActionListener, ChangeListener {
 		case "exitMainMenu":
 			game.setVisible(false);
 			pause.setVisible(false);
-			help.dispose();
+		
 			start.setVisible(true);
 			saveManager.writeSave(stats);
 			m.startBGMusic("click.mp3");
 			return;
 
-		case "help":
-			game.setVisible(false);
-			pause.setVisible(false);
-			help.setVisible(true);
-			m.startBGMusic("click.mp3");
-			break;
-
-		case "helpoff":
-			game.setVisible(true);
-			pause.setVisible(true);
-			help.setVisible(false);
-			m.startBGMusic("click.mp3");
-			break;
+		
 
 		case "resize":
 			game.setSize(1936, 1145);
@@ -264,7 +252,6 @@ public class Frame implements ActionListener, ChangeListener {
 		// --------------Frame Setup-----------------
 		// game = new Gamemenu(this, stats); // JFrame
 		start = new Startmenu(this); // start screen
-		help = new Helpmenu(this);
 		pause = new Pausemenu(this); // pause screen
 		upgrade = new Upgrademenu(this);
 		build = new Buildmenu(this);

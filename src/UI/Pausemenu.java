@@ -19,7 +19,7 @@ public class Pausemenu extends JFrame {
 	private JButton pauseExitMainMenu;
 	private JButton pauseExitGame;
 	private JButton resize;
-	private JButton pauseHelp;
+
 
 
 
@@ -78,7 +78,7 @@ public class Pausemenu extends JFrame {
 		pauseExitGame.setBorderPainted(false);
 
 		pauseResume = new JButton("");
-		pauseResume.setBounds(12, 80, 462, 100);
+		pauseResume.setBounds(12, 180, 462, 100);
 		pauseResume.setIcon(new ImageIcon("Images\\resume.png"));
 		pauseResume.setFont(new Font("Monospaced", Font.BOLD, 40));
 		pauseResume.addActionListener(parent);
@@ -88,22 +88,12 @@ public class Pausemenu extends JFrame {
 		pauseResume.setContentAreaFilled(false);
 		pauseResume.setBorderPainted(false);
 
-		pauseHelp = new JButton("");
-		pauseHelp.setBounds(12, 180, 462, 100);
-		pauseHelp.setIcon(new ImageIcon("Images\\resume.png"));
-		pauseHelp.setFont(new Font("Monospaced", Font.BOLD, 40));
-		pauseHelp.addActionListener(parent);
-		pauseHelp.setActionCommand("resume");
-		pauseHelp.setPressedIcon(new ImageIcon("Images\\resumepressed.png"));
-		pauseHelp.setOpaque(false);
-		pauseHelp.setContentAreaFilled(false);
-		pauseHelp.setBorderPainted(false);
-
+	
 		add(pauseExitGame);
 		add(pauseResume);
 		add(pauseExitMainMenu);
 		add(resize);
-		add(pauseHelp);
+
 
 
 	}
