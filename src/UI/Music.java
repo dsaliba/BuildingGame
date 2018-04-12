@@ -20,21 +20,33 @@ import sun.audio.ContinuousAudioDataStream;
 
 public class Music {
 	Player playMP3;
+	boolean music = true;
 
 	public void startBGMusic(String file) { // Plays the background music
-		new Thread(new Runnable() {
+		if (music == true) {
+			new Thread(new Runnable() {
 				@Override
 				public void run() {
-					try{
-					FileInputStream fis = new FileInputStream("Sounds/" + file);
-				    playMP3 = new Player(fis);
-				    playMP3.play();
+					try {
+						FileInputStream fis = new FileInputStream("Sounds/" + file);
+						playMP3 = new Player(fis);
+						playMP3.play();
 
-				    }catch(Exception e){System.out.println(e);}
+					} catch (Exception e) {
+						System.out.println(e);
+					}
 				}
-				
-				
-			
-		}).start();
+
+			}).start();
+		}
+	}
+	
+	
+	public void turnoffmusic() {
+		music = false;
+	}
+	
+	public void turnonmusic() {
+		music = true;
 	}
 }

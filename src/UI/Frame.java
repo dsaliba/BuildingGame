@@ -1,7 +1,5 @@
 package UI;
 
-
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -17,7 +15,7 @@ import Game.EventPlanner;
 import Game.SaveManager;
 import Game.Stats;
 
-public class Frame implements ActionListener, ChangeListener{
+public class Frame implements ActionListener, ChangeListener {
 
 	public Stats stats;
 
@@ -32,46 +30,40 @@ public class Frame implements ActionListener, ChangeListener{
 	private EventPlanner ep;
 	private SaveManager saveManager;
 	private int error;
-	
-	
-	
-	
 
-
-	public Frame() throws IOException { //Save Manager Instance
+	public Frame() throws IOException { // Save Manager Instance
 		saveManager = new SaveManager();
 	}
 
-	public Frame(Stats stats) throws IOException { //Stats Instance
+	public Frame(Stats stats) throws IOException { // Stats Instance
 		this.stats = stats;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) { //Action Listening Switch Statement and Tiles
-		
+	public void actionPerformed(ActionEvent e) { // Action Listening Switch Statement and Tiles
+
 		int x;
 		int y;
-		
+
 		// build.setVisible(true);
 
-		if(e.getActionCommand().contains("tile")) {
+		if (e.getActionCommand().contains("tile")) {
 			String id = e.getActionCommand().substring(4);
-				int pipe = id.indexOf("|");
-				int r = Integer.parseInt(id.substring(0, pipe));
-				int c = Integer.parseInt(id.substring(pipe+1, id.length()));
-				lastX = r;
-				lastY = c;
-				if(Stats.buildings.get(r).get(c).toString().equals("e0")) {
-					build.setVisible(true); ///buildshit
-				}
-				else {
-					upgrade.setPrice(Stats.buildings.get(r).get(c));
-					upgrade.setVisible(true);
-				}
+			int pipe = id.indexOf("|");
+			int r = Integer.parseInt(id.substring(0, pipe));
+			int c = Integer.parseInt(id.substring(pipe + 1, id.length()));
+			lastX = r;
+			lastY = c;
+			if (Stats.buildings.get(r).get(c).toString().equals("e0")) {
+				build.setVisible(true); /// buildshit
+			} else {
+				upgrade.setPrice(Stats.buildings.get(r).get(c));
+				upgrade.setVisible(true);
+			}
 		}
 
 		Music m = new Music();
-		
+
 		error = 0;
 		switch (e.getActionCommand()) {
 		case "new game":
@@ -81,7 +73,7 @@ public class Frame implements ActionListener, ChangeListener{
 			game.setVisible(true);
 			m.startBGMusic("click.mp3");
 			break;
-			
+
 		case "continue":
 			start.setVisible(false);
 			stats = saveManager.readSave();
@@ -96,14 +88,16 @@ public class Frame implements ActionListener, ChangeListener{
 			game.setVisible(true);
 			game.dispose();
 			start.dispose();
+			help.dispose();
 			pause.dispose();
 			saveManager.writeSave(stats);
 			m.startBGMusic("click.mp3");
 			return;
-			
+
 		case "exitpause":
 			game.dispose();
 			pause.dispose();
+			help.dispose();
 			start.dispose();
 			saveManager.writeSave(stats);
 			m.startBGMusic("click.mp3");
@@ -112,6 +106,7 @@ public class Frame implements ActionListener, ChangeListener{
 		case "exitMainMenu":
 			game.setVisible(false);
 			pause.setVisible(false);
+			help.dispose();
 			start.setVisible(true);
 			saveManager.writeSave(stats);
 			m.startBGMusic("click.mp3");
@@ -123,27 +118,25 @@ public class Frame implements ActionListener, ChangeListener{
 			help.setVisible(true);
 			m.startBGMusic("click.mp3");
 			break;
-			
+
 		case "helpoff":
 			game.setVisible(true);
 			pause.setVisible(true);
 			help.setVisible(false);
 			m.startBGMusic("click.mp3");
 			break;
-			
-			
+
 		case "resize":
 			game.setSize(1936, 1145);
 			start.setSize(1920, 1080);
 			m.startBGMusic("click.mp3");
 			break;
-	
-	
+
+
 		case "resume":
 			pause.setVisible(false);
 			m.startBGMusic("click.mp3");
 			return;
-		
 
 		case "pause":
 			pause.setVisible(true);
@@ -160,21 +153,19 @@ public class Frame implements ActionListener, ChangeListener{
 			game.updateImages();
 			break;
 
-
 		case "upgrade":
 			m.startBGMusic("build.mp3");
 			int cost = Stats.buildings.get(lastX).get(lastY).upgrade(Stats.coins);
-			
+
 			if (cost > 0) {
 				Stats.coins -= cost;
-				game.grid.get(lastX).get(lastY).setIcon(new ImageIcon("Images//" + Stats.buildings.get(lastX).get(lastY).toString() + ".png"));
+				game.grid.get(lastX).get(lastY)
+						.setIcon(new ImageIcon("Images//" + Stats.buildings.get(lastX).get(lastY).toString() + ".png"));
 			}
 			stats.updateRescources();
 			game.updateStatus();
 			upgrade.dispose();
 			break;
-			
-	
 
 		case "buy land":
 			m.startBGMusic("click.mp3");
@@ -182,11 +173,10 @@ public class Frame implements ActionListener, ChangeListener{
 			stats.updateRescources();
 			game.updateStatus();
 			break;
-			
+
 		case "fullLand":
 			break;
-			
-			
+
 		case "close":
 			m.startBGMusic("click.mp3");
 			upgrade.dispose();
@@ -204,7 +194,7 @@ public class Frame implements ActionListener, ChangeListener{
 		case "1": // C
 			m.startBGMusic("build.mp3");
 			error = stats.setBuilding('c', lastX, lastY);
-			
+
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
@@ -213,13 +203,13 @@ public class Frame implements ActionListener, ChangeListener{
 		case "2": // D
 			m.startBGMusic("build.mp3");
 			error = stats.setBuilding('d', lastX, lastY);
-			
+
 			stats.updateRescources();
 			game.updateStatus();
 			build.setVisible(false);
 
 			break;
-		case "3": // R	
+		case "3": // R
 			m.startBGMusic("build.mp3");
 			error = stats.setBuilding('r', lastX, lastY);
 			stats.updateRescources();
@@ -238,25 +228,26 @@ public class Frame implements ActionListener, ChangeListener{
 		case "remove":
 			error = stats.setBuilding('e', lastX, lastY);
 			m.startBGMusic("build.mp3");
-			
+
 			stats.updateRescources();
-			
+
 			game.updateStatus();
 			build.setVisible(false);
 			upgrade.setVisible(false);
 			break;
 
 		}
-		
-		game.grid.get(lastX).get(lastY).setIcon(new ImageIcon("Images//" + Stats.buildings.get(lastX).get(lastY).toString() + ".png"));
-//		for (int r = 0; r < Stats.width; r++) {
-//			for (int c = 0; c < Stats.hieght;  c++) {
-//				switch(Stats.buildings.get(r).get(c).toString().charAt(0)) {
-//				
-//					
-//				}
-//			}
-//		}
+
+		game.grid.get(lastX).get(lastY)
+				.setIcon(new ImageIcon("Images//" + Stats.buildings.get(lastX).get(lastY).toString() + ".png"));
+		// for (int r = 0; r < Stats.width; r++) {
+		// for (int c = 0; c < Stats.hieght; c++) {
+		// switch(Stats.buildings.get(r).get(c).toString().charAt(0)) {
+		//
+		//
+		// }
+		// }
+		// }
 
 	}
 
@@ -268,10 +259,10 @@ public class Frame implements ActionListener, ChangeListener{
 			break;
 		}
 	}
-	
+
 	public void createFrame() {
 		// --------------Frame Setup-----------------
-		//game = new Gamemenu(this, stats); // JFrame
+		// game = new Gamemenu(this, stats); // JFrame
 		start = new Startmenu(this); // start screen
 		help = new Helpmenu(this);
 		pause = new Pausemenu(this); // pause screen
@@ -282,7 +273,7 @@ public class Frame implements ActionListener, ChangeListener{
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		JSlider slider = (JSlider)e.getSource();
+		JSlider slider = (JSlider) e.getSource();
 		switch (slider.getValue()) {
 		case 0:
 			Stats.tax = "Low";
